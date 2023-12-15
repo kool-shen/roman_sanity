@@ -1,0 +1,15 @@
+.rightLayer {
+  position: absolute;
+  background-color: transparent;
+  z-index: 3;
+  height: 100%;
+  width: 50%;
+  transform: translateX(100%);
+}
+.leftLayer {
+  position: absolute;
+  background-color: transparent;
+  z-index: 3;
+  height: 100%;
+  width: 50%;
+}
