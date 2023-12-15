@@ -15,7 +15,7 @@ console.log("data",archi);
 const [firstSliderIndex, setFirstSliderIndex] = useState(0)
 const [secondSliderIndex, setSecondSliderIndex] = useState(0)
 const firstSliderLenght = archi[0].images.length
-const secondSliderLenght= archi[0].images2.length
+const secondSliderLenght= archi[0].images2 && archi[0].images2.length
 const image1 = archi[0].images[firstSliderIndex]
 const image2 = archi[0].images2[secondSliderIndex]
 
@@ -54,6 +54,7 @@ const image2 = archi[0].images2[secondSliderIndex]
         </div>
        </div>
        <div className={styles.photoBlockContainer}>
+         
         <div className={styles.picContainer}>
           <Layers 
             onClickRight={()=> {handleClickNext(secondSliderIndex, secondSliderLenght, setSecondSliderIndex)}}
