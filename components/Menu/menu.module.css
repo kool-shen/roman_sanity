@@ -1,8 +1,26 @@
 .mainContainer {
-  height: 100vh;
-  min-width: 27%;
+  max-height: 100vh;
+  min-width: 28vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 6vmin;
+  padding-bottom: 6vmin;
+
+  /* border: 1px solid red; */
+}
+
+.titleContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border: 1px solid white;
+  justify-content: space-between;
 }
+
+.photoArchiContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2vmin;
+}
+
+/* .mainContainer > :nth-child(2) > h1 {
+  color: green;
+} */

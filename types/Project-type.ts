@@ -34,9 +34,8 @@ export type ImageDataType = {
   height: number;
   width: number;
   image: string;
-  alt?: string | null; // Rendre alt optionnel avec le symbole `?`
-  description?: string; // Rendre description optionnel si nécessaire
-  key?: string; // Rendre key optionnel si nécessaire
+  alt?: string | null;
+  description?: string; 
 }
 
 
@@ -56,7 +55,7 @@ export type projectArchiType = {
   width: number;
 }[];
 images2: {
-  image: string;
+  image: string ;
   alt: string;
   key?: string;
   height: number;
