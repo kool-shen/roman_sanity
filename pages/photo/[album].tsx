@@ -17,7 +17,7 @@ const photoData = album.flatMap((album) => [
 console.log('album', album);
   
   return (
-    <div className={styles.mainContainer}>
+    <div className={`rightPartContainer ${styles.mainContainer}`}>
       <div className={styles.infoContainer}>
      <h1>{album[0].name}</h1>
      <PortableText value={album[0].content}/>

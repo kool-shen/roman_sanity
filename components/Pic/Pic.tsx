@@ -22,6 +22,7 @@ export default function Pic(props : projectPicProps ) {
           onMouseLeave={props.onMouseLeave}
           key={props.key}
           sizes={`(min-width: 768px) 40vw, 50vw `}
+          
         />
       </div>
   )

@@ -23,7 +23,7 @@ export default function Photo(props: { albums?: albumType[] }) {
     ...album.images2.map((image) => ({ ...image, albumSlug: album.slug })),
   ]);
 
-  console.log('data', data);
+  console.log('data', data.length);
 
 
 function shuffleArray(array: any[]) {
@@ -54,11 +54,13 @@ data = shuffleArray(data);
             <meta name="viewport" content="width=device-width, initial-scale=1" />
           </Head>
          
-          <div className={styles.mainContainer}>
+          <div className={`rightPartContainer ${styles.mainContainer}`}>
         <div className={styles.titleContainer}>
           {props.albums.map((content: albumType) => (
             <Link href={`photo/${content.slug}`} key={content._id}>
-              <h2>{content.name}</h2>
+              <div className={styles.textContainer}>
+              <h3>{content.name}</h3>
+              </div>
             </Link>
           ))}
         </div>

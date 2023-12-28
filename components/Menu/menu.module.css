@@ -1,12 +1,9 @@
 .mainContainer {
   max-height: 100vh;
-  min-width: 28vw;
+  /* min-width: 28vw; */
   display: flex;
-  justify-content: center;
-  padding-top: 6vmin;
-  padding-bottom: 6vmin;
-
-  /* border: 1px solid red; */
+  /* justify-content: center; */
+  padding: 6vmin;
 }
 
 .titleContainer {

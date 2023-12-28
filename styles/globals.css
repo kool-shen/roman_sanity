@@ -1,10 +1,13 @@
 html,
 body {
   max-width: 100vw;
-
-  overflow-x: hidden;
+  height: calc(100vh - env(safe-area-inset-bottom));
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
   background-color: black;
   margin: 0;
+  overflow: hidden;
 }
 
 * {
@@ -20,11 +23,19 @@ p {
   color: white;
   font-family: "ReadexProRegular";
   text-align: justify;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  line-height: 1;
 }
 
 h1 {
   font-size: 5.8vmin;
   font-family: "ReadexProRegular";
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.7vmin;
 }
 
 p {
@@ -35,7 +46,17 @@ p {
   display: flex;
   width: 100vw;
   max-height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.rightPartContainer {
+  max-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  padding: 6vmin;
+  padding-right: 11vmin;
+  /* border: 1px solid green; */
+  box-sizing: border-box;
 }
 
 @font-face {

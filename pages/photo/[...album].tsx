@@ -5,6 +5,7 @@ import Pic from "@/components/Pic/Pic";
 import { useState } from "react";
 import Image from "next/image";
 import Layers from "@/components/Pic/Layers";
+import Link from "next/link";
 
 
 
@@ -74,12 +75,8 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
         />
         <Pic onClick={()=> {handleClickNext(index, indexSlider, setIndex)} }   
           src={photo.image} alt={photo.image} width={photo.width} height={photo.height}/> 
-        <Layers 
-          onClickRight={()=> {handleClickNext(index, indexSlider, setIndex)}}
-          onClickLeft={()=> {handleClickPrevious(index, indexSlider, setIndex)}}
-        />
       </div>
-      <p>{`${index + 1}/${indexSlider}`}</p>
+        <p>{`${index + 1}/${indexSlider}`}</p>  
     </div>
   );
 }
@@ -90,9 +87,12 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
 
 
     return (
-  <div className={styles.mainContainer}>
-    <div className={styles.slidersContainer}>
-     
+      <div className={`rightPartContainer ${styles.mainContainer}`}>
+        <Link href={`/photo/${album[0].slug}`}>
+        <h2>{album[0].name}</h2>
+        </Link>
+       <div className={styles.slidersContainer}>
+
       {slider1IsClicked ? (
         <>
           <PhotoBlock 
@@ -125,7 +125,9 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
         </>
       )}
     
-      </div>
+      </div>  
+    
+      
   </div>
     )
   }
@@ -142,8 +144,6 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
 
     const albumData = await getOneAlbum(albumName);
   
-    // console.log("DATA DE LA PHOTO", photoData);
-    // console.log("ALBUM ASSOCIÉ", albumData);
   
     return {
       props: {
@@ -202,9 +202,6 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
   
     const paths = uniqueKeys;
   
-    // console.log("DATA DE Base", albums);
-    // console.log("PATHS", paths);
-    // console.log("uniqueKey", uniqueKeys[0]);
   
     return {
       paths,
