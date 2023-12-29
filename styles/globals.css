@@ -5,7 +5,7 @@ body {
   max-height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: black;
+  background-color: white;
   margin: 0;
   overflow: hidden;
 }
@@ -20,7 +20,7 @@ h1,
 h2,
 h3,
 p {
-  color: white;
+  color: black;
   font-family: "ReadexProRegular";
   text-align: justify;
   margin-block-start: 0;

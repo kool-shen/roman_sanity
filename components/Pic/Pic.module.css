@@ -12,11 +12,32 @@
   /* border: 1px solid green; */
 }
 
+.picContainer2 {
+  height: 100%;
+  min-width: 100%;
+  /* height: 100%; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* opacity: 0; */
+  transition: opacity 0.4s;
+  /* border: 1px solid green; */
+}
+
 .picLoaded {
   width: 100%;
   height: 100%;
   object-fit: contain;
   transition: transform 0.4s ease;
   cursor: pointer;
-  /* border: 1px solid green; */
+}
+
+.picLoaded2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  cursor: pointer;
 }

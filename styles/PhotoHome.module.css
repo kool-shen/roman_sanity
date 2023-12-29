@@ -20,15 +20,13 @@
 }
 
 .galleryContainer {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-
-  /* display: flex;
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  justify-content: space-between; */
-
   overflow-y: scroll;
+  gap: 2vmin;
   width: 69%;
+  padding-bottom: 6vmin;
 }
 
 .galleryContainer::-webkit-scrollbar,
@@ -38,12 +36,9 @@
 
 .picContainer {
   height: 21vmin;
-  padding: 1vmin;
+  width: auto;
   position: relative;
+  /* border: 1px solid red; */
   overflow: hidden;
-  opacity: 1;
-  transition: opacity 0.4s;
-  /* flex-grow: 1; */
-  flex-shrink: 1;
-  /* border: 1px solid blue; */
+  flex-grow: 1;
 }

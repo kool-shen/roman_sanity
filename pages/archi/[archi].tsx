@@ -61,7 +61,7 @@ console.log(crossClicked, crossStyle)
         <h2>{archi[0].name}</h2>
         <div className={styles.logoContainer}  style={crossStyle} > 
          <Pic   
-            src={"/cross_white_bold.png"} alt={"cross icon"} 
+            src={"/cross_black.png"} alt={"cross icon"} 
             width={100} height={100} onClick={clickCross}/> 
        </div>
       </div>

@@ -13,22 +13,18 @@
 }
 
 .galleryContainer {
-  display: grid;
-  min-height: 100%;
-  /* border: 1px solid orange; */
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   overflow-y: scroll;
   gap: 2vmin;
 }
 
 .picContainer {
-  width: 100%;
-  height: 18vmin;
+  height: 30vmin;
+  width: auto;
   position: relative;
   /* border: 1px solid red; */
   overflow: hidden;
-  height: 21vmin;
-
   flex-grow: 1;
 }

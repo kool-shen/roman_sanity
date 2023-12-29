@@ -4,6 +4,7 @@ import { projectArchiType } from '@/types/Project-type';
 import Image from 'next/image';
 import { SetStateAction, useState } from "react";
 import Pic from "@/components/Pic/Pic";
+import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
 
 export default function Archi(props: { projectsArchi?: projectArchiType[] }) {
@@ -44,7 +45,7 @@ const hover = (e : string | null ) => {
        className={`${styles.picContainer} ${hoveredData !== project.name && hoveredData !== null  && styles.hidden}`} 
        key={index}>
         <Link href={`/archi/${project.slug}`}>
-          <Pic  
+          <PicHeight
           src={project.images[0].image} 
           width={project.images[0].width} 
           height={project.images[0].height} 

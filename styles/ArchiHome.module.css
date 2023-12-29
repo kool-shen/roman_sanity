@@ -16,10 +16,11 @@
 }
 
 .galleryContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2vmin;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   overflow-y: scroll;
+  gap: 2vmin;
 }
 
 .galleryContainer::-webkit-scrollbar,
@@ -28,11 +29,12 @@
 }
 
 .picContainer {
+  height: 21vmin;
+  width: auto;
   position: relative;
+  /* border: 1px solid red; */
   overflow: hidden;
-  opacity: 1;
-  transition: opacity 0.4s;
-  flex-shrink: 1;
+  flex-grow: 1;
 }
 
 .hidden {

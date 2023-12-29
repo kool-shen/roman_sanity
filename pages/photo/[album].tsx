@@ -4,6 +4,7 @@ import { albumType,  ImageType} from "@/types/Project-type";
 import styles from "@/styles/Album.module.css"
 import  {PortableText} from "@portabletext/react"
 import Pic from "@/components/Pic/Pic";
+import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
 
 export default function Album({ album }: { album: albumType [] }) {
@@ -26,7 +27,7 @@ console.log('album', album);
      {photoData.map((content, i) => (
             <div className={styles.picContainer}>
               <Link href={`/photo/${album[0].slug}/${content.key}`}>
-              <Pic src={content.image} alt={content.albumName} width={content.width} height={content.height}/>
+              <PicHeight src={content.image} alt={content.albumName} width={content.width} height={content.height}/>
               </Link>
             </div>
           ))}

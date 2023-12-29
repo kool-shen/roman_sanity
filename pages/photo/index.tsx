@@ -6,6 +6,7 @@ import styles from "@/styles/PhotoHome.module.css"
 import Link from 'next/link';
 import Pic from '@/components/Pic/Pic';
 import React from 'react';
+import PicHeight from '@/components/Pic/PicHeight'
 
 
 
@@ -68,7 +69,7 @@ data = shuffleArray(data);
           {data.map((content: any, index: number) => (
             <div key={index} className={styles.picContainer}>
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>
-                <Pic src={content.image} alt={content.albumSlug} width={content.width} height={content.height} />
+                <PicHeight src={content.image} alt={content.albumSlug} width={content.width} height={content.height} />
               </Link>
             </div>
           ))}
