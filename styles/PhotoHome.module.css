@@ -4,14 +4,15 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 0;
+  gap: 10vmin;
 }
 
 .titleContainer {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 20%;
   overflow-y: scroll;
-  width: 26%;
 }
 
 .textContainer {
@@ -20,12 +21,18 @@
 }
 
 .galleryContainer {
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   overflow-y: scroll;
   gap: 2vmin;
-  width: 69%;
+  padding-bottom: 6vmin; */
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow-y: scroll;
+  gap: 2vmin;
   padding-bottom: 6vmin;
 }
 
@@ -36,7 +43,7 @@
 
 .picContainer {
   height: 21vmin;
-  width: auto;
+  max-width: 40vmin;
   position: relative;
   /* border: 1px solid red; */
   overflow: hidden;

@@ -1,12 +1,13 @@
 .mainContainer {
   display: flex;
+  gap: 10vmin;
 }
 
 .titleContainer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-width: 32%;
+  min-width: 20%;
   overflow-y: scroll;
 }
 
@@ -17,10 +18,11 @@
 
 .galleryContainer {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  align-content: flex-start;
   overflow-y: scroll;
   gap: 2vmin;
+  /* border: 1px solid red; */
 }
 
 .galleryContainer::-webkit-scrollbar,
@@ -29,8 +31,12 @@
 }
 
 .picContainer {
-  height: 21vmin;
-  width: auto;
+  height: 16vmin;
+  max-width: 25vmin;
+
+  /*height: 25vmin;
+   width: 100%; */
+
   position: relative;
   /* border: 1px solid red; */
   overflow: hidden;
