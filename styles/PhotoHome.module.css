@@ -43,7 +43,6 @@
 
 .picContainer {
   height: 21vmin;
-  max-width: 40vmin;
   position: relative;
   /* border: 1px solid red; */
   overflow: hidden;

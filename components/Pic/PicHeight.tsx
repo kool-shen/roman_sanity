@@ -5,7 +5,8 @@ import { projectPicProps } from '@/types/Project-type'
 
 
 
-export default function Pic(props : projectPicProps ) {
+export default function PicHeight(props : projectPicProps ) {
+
 
  
   return (

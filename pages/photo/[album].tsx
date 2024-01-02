@@ -25,8 +25,7 @@ console.log('album', album);
      </div>
      <div className={styles.galleryContainer}>
      {photoData.map((content, i) => (
-            <div className={styles.picContainer}>
-              <Link href={`/photo/${album[0].slug}/${content.key}`}>
+      <div className={styles.picContainer} style={ content.width < content.height ? { maxWidth: '20%' } : {}}>              <Link href={`/photo/${album[0].slug}/${content.key}`} >
               <PicHeight src={content.image} alt={content.albumName} width={content.width} height={content.height}/>
               </Link>
             </div>

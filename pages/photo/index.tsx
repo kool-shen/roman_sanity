@@ -67,7 +67,7 @@ data = shuffleArray(data);
         </div>
         <div className={styles.galleryContainer}>
           {data.map((content: any, index: number) => (
-            <div key={index} className={styles.picContainer}>
+            <div key={index} className={styles.picContainer} style={ content.width < content.height ? { maxWidth: '20%' } : {}}>
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>
                 <PicHeight src={content.image} alt={content.albumSlug} width={content.width} height={content.height} />
               </Link>

@@ -14,17 +14,15 @@
 
 .galleryContainer {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  align-content: flex-start;
   overflow-y: scroll;
   gap: 2vmin;
 }
 
 .picContainer {
   height: 30vmin;
-  width: auto;
   position: relative;
-  /* border: 1px solid red; */
   overflow: hidden;
   flex-grow: 1;
 }
