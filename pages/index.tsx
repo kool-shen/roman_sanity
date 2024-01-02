@@ -45,9 +45,11 @@ photoType === "album" ? "photo" : photoType
     </Head>
     <div className={`rightPartContainer ${styles.mainContainer}`}>
     <div className={styles.picContainer}>
-     <Link href={`/${link}`}>
-      <Pic  src={data[0].images[randomIndex].image} width={data[0].images[randomIndex].width} height={data[0].images[randomIndex].height} alt={data[0].name} /> 
-     </Link>
+     {photoType && (
+       <Link href={`/${link}`}>
+       <Pic  src={data[0].images[randomIndex].image} width={data[0].images[randomIndex].width} height={data[0].images[randomIndex].height} alt={data[0].name} /> 
+      </Link>
+     )}
     </div>
    </div>
     </>
