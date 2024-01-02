@@ -8,24 +8,27 @@ body {
   background-color: white;
   margin: 0;
   overflow: hidden;
-}
+  cursor: url("../public/dot_black.png"), auto;
+  /* cursor: url("../public/cursor.png"), auto; */
 
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
 
-h1,
-h2,
-h3,
-p {
-  color: black;
-  font-family: "ReadexProRegular";
-  text-align: justify;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  line-height: 1;
+  h1,
+  h2,
+  h3,
+  p {
+    color: black;
+    font-family: "ReadexProRegular";
+    text-align: justify;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    line-height: 1;
+    transition: color 0.4s;
+  }
 }
 
 h1 {
@@ -57,6 +60,10 @@ p {
   padding-right: 11vmin;
   /* border: 1px solid green; */
   box-sizing: border-box;
+}
+
+[href] {
+  cursor: url("../public/dot_white_big.png"), auto;
 }
 
 @font-face {

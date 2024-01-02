@@ -16,6 +16,15 @@
   display: flex;
   flex-direction: column;
   gap: 2vmin;
+  cursor: url("../../public/dot_white.png"), auto;
+}
+
+.photoArchiContainer > h1 {
+  border: 1px solid red;
+}
+
+.archiStyle:hover {
+  color: blue;
 }
 
 /* .mainContainer > :nth-child(2) > h1 {

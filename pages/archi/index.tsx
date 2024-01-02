@@ -27,22 +27,23 @@ const hover = (e : string | null ) => {
    <div className={`rightPartContainer ${styles.mainContainer}`}>
     <div className={styles.titleContainer}>
         {data?.map((project, index) => (
-         <Link href={`/archi/${project.slug}`}>
           <div className={styles.textContainer}>
+          <Link href={`/archi/${project.slug}`}>
           <h3 key={index} 
-          className={hoveredData !== project.name && hoveredData !== null ?   styles.hidden : ""}
+          className={hoveredData !== project.name && hoveredData !== null ?   styles.hiddenText : ""}
           onMouseEnter={()=>{hover(project.name)}}
           onMouseLeave={()=>{hover(null)}}>
             {project.name}
           </h3>
+          </Link>   
           </div>   
-         </Link>          
+                
         ))}
     </div>
     <div className={styles.galleryContainer}>
       {data?.map((project, index) => (     
        <div 
-       className={`${styles.picContainer} ${hoveredData !== project.name && hoveredData !== null  && styles.hidden}`} 
+       className={`${styles.picContainer} ${hoveredData !== project.name && hoveredData !== null  && styles.hiddenPhoto}`} 
        key={index}>
         <Link href={`/archi/${project.slug}`}>
           <PicHeight

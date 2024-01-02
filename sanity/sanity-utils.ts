@@ -245,3 +245,14 @@ export async function getHomepagePhotos( )  {
 
 }
 
+export async function getHomepagePhotoType(url:string)  {
+  return createClient(config).fetch(
+      groq`*[images[].image.asset->url match 
+      "${url}" && !(_type == "home")] {
+      _type
+    }`
+
+  )
+
+}
+
