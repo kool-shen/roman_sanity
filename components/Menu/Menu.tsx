@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./menu.module.css"
 import Link from "next/link"
 import { useRouter } from "next/router";
@@ -29,10 +29,18 @@ const clickArchi =()=>{
     setArchiClicked(false),
     setPhotoClicked(false)
   }
-    
+
+  useEffect(() => {
+    if (router.pathname.startsWith('/archi')) {
+      setArchiClicked(true);
+    }
+    // else if (router.pathname.startsWith('/photo')) {
+    //   setPhotoClicked(true);
+    // }
+  }, []);    
 
 
-const archiStyle = archiClicked || router.pathname === "/archi" ?
+const archiStyle = archiClicked ?
   {transition: "transform 0.2s", transform: "translateX(5vmin)"} :
     {transition: "transform 0.2s", color: "grey" }
 
