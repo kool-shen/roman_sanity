@@ -7,9 +7,6 @@ import styles from "@/styles/Home.module.css"
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
- 
-
-
 
 export default function Home(props: {homePhotos:homepagePhotosType[]}) {
 

@@ -5,8 +5,9 @@ import Image from 'next/image';
 import styles from "@/styles/PhotoHome.module.css"
 import Link from 'next/link';
 import Pic from '@/components/Pic/Pic';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PicHeight from '@/components/Pic/PicHeight'
+import  {gsap} from "gsap"
 
 
 
@@ -46,6 +47,28 @@ function shuffleArray(array: any[]) {
 data = shuffleArray(data);
 
 //////
+
+//// animation liste projets
+
+const albumsRef = useRef<HTMLDivElement>(null);
+
+const menuTimeline = gsap.timeline({
+  defaults: { duration: 0.1, ease: "power2" },
+});
+
+const albumsAnimation = () => {
+  albumsRef
+    && Array.from(albumsRef.current?.children as HTMLCollection).forEach((child) =>
+    menuTimeline.to(child, { opacity: 1 })
+  );};
+
+useEffect(() => {
+  albumsAnimation()
+}, []);
+
+console.log(albumsRef.current?.children)
+
+////
   
     return (
         <>
@@ -56,13 +79,14 @@ data = shuffleArray(data);
           </Head>
          
           <div className={`rightPartContainer ${styles.mainContainer}`}>
-        <div className={styles.titleContainer}>
+        <div className={styles.titleContainer} ref={albumsRef}>
           {props.albums.map((content: albumType) => (
-            <Link href={`photo/${content.slug}`} key={content._id}>
               <div className={styles.textContainer}>
+              <Link href={`photo/${content.slug}`} key={content._id}>
               <h3>{content.name}</h3>
+              </Link>
               </div>
-            </Link>
+            
           ))}
         </div>
         <div className={styles.galleryContainer}>

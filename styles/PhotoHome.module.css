@@ -18,16 +18,11 @@
 .textContainer {
   width: auto;
   display: inline-block;
+  opacity: 0;
+  transition: opacity, 0.3s;
 }
 
 .galleryContainer {
-  /* display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  gap: 2vmin;
-  padding-bottom: 6vmin; */
-
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;

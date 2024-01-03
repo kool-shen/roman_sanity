@@ -1,11 +1,10 @@
 import styles from "@/styles/ArchiHome.module.css"
 import  {getAllArchi} from "@/sanity/sanity-utils"
 import { projectArchiType } from '@/types/Project-type';
-import Image from 'next/image';
-import { SetStateAction, useState } from "react";
-import Pic from "@/components/Pic/Pic";
+import { useState, useRef, useEffect } from "react";
 import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
+import { gsap } from "gsap";
 
 export default function Archi(props: { projectsArchi?: projectArchiType[] }) {
 
@@ -19,13 +18,33 @@ const hover = (e : string | null ) => {
   }, 500); 
 }
 
+//// animation liste projets
 
+const projectsRef = useRef<HTMLDivElement>(null);
+
+const menuTimeline = gsap.timeline({
+  defaults: { duration: 0.1, ease: "power2" },
+});
+
+const projectsAnimation = () => {
+  projectsRef
+    && Array.from(projectsRef.current?.children as HTMLCollection).forEach((child) =>
+    menuTimeline.to(child, { opacity: 1 })
+  );};
+
+useEffect(() => {
+  projectsAnimation()
+}, []);
+
+console.log(projectsRef.current?.children)
+
+////
 
 
   return (
    
    <div className={`rightPartContainer ${styles.mainContainer}`}>
-    <div className={styles.titleContainer}>
+    <div className={styles.titleContainer} ref={projectsRef}>
         {data?.map((project, index) => (
           <div className={styles.textContainer}>
           <Link href={`/archi/${project.slug}`}>
