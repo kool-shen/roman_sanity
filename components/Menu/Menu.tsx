@@ -30,22 +30,15 @@ const clickArchi =()=>{
     setPhotoClicked(false)
   }
 
-  useEffect(() => {
-    if (router.pathname.startsWith('/archi')) {
-      setArchiClicked(true);
-    }
-    // else if (router.pathname.startsWith('/photo')) {
-    //   setPhotoClicked(true);
-    // }
-  }, []);    
+    
 
 
-const archiStyle = archiClicked ?
+const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
   {transition: "transform 0.2s", transform: "translateX(5vmin)"} :
     {transition: "transform 0.2s", color: "grey" }
 
 
-    const photoStyle = photoClicked || router.pathname === "/photo" ?
+    const photoStyle = photoClicked || router.pathname.startsWith('/photo') ?
     {transition: "transform 0.2s", transform: "translateX(5vmin)"} :
       {transition: "transform 0.2s", color: "grey"}
 
