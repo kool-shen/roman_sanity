@@ -2,6 +2,7 @@ import Head from 'next/head'
 import  {getHomepagePhotos, getHomepagePhotoType} from "@/sanity/sanity-utils"
 import { homepagePhotosType } from '@/types/Project-type'
 import Pic from '@/components/Pic/Pic'
+import PicHeight from '@/components/Pic/PicHeight'
 import styles from "@/styles/Home.module.css"
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -47,7 +48,7 @@ photoType === "album" ? "photo" : photoType
     <div className={styles.picContainer}>
      {photoType && (
        <Link href={`/${link}`}>
-       <Pic  src={data[0].images[randomIndex].image} width={data[0].images[randomIndex].width} height={data[0].images[randomIndex].height} alt={data[0].name} /> 
+       <PicHeight  src={data[0].images[randomIndex].image} width={data[0].images[randomIndex].width} height={data[0].images[randomIndex].height} alt={data[0].name} /> 
       </Link>
      )}
     </div>
