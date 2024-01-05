@@ -60,6 +60,18 @@ p {
   padding-right: 11vmin;
   /* border: 1px solid green; */
   box-sizing: border-box;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.fadeOut {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.fadeOutActive {
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
 [href] {

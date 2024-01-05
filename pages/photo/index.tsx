@@ -8,6 +8,8 @@ import Pic from '@/components/Pic/Pic';
 import React, { useEffect, useRef } from 'react';
 import PicHeight from '@/components/Pic/PicHeight'
 import  {gsap} from "gsap"
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 
 
@@ -69,6 +71,31 @@ useEffect(() => {
 console.log(albumsRef.current?.children)
 
 ////
+
+//// animation sortie
+
+const router = useRouter();
+    const [isRouteChanging, setIsRouteChanging] = useState(false);
+  
+    useEffect(() => {
+      const handleRouteChangeStart = () => {
+        setIsRouteChanging(true);
+      };
+  
+      const handleRouteChangeComplete = () => {
+        setIsRouteChanging(false);
+      };
+  
+      router.events.on('routeChangeStart', handleRouteChangeStart);
+      router.events.on('routeChangeComplete', handleRouteChangeComplete);
+  
+      return () => {
+        router.events.off('routeChangeStart', handleRouteChangeStart);
+        router.events.off('routeChangeComplete', handleRouteChangeComplete);
+      };
+    }, [router.events]);
+
+////
   
     return (
         <>
@@ -89,7 +116,7 @@ console.log(albumsRef.current?.children)
             
           ))}
         </div>
-        <div className={styles.galleryContainer}>
+        <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
           {data.map((content: any, index: number) => (
             <div key={index} className={styles.picContainer} style={ content.width < content.height ? { maxWidth: '20%' } : {}}>
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>

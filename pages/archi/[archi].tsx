@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { projectArchiType } from '@/types/Project-type';
 import  {getAllArchi, getOneProject} from "@/sanity/sanity-utils"
 import styles from "@/styles/Project.module.css"
@@ -6,6 +6,7 @@ import  {PortableText} from "@portabletext/react"
 import { useState } from 'react';
 import Pic from '@/components/Pic/Pic';
 import Layers from '@/components/Pic/Layers';
+import { useRouter } from 'next/router';
 
 
 export default function archiProject ({archi  } : { archi: projectArchiType [] }){
@@ -55,8 +56,33 @@ console.log(crossClicked, crossStyle)
 
  }   
 
+ //// animation sortie
+
+const router = useRouter();
+const [isRouteChanging, setIsRouteChanging] = useState(false);
+
+useEffect(() => {
+  const handleRouteChangeStart = () => {
+    setIsRouteChanging(true);
+  };
+
+  const handleRouteChangeComplete = () => {
+    setIsRouteChanging(false);
+  };
+
+  router.events.on('routeChangeStart', handleRouteChangeStart);
+  router.events.on('routeChangeComplete', handleRouteChangeComplete);
+
+  return () => {
+    router.events.off('routeChangeStart', handleRouteChangeStart);
+    router.events.off('routeChangeComplete', handleRouteChangeComplete);
+  };
+}, [router.events]);
+
+////
+
   return (
-    <div className={`rightPartContainer ${styles.mainContainer}`}>
+    <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer}>
         <h2>{archi[0].name}</h2>
         <div className={styles.logoContainer}  style={crossStyle} > 

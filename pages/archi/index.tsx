@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
 import { gsap } from "gsap";
+import { useRouter } from "next/router";
 
 export default function Archi(props: { projectsArchi?: projectArchiType[] }) {
 
@@ -38,6 +39,29 @@ useEffect(() => {
 
 console.log(projectsRef.current?.children)
 
+//// animation sortie
+
+const router = useRouter();
+    const [isRouteChanging, setIsRouteChanging] = useState(false);
+  
+    useEffect(() => {
+      const handleRouteChangeStart = () => {
+        setIsRouteChanging(true);
+      };
+  
+      const handleRouteChangeComplete = () => {
+        setIsRouteChanging(false);
+      };
+  
+      router.events.on('routeChangeStart', handleRouteChangeStart);
+      router.events.on('routeChangeComplete', handleRouteChangeComplete);
+  
+      return () => {
+        router.events.off('routeChangeStart', handleRouteChangeStart);
+        router.events.off('routeChangeComplete', handleRouteChangeComplete);
+      };
+    }, [router.events]);
+
 ////
 
 
@@ -59,7 +83,7 @@ console.log(projectsRef.current?.children)
                 
         ))}
     </div>
-    <div className={styles.galleryContainer}>
+    <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
       {data?.map((project, index) => (     
        <div 
        className={`${styles.picContainer} ${hoveredData !== project.name && hoveredData !== null  && styles.hiddenPhoto}`} 

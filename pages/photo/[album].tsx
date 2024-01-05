@@ -6,6 +6,8 @@ import  {PortableText} from "@portabletext/react"
 import Pic from "@/components/Pic/Pic";
 import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export default function Album({ album }: { album: albumType [] }) {
 
@@ -14,16 +16,41 @@ const photoData = album.flatMap((album) => [
   ...album.images2.map((image) => ({ ...image, albumName: album.name })),
 ]);
 
+//// animation sortie
+
+const router = useRouter();
+    const [isRouteChanging, setIsRouteChanging] = useState(false);
+  
+    useEffect(() => {
+      const handleRouteChangeStart = () => {
+        setIsRouteChanging(true);
+      };
+  
+      const handleRouteChangeComplete = () => {
+        setIsRouteChanging(false);
+      };
+  
+      router.events.on('routeChangeStart', handleRouteChangeStart);
+      router.events.on('routeChangeComplete', handleRouteChangeComplete);
+  
+      return () => {
+        router.events.off('routeChangeStart', handleRouteChangeStart);
+        router.events.off('routeChangeComplete', handleRouteChangeComplete);
+      };
+    }, [router.events]);
+
+////
+
 
 console.log('album', album);
   
   return (
-    <div className={`rightPartContainer ${styles.mainContainer}`}>
+    <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer}>
      <h1>{album[0].name}</h1>
      <PortableText value={album[0].content}/>
      </div>
-     <div className={styles.galleryContainer}>
+     <div className={styles.galleryContainer }>
      {photoData.map((content, i) => (
       <div className={styles.picContainer} style={ content.width < content.height ? { maxWidth: '20%' } : {}}>              <Link href={`/photo/${album[0].slug}/${content.key}`} >
               <PicHeight src={content.image} alt={content.albumName} width={content.width} height={content.height}/>
