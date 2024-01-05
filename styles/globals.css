@@ -35,6 +35,8 @@ h1 {
   font-size: 5.8vmin;
   font-family: "ReadexProRegular";
   display: inline-block;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 h3 {
@@ -43,6 +45,12 @@ h3 {
 
 p {
   font-size: 2vmin;
+  /* Fix Safari */
+  font-family: "ReadexProRegular";
+  text-align: justify;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  line-height: 1;
 }
 
 .mainContainer {
@@ -76,6 +84,16 @@ p {
 
 [href] {
   cursor: url("../public/dot_white_big.png"), auto;
+  color: inherit;
+  text-decoration: none;
+}
+
+[href] > h3 {
+  /* Fix Safari */
+  font-family: "ReadexProRegular";
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 1.7vmin;
 }
 
 @font-face {
