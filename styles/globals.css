@@ -88,13 +88,27 @@ p {
   text-decoration: none;
 }
 
-[href] > h3 {
-  /* Fix Safari */
+/*FIX SAFARI */
+
+_::-webkit-full-page-media,
+_:future,
+:root h3 {
+  font-family: "ReadexProLight";
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 1.5vmin;
+}
+
+_::-webkit-full-page-media,
+_:future,
+:root h1 {
   font-family: "ReadexProRegular";
   margin-block-start: 0;
   margin-block-end: 0;
-  font-size: 1.7vmin;
+  font-size: 5vmin;
 }
+
+/* /////// */
 
 @font-face {
   font-family: "ReadexPro";
@@ -107,4 +121,10 @@ p {
   font-family: "ReadexProRegular";
   src: local("ReadexProRegular"),
     url("../public/fonts/ReadexPro-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ReadexProLight";
+  src: local("ReadexProLight"),
+    url("../public/fonts/ReadexPro-ExtraLight.ttf") format("truetype");
 }

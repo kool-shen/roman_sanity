@@ -118,7 +118,7 @@ const router = useRouter();
         </div>
         <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
           {data.map((content: any, index: number) => (
-            <div key={index} className={styles.picContainer} style={ content.width < content.height ? { maxWidth: '20%' } : {}}>
+            <div key={index} className={styles.picContainer} style={ content.width < content.height ? { maxWidth: '20%' } : {maxWidth: '70%'}}>
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>
                 <PicHeight src={content.image} alt={content.albumSlug} width={content.width} height={content.height} />
               </Link>
