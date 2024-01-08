@@ -11,6 +11,8 @@ export default function Archi(props: { projectsArchi?: projectArchiType[] }) {
 
 const data = (props.projectsArchi)
 
+/// animation hover
+
 const [hoveredData, setHoveredData] = useState<string | null>(null)
 
 const hover = (e : string | null ) => {
@@ -86,7 +88,7 @@ const router = useRouter();
     <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
       {data?.map((project, index) => (     
        <div 
-       className={`${styles.picContainer} ${hoveredData !== project.name && hoveredData !== null  && styles.hiddenPhoto}`} 
+       className={styles.picContainer} 
        key={index}>
         <Link href={`/archi/${project.slug}`}>
           <PicHeight

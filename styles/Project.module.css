@@ -36,12 +36,13 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding-top: 2vmin;
   box-sizing: border-box;
   background-color: white;
   z-index: 8;
+  gap: 4vmin;
 }
 
 .modalUpperContainer {

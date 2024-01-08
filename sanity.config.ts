@@ -3,6 +3,8 @@ import      {deskTool} from "sanity/desk"
 import schemas from "./sanity/schemas"
 import { visionTool } from "@sanity/vision";
 import {media} from 'sanity-plugin-media'
+import {muxInput} from 'sanity-plugin-mux-input'
+
 
 
 
@@ -14,7 +16,7 @@ const config = defineConfig(    {
     apiVersion: "2023-03-03",
     basePath: "/admin",
     useCdn : true,
-    plugins: [deskTool(), visionTool(), media()],
+    plugins: [deskTool(), visionTool(), media(), muxInput()],
     schema:   {types: schemas}
 
 })

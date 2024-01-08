@@ -11,7 +11,7 @@ export default function PicHeight(props : projectPicProps ) {
   const [isLoaded, setIsLoaded] = useState(false)
 
 const handleLoad = () =>  
-{setIsLoaded(true); console.log(isLoaded)}
+{setIsLoaded(true)}
  
   return (
     <div className={styles.picContainer2}>

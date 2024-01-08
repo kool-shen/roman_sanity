@@ -61,6 +61,13 @@ images2: {
   height: number;
   width: number;
 }[];
+videos: {
+  video: string ;
+  alt: string;
+  key?: string;
+  height: number;
+  width: number;
+}[];
   url: string;  } 
 
   export type homepagePhotosType = {

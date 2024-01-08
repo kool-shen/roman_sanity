@@ -48,6 +48,7 @@ export async function getAllAlbums(): Promise<albumType[] | undefined>  {
               "width": image.asset->metadata.dimensions.width,
                 
             },
+
             "content": content,
           }`
 
@@ -70,6 +71,15 @@ export async function getAllArchi(): Promise<projectArchiType[] | undefined>  {
             "key": _key,
             "height": image.asset->metadata.dimensions.height,
             "width": image.asset->metadata.dimensions.width,
+          },
+          "videos": videos[] {
+            "videos": videos.asset->url,
+            "alt": videos.alt,
+            "description": description,
+            "key": _key,
+            "height": videos.asset->metadata.dimensions.height,
+            "width": videos.asset->metadata.dimensions.width,
+              
           },
         
           "content": content,
@@ -106,6 +116,7 @@ export async function getOneAlbum(slug:string): Promise<albumType[] >  {
               "width": image.asset->metadata.dimensions.width,
                 
             },
+            
             "content": content,
           }`
 

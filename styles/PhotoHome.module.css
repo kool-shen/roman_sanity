@@ -20,11 +20,20 @@
   display: inline-block;
   opacity: 0;
   transition: opacity, 0.3s;
+  transition: color 0.4s;
+}
+
+.hiddenText {
+  color: grey;
+  transition: color 0.4s;
 }
 
 .galleryContainer {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  align-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   align-content: flex-start;
   overflow-y: scroll;
   gap: 2vmin;
@@ -37,7 +46,7 @@
 }
 
 .picContainer {
-  height: 21vmin;
+  height: 25vmin;
   position: relative;
   /* border: 1px solid red; */
   overflow: hidden;

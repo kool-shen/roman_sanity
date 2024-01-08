@@ -7,20 +7,22 @@ import { useState } from 'react';
 import Pic from '@/components/Pic/Pic';
 import Layers from '@/components/Pic/Layers';
 import { useRouter } from 'next/router';
+import Priorities from '@/components/TextContent/Priorities';
+import Index from '@/components/Pic/Index';
 
 
 export default function archiProject ({archi  } : { archi: projectArchiType [] }){
-console.log("data",archi);
 
 
 //// SLIDER & PHOTO DATA SETTING ////
 
 const [firstSliderIndex, setFirstSliderIndex] = useState(0)
 const [secondSliderIndex, setSecondSliderIndex] = useState(0)
-const firstSliderLenght = archi[0].images.length
-const secondSliderLenght= archi[0].images2 && archi[0].images2.length
-const image1 = archi[0].images[firstSliderIndex]
-const image2 = archi[0].images2[secondSliderIndex]
+const firstSliderLenght = archi[0]?.images?.length || 0;
+const secondSliderLenght = archi[0]?.images2?.length || 0;
+
+const image1 = archi[0]?.images?.[firstSliderIndex] || { image: '', width: 0, height: 0 };
+const image2 = archi[0]?.images2?.[secondSliderIndex] || { image: '', width: 0, height: 0 };
 
  const handleClickNext = (photoIndex:number, albumindex:number, setIndex:React.Dispatch<React.SetStateAction<number>>) => {
    if (photoIndex + 1 >= albumindex) {
@@ -33,8 +35,10 @@ const image2 = archi[0].images2[secondSliderIndex]
  const handleClickPrevious = (photoIndex:number, albumindex:number, setIndex:React.Dispatch<React.SetStateAction<number>>) => {
    if (photoIndex - 1 < 0) {
      setIndex(albumindex - 1);
+     console.log(photoIndex)
    } else {
      setIndex(photoIndex - 1);
+
   }
  };
 
@@ -52,7 +56,6 @@ const image2 = archi[0].images2[secondSliderIndex]
 
  const clickCross = () => {
 setCrossClicked(!crossClicked)
-console.log(crossClicked, crossStyle)
 
  }   
 
@@ -101,26 +104,21 @@ useEffect(() => {
         <div className={styles.prioritiesContainer} >
        
        <div className={styles.textContainer} >
-       <div className={styles.priorities} >
-       <p>Programme</p>
-        <p>{archi[0].program}</p>
-       </div>
-       <div className={styles.priorities}>
-        <p>Commanditaire</p>
-        <p>{archi[0].sponsor}</p>
-       </div>
-       <div className={styles.priorities}>
-        <p>Localisation</p>
-        <p>{archi[0].localisation}</p>
-       </div>
-       <div className={styles.priorities}>
-        <p>Calendrier</p>
-        <p>{archi[0].calendar}</p>
-       </div>
-       <div className={styles.priorities}>
-        <p>Surface</p>
-        <p>{archi[0].surface}</p>
-       </div>
+         <Priorities 
+         name={"Programme"}
+         value={archi[0].program}/>
+         <Priorities 
+         name={"Commanditaire"}
+         value={archi[0].sponsor}/>
+         <Priorities 
+         name={"Localisation"}
+         value={archi[0].localisation}/>
+         <Priorities 
+         name={"Calendrier"}
+         value={archi[0].calendar}/>
+         <Priorities 
+         name={"Surface"}
+         value={archi[0].surface}/>
        </div>
        </div> 
         </div>
@@ -134,7 +132,7 @@ useEffect(() => {
           src={image1.image} alt={image1.image} 
           width={image1.width} height={image1.height}/>  
         </div>
-        <p>{firstSliderIndex +1} / {firstSliderLenght}</p>
+        <Index index={firstSliderIndex +1} length={firstSliderLenght}/>
        </div>
        <div className={styles.photoBlockContainer}>
          
@@ -143,42 +141,13 @@ useEffect(() => {
             onClickRight={()=> {handleClickNext(secondSliderIndex, secondSliderLenght, setSecondSliderIndex)}}
             onClickLeft={()=> {handleClickPrevious(secondSliderIndex, secondSliderLenght, setSecondSliderIndex)}}
           />
-          <Pic   
+         <Pic   
           src={image2.image} alt={image2.image} 
-          width={image2.width} height={image2.height}/>  
+          width={image2.width} height={image2.height}/>
         </div>
-        <p>{secondSliderIndex +1} /  {secondSliderLenght}</p>
-       </div>
+        <Index index={secondSliderIndex +1} length={secondSliderLenght}/> </div>
       </div>
-      {/* <div className={styles.prioritiesContainer} >
-       <div className={styles.logoContainer} style={crossStyle}>
-       <Pic   
-          src={"/cross_white.png"} alt={"cross icon"} 
-          width={100} height={100} onClick={clickCross}/> 
-       </div>
-       <div className={styles.textContainer} style={descriptionStyle}>
-       <div className={styles.priorities} >
-       <p>Programme</p>
-        <p>{archi[0].program}</p>
-       </div>
-       <div className={styles.priorities}>
-        <p>Commanditaire</p>
-        <p>{archi[0].sponsor}</p>
-       </div>
-       <div className={styles.priorities}>
-        <p>Localisation</p>
-        <p>{archi[0].localisation}</p>
-       </div>
-       <div className={styles.priorities}>
-        <p>Calendrier</p>
-        <p>{archi[0].calendar}</p>
-       </div>
-       <div className={styles.priorities}>
-        <p>Surface</p>
-        <p>{archi[0].surface}</p>
-       </div>
-       </div>
-       </div>  */}
+    
     </div>
   )
 }

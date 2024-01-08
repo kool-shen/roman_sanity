@@ -38,9 +38,18 @@ const homepage = {
             ],
           },
         ],
+        validation: (Rule: { custom: (arg0: (images: string) => true | "Slider is required") => any; }) =>
+        Rule.custom((images: string ) => {
+          return images && images.length > 0
+            ? true
+            : 'Slider is required';
+        }),
       },
+
+      
     
     ],
+    
   };
     
     export default homepage;

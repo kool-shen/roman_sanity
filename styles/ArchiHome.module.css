@@ -21,9 +21,11 @@
 }
 
 .galleryContainer {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap;*/
   align-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   overflow-y: scroll;
   gap: 2vmin;
   /* border: 1px solid red; */
@@ -37,12 +39,7 @@
 .picContainer {
   height: 16vmin;
   max-width: 25vmin;
-
-  /*height: 25vmin;
-   width: 100%; */
-
   position: relative;
-  /* border: 1px solid red; */
   overflow: hidden;
   flex-grow: 1;
 }

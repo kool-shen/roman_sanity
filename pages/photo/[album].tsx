@@ -16,6 +16,28 @@ const photoData = album.flatMap((album) => [
   ...album.images2.map((image) => ({ ...image, albumName: album.name })),
 ]);
 
+//// ANIMATION DESCRIPTION ////
+
+const [crossClicked, setCrossClicked]= useState(false)
+
+const crossStyle = crossClicked
+   ? { transform: "rotate(45deg)", transition: "transform 0.5s" }
+   : { transition: "transform 0.5s",  };
+
+ const descriptionStyle = !crossClicked
+   ? { transform: "translateY(100vh)", transition: "transform 0.5s" }
+   : { transition: "transform 0.5s",  };   
+
+const clickCross = () => {
+setCrossClicked(!crossClicked)
+console.log(crossClicked, crossStyle)
+
+}   
+
+const contentExists = album[0].content?.length > 0 ? true : false
+console.log(contentExists);
+
+
 //// animation sortie
 
 const router = useRouter();
@@ -41,21 +63,30 @@ const router = useRouter();
 
 ////
 
-
-console.log('album', album);
-  
   return (
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer}>
-     <h1>{album[0].name}</h1>
-     <PortableText value={album[0].content}/>
+     <h1>{album[0].name}</h1> 
+      {album[0].content && (
+          <div className={styles.logoContainer}  style={crossStyle} > 
+          <Pic   
+             src={"/cross_black.png"} alt={"cross icon"} 
+             width={100} height={100} onClick={clickCross}/> 
+         </div>
+      )}
      </div>
      <div className={styles.galleryContainer }>
+          {contentExists && (<div className={styles.modal}   style={descriptionStyle}>
+     <PortableText value={album[0].content}/>
+        </div>)}
+     
      {photoData.map((content, i) => (
-      <div className={styles.picContainer} style={ content.width < content.height ? { maxWidth: '20%' } : {maxWidth: '70%'}}>              <Link href={`/photo/${album[0].slug}/${content.key}`} >
-              <PicHeight src={content.image} alt={content.albumName} width={content.width} height={content.height}/>
-              </Link>
-            </div>
+      <div className={styles.picContainer} 
+      >             
+        <Link href={`/photo/${album[0].slug}/${content.key}`} >
+         <PicHeight src={content.image} alt={content.albumName} width={content.width} height={content.height}/>
+        </Link>
+       </div>
           ))}
      </div>
     </div>
@@ -73,7 +104,6 @@ export async function getStaticProps({ params }: { params: { album: string } }) 
   const allData = await getAllAlbums(); 
 
   return {
-    
     props: {
       album : albumData,
       allAlbums: allData,

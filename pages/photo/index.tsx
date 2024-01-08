@@ -11,23 +11,7 @@ import  {gsap} from "gsap"
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-
-
-
-export default function Photo(props: { albums?: albumType[] }) {
-
-  if (!props.albums) {
-    return <></>;
-  }
-
-  /// Mélange des images de slider 1 et 2 ///
-
-  let data = props.albums.flatMap((album) => [
-    ...album.images.map((image) => ({ ...image, albumSlug: album.slug })),
-    ...album.images2.map((image) => ({ ...image, albumSlug: album.slug })),
-  ]);
-
-  console.log('data', data.length);
+let initialData : albumType[] = [];
 
 
 function shuffleArray(array: any[]) {
@@ -46,9 +30,31 @@ function shuffleArray(array: any[]) {
   return array;
 }
 
-data = shuffleArray(data);
+export default function Photo(props: { albums?: albumType[] }) {
 
-//////
+  if (!props.albums) {
+    return <></>;
+  }
+
+  /// Mélange des images de slider 1 et 2 ///
+
+  let data = initialData.length > 0 ? initialData : props.albums.flatMap((album) => [
+    ...album.images.map((image) => ({ ...image, albumSlug: album.slug, albumName: album.name })),
+    ...album.images2.map((image) => ({ ...image, albumSlug: album.slug, albumName: album.name })),
+  ]);
+
+  if (initialData.length === 0) {
+    initialData = shuffleArray(data);
+  }
+/// animation hover
+
+const [hoveredData, setHoveredData] = useState<string | null>(null)
+
+const hover = (e : string | null ) => {
+ 
+    setHoveredData(e);
+ 
+}
 
 //// animation liste projets
 
@@ -68,9 +74,7 @@ useEffect(() => {
   albumsAnimation()
 }, []);
 
-console.log(albumsRef.current?.children)
 
-////
 
 //// animation sortie
 
@@ -110,7 +114,12 @@ const router = useRouter();
           {props.albums.map((content: albumType) => (
               <div className={styles.textContainer}>
               <Link href={`photo/${content.slug}`} key={content._id}>
-              <h3>{content.name}</h3>
+              <h3 
+               className={hoveredData !== content.name && hoveredData !== null ? styles.hiddenText : ""}
+               onMouseEnter={()=>{hover(content.name)}}
+               onMouseLeave={()=>{hover(null)}}>
+                {content.name}
+              </h3>
               </Link>
               </div>
             
@@ -118,9 +127,10 @@ const router = useRouter();
         </div>
         <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
           {data.map((content: any, index: number) => (
-            <div key={index} className={styles.picContainer} style={ content.width < content.height ? { maxWidth: '20%' } : {maxWidth: '70%'}}>
+            <div key={index} className={styles.picContainer} >
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>
-                <PicHeight src={content.image} alt={content.albumSlug} width={content.width} height={content.height} />
+                <PicHeight src={content.image} alt={content.albumSlug} width={content.width} height={content.height} onMouseEnter={()=>{hover(content.albumName)}}
+            onMouseLeave={()=>{hover(null)}}/>
               </Link>
             </div>
           ))}

@@ -41,6 +41,7 @@ h1 {
 
 h3 {
   font-size: 1.7vmin;
+  font-weight: normal;
 }
 
 p {
@@ -109,6 +110,18 @@ _:future,
 }
 
 /* /////// */
+
+@-moz-document url-prefix() {
+  h3 {
+    font-family: "ReadexProLight";
+  }
+}
+
+@supports (-moz-appearance: none) {
+  h3 {
+    font-family: "ReadexProLight";
+  }
+}
 
 @font-face {
   font-family: "ReadexPro";

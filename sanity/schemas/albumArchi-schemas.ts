@@ -7,6 +7,7 @@ const albumArchi = {
         name: "name",
         title: "Nom du projet",
         type: "string",
+        validation: (Rule: { required: () => any; }) => Rule.required(),
       },
       
       {
@@ -19,7 +20,8 @@ const albumArchi = {
         name: "slug",
         title: "Slug",
         type: "slug",
-        options: { source: "name" }
+        options: { source: "name" },
+        validation: (Rule: { required: () => any; }) => Rule.required(),
       },
       {
         name: "program",
@@ -81,6 +83,14 @@ const albumArchi = {
             ],
           },
         ],
+
+        validation: (Rule: { custom: (arg0: (images: string) => true | "Slider 1 is required") => any; }) =>
+        Rule.custom((images: string ) => {
+          return images && images.length > 0
+            ? true
+            : 'Slider 1 is required';
+        }),
+
       },
       {
         name: "images2",
@@ -107,6 +117,30 @@ const albumArchi = {
                     type: "string",
                   },
                 ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "videos",
+        title: "Vidéos",
+        type: "array",
+        of: [
+          {
+            type: "object",
+            fields: [
+              {
+                name: "video",
+                title: "Vidéo",
+                type: "file",
+                // type: "mux.video",
+                options: { accept: "video/*" },
+              },
+              {
+                name: "description",
+                title: "Description",
+                type: "string",
               },
             ],
           },
