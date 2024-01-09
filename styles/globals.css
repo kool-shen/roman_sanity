@@ -93,6 +93,7 @@ p {
   .mainContainer {
     flex-direction: column;
     height: calc(100vh - env(safe-area-inset-bottom));
+    max-height: calc(100vh - env(safe-area-inset-bottom));
   }
   .rightPartContainer {
     height: 100%;
