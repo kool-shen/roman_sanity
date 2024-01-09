@@ -8,7 +8,7 @@ html,
   padding: 0;
   background-color: white;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   cursor: url("../public/dot_black.png"), auto;
   /* cursor: url("../public/cursor.png"), auto; */
 
@@ -58,9 +58,8 @@ p {
 .mainContainer {
   display: flex;
   width: 100vw;
-
   max-height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .rightPartContainer {
@@ -69,7 +68,6 @@ p {
   width: 100%;
   padding: 6vmin;
   padding-right: 11vmin;
-  /* border: 1px solid green; */
   box-sizing: border-box;
   opacity: 1;
   transition: opacity 0.4s;
@@ -98,10 +96,12 @@ p {
   }
   .rightPartContainer {
     height: 100%;
+    max-height: 100%;
     /* min-height: 100%; */
     width: 100vw;
     padding: 6vmin !important;
     justify-content: center !important;
+    border: 1px solid red;
   }
 }
 
