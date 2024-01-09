@@ -58,6 +58,7 @@ p {
 .mainContainer {
   display: flex;
   width: 100vw;
+
   max-height: 100vh;
   overflow: hidden;
 }
@@ -93,14 +94,14 @@ p {
 @media screen and (max-width: 425px) {
   .mainContainer {
     flex-direction: column;
+    height: 100vh;
   }
   .rightPartContainer {
-    height: auto;
-
+    height: 100%;
+    /* min-height: 100%; */
     width: 100vw;
     padding: 6vmin !important;
     justify-content: center !important;
-    /* border: 1px solid red; */
   }
 }
 
