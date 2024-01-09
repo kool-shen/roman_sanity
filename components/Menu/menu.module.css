@@ -28,6 +28,9 @@
 }
 
 @media screen and (max-width: 425px) {
+  .mainContainer {
+    min-height: 100%;
+  }
   .titleContainer {
     width: 100%;
   }

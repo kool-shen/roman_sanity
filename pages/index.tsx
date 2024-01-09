@@ -2,6 +2,7 @@ import Head from 'next/head'
 import  {getHomepagePhotos, getHomepagePhotoType} from "@/sanity/sanity-utils"
 import { homepagePhotosType } from '@/types/Project-type'
 import PicHeight from '@/components/Pic/PicHeight'
+import Pic from '@/components/Pic/Pic'
 import styles from "@/styles/Home.module.css"
 import { useEffect, useState } from 'react'
 import Layers from '@/components/Pic/Layers'
@@ -45,7 +46,7 @@ const handleClickPrevious = () => {
           onClickRight={()=> {handleClickNext()}}
           onClickLeft={()=> {handleClickPrevious()}}
         />
-      <PicHeight  
+      <Pic  
       src={data[0].images[activeIndex].image} 
       width={data[0].images[activeIndex].width} 
       height={data[0].images[activeIndex].height} 
