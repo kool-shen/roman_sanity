@@ -64,7 +64,7 @@ p {
 
 .rightPartContainer {
   max-height: 100vh;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   padding: 6vmin;
   padding-right: 11vmin;
