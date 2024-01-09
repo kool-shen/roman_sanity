@@ -11,11 +11,10 @@ const [isLoaded, setIsLoaded] = useState(false)
 
 const handleLoad = () =>  
 {setIsLoaded(true); 
-  // console.log(isLoaded)
+  console.log("is Loaded")
 }
  
   return (
-    props.src &&
         <Image
           src={props.src}
           width={props.width}
@@ -27,7 +26,8 @@ const handleLoad = () =>
           onMouseEnter={props.onMouseEnter}
           onMouseLeave={props.onMouseLeave}
           key={props.key}
-          sizes={`(min-width: 768px) 40vw, 50vw `}
+          sizes={`(min-width: 768px) 40vw, 35vw `}
+          loading='lazy'
           onLoad={()=>{handleLoad()}}
         />
      
