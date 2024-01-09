@@ -28,10 +28,34 @@ export default function Contact()
       };
     }, [router.events]);
 
+
+    function Infos(props : PrioritiesProps) {
+
+      return (
+        props.value && 
+        <div className={styles.infoBloc}>
+            <h3>{props.priority}</h3>
+            <p>{props.value}</p>
+        </div>
+      )
+    }
+
+    interface PrioritiesProps {
+      priority: string;
+      value: string ;
+    }
+
   return (
-    <div className={`${styles.fadeOut} ${isRouteChanging ? styles.fadeOutActive : ''}`}>   
-        Contact
-    </div >
+    <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
+      <div className={styles.titleContainer}>
+       <Infos priority="architecture" value="roman.cadre@gmail.com" />
+       <Infos priority="tirages, expositions" value="roman.cadre.photo@gmail.com" />
+       <Infos priority="instagram" value="@romancadre" />
+       <Infos priority="site web" value="Léo Ferté" />
+       <Infos priority="copyright" value="@ Roman Cadre" />
+      </div>
+    
+    </div>
   )
 }
 

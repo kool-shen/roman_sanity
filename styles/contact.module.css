@@ -1,9 +1,26 @@
-.fadeOut {
-  opacity: 1;
-  transition: opacity 0.3s;
+.mainContainer {
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 5vmin;
 }
 
-.fadeOutActive {
-  opacity: 0;
-  transition: opacity 0.3s;
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 20%;
+  overflow-y: scroll;
+  gap: 3vmin;
+}
+
+.infoBloc {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoBloc > p {
+  font-size: 1.5vmin;
+  font-family: "ReadexProLight";
 }
