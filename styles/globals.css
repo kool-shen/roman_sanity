@@ -92,7 +92,7 @@ p {
 @media screen and (max-width: 425px) {
   .mainContainer {
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - env(safe-area-inset-bottom));
   }
   .rightPartContainer {
     height: 100%;
@@ -101,7 +101,7 @@ p {
     width: 100vw;
     padding: 6vmin !important;
     justify-content: center !important;
-    border: 1px solid red;
+    border: 1px solid blue;
   }
 }
 
