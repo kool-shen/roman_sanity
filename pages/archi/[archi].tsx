@@ -14,6 +14,21 @@ import Index from '@/components/Pic/Index';
 export default function archiProject ({archi  } : { archi: projectArchiType [] }){
 
 
+   /// Mobile ///
+
+   const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
+
+   const calculateScreen = () => {
+     window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
+   };
+
+   useEffect(() => {
+    calculateScreen();
+    
+  }, []);
+
+  const hideIfMobile =  {display: mobileScreen ? "none" : ""} 
+
 //// SLIDER & PHOTO DATA SETTING ////
 
 const [firstSliderIndex, setFirstSliderIndex] = useState(0)
@@ -86,7 +101,7 @@ useEffect(() => {
 
   return (
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
-      <div className={styles.infoContainer}>
+      <div className={styles.infoContainer} >
         <h2>{archi[0].name}</h2>
         <div className={styles.logoContainer}  style={crossStyle} > 
          <Pic   

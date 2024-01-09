@@ -4,6 +4,11 @@ const contactInfos = {
     type: "document",
     fields: [
       {
+        name: "name",
+        title: "Titre",
+        type: "string",
+      },
+      {
         name: "mailArchi",
         title: "Mail Archi",
         type: "string",

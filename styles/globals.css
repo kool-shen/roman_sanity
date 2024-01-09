@@ -89,6 +89,20 @@ p {
   text-decoration: none;
 }
 
+@media screen and (max-width: 425px) {
+  .mainContainer {
+    flex-direction: column;
+  }
+  .rightPartContainer {
+    min-height: 100%;
+    width: 100vw;
+    padding: 6vmin !important;
+    justify-content: center !important;
+
+    /* border: 1px solid red; */
+  }
+}
+
 /*FIX SAFARI */
 
 _::-webkit-full-page-media,
@@ -109,7 +123,7 @@ _:future,
   font-size: 5vmin;
 }
 
-/* /////// */
+/* FONTS */
 
 @-moz-document url-prefix() {
   h3 {

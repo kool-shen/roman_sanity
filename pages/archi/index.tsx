@@ -11,6 +11,23 @@ export default function Archi(props: { projectsArchi?: projectArchiType[] }) {
 
 const data = (props.projectsArchi)
 
+
+/// Mobile ///
+
+const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
+
+const calculateScreen = () => {
+  window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
+};
+
+useEffect(() => {
+ calculateScreen();
+ 
+}, []);
+
+const hideIfMobile =  {display: mobileScreen ? "none" : ""} 
+const showIfMobile =  {display: mobileScreen ? "" : "none"} 
+
 /// animation hover
 
 const [hoveredData, setHoveredData] = useState<string | null>(null)
@@ -70,7 +87,7 @@ const router = useRouter();
   return (
    
    <div className={`rightPartContainer ${styles.mainContainer}`}>
-    <div className={styles.titleContainer} ref={projectsRef}>
+    <div className={styles.titleContainer} ref={projectsRef} >
         {data?.map((project, index) => (
           <div className={styles.textContainer}>
           <Link href={`/archi/${project.slug}`}>
@@ -86,7 +103,8 @@ const router = useRouter();
         ))}
     </div>
     <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
-      {data?.map((project, index) => (     
+      {data?.map((project, index) => ( 
+        <div className={styles.projectContainer}>  
        <div 
        className={styles.picContainer} 
        key={index}>
@@ -98,10 +116,12 @@ const router = useRouter();
           alt={project.name}
           onMouseEnter={()=>{hover(project.name)}}
           onMouseLeave={()=>{hover(null)}}
-         
           /> 
         </Link> 
+       
       </div>
+      <h3>{project.name}</h3>
+      </div>  
       ))}        
   </div>
 </div>

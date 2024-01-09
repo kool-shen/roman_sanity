@@ -5,12 +5,26 @@ import { useRouter } from "next/router";
 
 export default function Menu() {
 
-  const router = useRouter();
+   /// Mobile ///
 
+   const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
+
+   const calculateScreen = () => {
+     window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
+   };
+
+   useEffect(() => {
+    calculateScreen();
+    
+  }, []);
+
+
+  //////
+
+const router = useRouter();
 
 const [archiClicked, setArchiClicked] = useState(false)
 const [photoClicked, setPhotoClicked] = useState(false)
-const [contactClicked, setContactClicked] = useState(false)
 
 const clickArchi =()=>{
   setArchiClicked(true),
@@ -31,15 +45,15 @@ const clickArchi =()=>{
   }
 
     
-
+const clickedStyle = mobileScreen ? "-5vmin" : "5vmin"
 
 const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
-  {transition: "transform 0.2s", transform: "translateX(5vmin)"} :
+  {transition: "transform 0.2s", transform: `translateX(${clickedStyle})`} :
     {transition: "transform 0.2s", color: "grey" }
 
 
     const photoStyle = photoClicked || router.pathname.startsWith('/photo') ?
-    {transition: "transform 0.2s", transform: "translateX(5vmin)"} :
+    {transition: "transform 0.2s", transform: `translateX(${clickedStyle})`} :
       {transition: "transform 0.2s", color: "grey"}
 
 
@@ -66,8 +80,9 @@ const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
       >photographie</h1>
       </Link>
       </div>
-      <Link href={"/contact"}>
-      <h1>contact</h1>
+      <Link href={"/infos"}>
+      <h1  onClick={()=>{clickHome()}}
+      >infos</h1>
       </Link>
      </div>
     </div>

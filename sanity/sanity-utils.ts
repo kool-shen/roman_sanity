@@ -1,4 +1,4 @@
-import { albumType, projectType, projectArchiType } from "@/types/Project-type";
+import { albumType, projectType, projectArchiType, infosType } from "@/types/Project-type";
 import { createClient, groq } from "next-sanity";
 import config from "./config/client-config";
 
@@ -267,3 +267,16 @@ export async function getHomepagePhotoType(url:string)  {
 
 }
 
+export async function getAllInfo() : Promise<infosType[] | undefined>{
+  return createClient(config).fetch(
+  `*[_type == "infos"] 
+  {
+"archi" : mailArchi,
+"photo" : mailPhoto,
+"insta" : insta,
+"bio" : bio,  
+"mentions" : mentions,  
+     }`
+  )
+
+}

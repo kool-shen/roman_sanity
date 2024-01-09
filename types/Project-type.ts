@@ -96,3 +96,11 @@ key?: string;
 
 
 };
+
+export type infosType = {
+  archi: string;
+  photo: string;
+  insta: string;
+  bio: PortableTextBlock[];
+  mentions: PortableTextBlock[];
+}

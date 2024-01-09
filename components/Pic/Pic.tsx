@@ -10,8 +10,9 @@ export default function Pic(props : projectPicProps ) {
 const [isLoaded, setIsLoaded] = useState(false)
 
 const handleLoad = () =>  
-{setIsLoaded(true); 
-  console.log("is Loaded")
+{
+ setIsLoaded(true); 
+console.log("yes")
 }
  
   return (
@@ -20,13 +21,13 @@ const handleLoad = () =>
           width={props.width}
           height={props.height}
           alt={props?.alt}
-          className={styles.picLoaded}
+          className={styles.picLoaded}            
           onClick={props.onClick}
           style={props.style}
           onMouseEnter={props.onMouseEnter}
           onMouseLeave={props.onMouseLeave}
           key={props.key}
-          sizes={`(min-width: 768px) 40vw, 35vw `}
+          sizes={`(min-width: 768px) 40vw, 70vw `}
           loading='lazy'
           onLoad={()=>{handleLoad()}}
         />

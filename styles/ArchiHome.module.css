@@ -42,6 +42,7 @@
   position: relative;
   overflow: hidden;
   flex-grow: 1;
+  box-sizing: border-box;
 }
 
 .hiddenText {
@@ -57,4 +58,25 @@
 .hiddenPhoto {
   opacity: 0;
   transition: opacity 0.3s;
+}
+
+.projectContainer > h3 {
+  display: none;
+}
+
+@media screen and (max-width: 425px) {
+  .titleContainer {
+    display: none;
+  }
+  .textContainer {
+    opacity: 1;
+  }
+  .projectContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1vmin;
+  }
+  .projectContainer > h3 {
+    display: block;
+  }
 }

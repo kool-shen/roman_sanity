@@ -27,6 +27,12 @@
   color: blue;
 }
 
-/* .mainContainer > :nth-child(2) > h1 {
-  color: green;
-} */
+@media screen and (max-width: 425px) {
+  .titleContainer {
+    width: 100%;
+  }
+  .photoArchiContainer {
+    /* border: 1px solid red; */
+    align-self: flex-end;
+  }
+}
