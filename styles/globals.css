@@ -1,14 +1,16 @@
 html,
 * body {
   max-width: 100vw;
-  height: calc(100vh - env(safe-area-inset-bottom));
-  max-height: calc(100vh - env(safe-area-inset-bottom));
+  height: calc(100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top));
+  max-height: calc(
+    100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
+  );
 
   margin: 0;
   padding: 0;
   background-color: white;
   margin: 0;
-  /* overflow: hidden; */
+  overflow: auto;
   cursor: url("../public/dot_black.png"), auto;
   /* cursor: url("../public/cursor.png"), auto; */
 
@@ -58,12 +60,16 @@ p {
 .mainContainer {
   display: flex;
   width: 100vw;
-  max-height: calc(100vh - env(safe-area-inset-bottom));
-  /* overflow: hidden; */
+  max-height: calc(
+    100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
+  );
+  overflow: auto;
 }
 
 .rightPartContainer {
-  max-height: calc(100vh - env(safe-area-inset-bottom));
+  max-height: calc(
+    100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
+  );
   height: 100%;
   width: 100%;
   padding: 6vmin;
@@ -92,8 +98,12 @@ p {
 @media screen and (max-width: 425px) {
   .mainContainer {
     flex-direction: column;
-    height: calc(100vh - env(safe-area-inset-bottom));
-    max-height: calc(100vh - env(safe-area-inset-bottom));
+    height: calc(
+      100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
+    );
+    max-height: calc(
+      100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
+    );
   }
   .rightPartContainer {
     height: 100%;
