@@ -46,7 +46,7 @@ const handleClickPrevious = () => {
           onClickRight={()=> {handleClickNext()}}
           onClickLeft={()=> {handleClickPrevious()}}
         />
-      <Pic  
+      <Pic
       src={data[0].images[activeIndex].image} 
       width={data[0].images[activeIndex].width} 
       height={data[0].images[activeIndex].height} 
