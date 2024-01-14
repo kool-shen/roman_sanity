@@ -9,7 +9,7 @@ import Layers from '@/components/Pic/Layers';
 import { useRouter } from 'next/router';
 import Priorities from '@/components/TextContent/Priorities';
 import Index from '@/components/Pic/Index';
-
+import Image from 'next/image';
 
 export default function archiProject ({archi  } : { archi: projectArchiType [] }){
 
@@ -114,7 +114,9 @@ useEffect(() => {
          <Pic   
             src={"/cross_black.png"} alt={"cross icon"} 
             width={100} height={100} onClick={clickCross}/> 
+            
        </div>
+       
       </div>
       <div className={styles.slidersContainer}>
         <div className={styles.modal}   style={descriptionStyle}>
@@ -184,7 +186,15 @@ useEffect(() => {
             src={mergedImages[mobileIndex].image} alt={mergedImages[mobileIndex].image} 
             width={mergedImages[mobileIndex].width} height={mergedImages[mobileIndex].height}/>
           </div>
-          <Index index={mobileIndex +1} length={mobileSliderLenght}/> </div>  
+          <div className={styles.mobileBottom}>
+          
+        <h2>{mobileIndex +1} / {mobileSliderLenght}</h2> 
+      
+        
+       </div>
+         
+          
+           </div>  
         )}
        
       </div>

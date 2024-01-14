@@ -96,6 +96,9 @@ p {
 }
 
 @media screen and (max-width: 425px) {
+  h2 {
+    font-size: 3.5vmin;
+  }
   .mainContainer {
     flex-direction: column;
     height: calc(
@@ -104,6 +107,9 @@ p {
     max-height: calc(
       100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
     );
+  }
+  p {
+    font-size: 2.8vmin;
   }
   .rightPartContainer {
     height: 100%;

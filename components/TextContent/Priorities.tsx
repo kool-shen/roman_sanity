@@ -12,7 +12,7 @@ export default function Priorities(props:PrioritiesProps) {
   return (
     props.value && 
     <div className={styles.priorities} >
-       <p>{props.name}</p>
+       <h3>{props.name}</h3>
         <p>{props.value}</p>
     </div>
   )
