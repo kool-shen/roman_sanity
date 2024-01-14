@@ -13,6 +13,10 @@ import Index from '@/components/Pic/Index';
 
 export default function archiProject ({archi  } : { archi: projectArchiType [] }){
 
+  const mergedImages = archi[0]?.images.concat(archi[0]?.images2)
+
+  console.log(mergedImages)
+
 
    /// Mobile ///
 
@@ -27,14 +31,17 @@ export default function archiProject ({archi  } : { archi: projectArchiType [] }
     
   }, []);
 
-  const hideIfMobile =  {display: mobileScreen ? "none" : ""} 
+ 
 
 //// SLIDER & PHOTO DATA SETTING ////
 
 const [firstSliderIndex, setFirstSliderIndex] = useState(0)
 const [secondSliderIndex, setSecondSliderIndex] = useState(0)
+const [mobileIndex, setMobileIndex] = useState(0)
+
 const firstSliderLenght = archi[0]?.images?.length || 0;
 const secondSliderLenght = archi[0]?.images2?.length || 0;
+const mobileSliderLenght = mergedImages.length || 0;
 
 const image1 = archi[0]?.images?.[firstSliderIndex] || { image: '', width: 0, height: 0 };
 const image2 = archi[0]?.images2?.[secondSliderIndex] || { image: '', width: 0, height: 0 };
@@ -137,7 +144,9 @@ useEffect(() => {
        </div>
        </div> 
         </div>
-       <div className={styles.photoBlockContainer}>
+          {!mobileScreen ? (
+            <>
+            <div className={styles.photoBlockContainer}>
         <div className={styles.picContainer}>
           <Layers 
             onClickRight={()=> {handleClickNext(firstSliderIndex, firstSliderLenght, setFirstSliderIndex)}}
@@ -161,6 +170,23 @@ useEffect(() => {
           width={image2.width} height={image2.height}/>
         </div>
         <Index index={secondSliderIndex +1} length={secondSliderLenght}/> </div>
+        </> )
+        :
+        (
+          <div className={styles.photoBlockContainer}>
+         
+          <div className={styles.picContainer}>
+            <Layers 
+              onClickRight={()=> {handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)}}
+              onClickLeft={()=> {handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)}}
+            />
+           <Pic   
+            src={mergedImages[mobileIndex].image} alt={mergedImages[mobileIndex].image} 
+            width={mergedImages[mobileIndex].width} height={mergedImages[mobileIndex].height}/>
+          </div>
+          <Index index={mobileIndex +1} length={mobileSliderLenght}/> </div>  
+        )}
+       
       </div>
     
     </div>
