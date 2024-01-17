@@ -53,6 +53,14 @@
   flex-grow: 1;
 }
 
+.Container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+}
+
 .mobileModal {
   display: none;
 }
@@ -68,13 +76,6 @@
   .mainContainer h1 {
     display: block;
     align-self: flex-end;
-  }
-  .Container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    position: relative;
   }
 
   .titleContainer {

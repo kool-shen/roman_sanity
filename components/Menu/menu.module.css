@@ -15,7 +15,6 @@
 .photoArchiContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 2vmin;
   cursor: url("../../public/dot_white.png"), auto;
 }
@@ -35,5 +34,6 @@
   .photoArchiContainer {
     /* border: 1px solid red; */
     align-self: flex-end;
+    align-items: flex-end;
   }
 }
