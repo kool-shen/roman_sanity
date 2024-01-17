@@ -1,10 +1,8 @@
 html,
 * body {
   max-width: 100vw;
-  height: calc(100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top));
-  max-height: calc(
-    100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
-  );
+  height: calc(100vh - env(safe-area-inset-bottom));
+  max-height: calc(100vh - env(safe-area-inset-bottom));
 
   margin: 0;
   padding: 0;
@@ -60,9 +58,8 @@ p {
 .mainContainer {
   display: flex;
   width: 100vw;
-  max-height: calc(
-    100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
-  );
+  height: calc(100% - env(safe-area-inset-bottom));
+  max-height: calc(100vh - env(safe-area-inset-bottom));
   overflow: hidden;
 }
 
@@ -101,20 +98,16 @@ p {
   }
   .mainContainer {
     flex-direction: column;
-    height: calc(
+    /* height: calc(
       100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
-    );
-    max-height: calc(
-      100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
-    );
+    ); */
+    max-height: 100vh;
   }
   p {
     font-size: 2.8vmin;
   }
   .rightPartContainer {
-    height: 100%;
-    max-height: 100%;
-    /* min-height: 100%; */
+    min-height: 100%;
     width: 100vw;
     padding: 6vmin !important;
     justify-content: center !important;

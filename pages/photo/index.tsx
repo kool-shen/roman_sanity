@@ -100,6 +100,13 @@ const router = useRouter();
     }, [router.events]);
 
 ////
+
+const [indexClicked, setIndexClicked]= useState(false)
+
+const indexStyle = !indexClicked
+? { transform: "translateY(100vh)", transition: "transform 0.5s" }
+: { transition: "transform 0.5s",  };  
+
   
     return (
         <>
@@ -110,6 +117,9 @@ const router = useRouter();
           </Head>
          
           <div className={`rightPartContainer ${styles.mainContainer}`}>
+            
+            
+           
         <div className={styles.titleContainer} ref={albumsRef}>
           {props.albums.map((content: albumType) => (
               <div className={styles.textContainer}>
@@ -125,8 +135,11 @@ const router = useRouter();
             
           ))}
         </div>
+        <h3 onClick={()=> {setIndexClicked(!indexClicked)}}>Index</h3>
+        <div className={styles.Container} >
+        <div className={styles.mobileModal} style={indexStyle}></div> 
         <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
-        <div className={styles.mobileModal}></div>
+        
 
           {data.map((content: any, index: number) => (
             <div key={index} className={styles.picContainer} >
@@ -136,6 +149,7 @@ const router = useRouter();
               </Link>
             </div>
           ))}
+        </div>
         </div>
       </div>
     </>
