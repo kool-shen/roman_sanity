@@ -126,6 +126,8 @@ const router = useRouter();
           ))}
         </div>
         <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
+        <div className={styles.mobileModal}></div>
+
           {data.map((content: any, index: number) => (
             <div key={index} className={styles.picContainer} >
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>

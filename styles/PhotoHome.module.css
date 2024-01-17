@@ -52,3 +52,31 @@
   overflow: hidden;
   flex-grow: 1;
 }
+
+.mobileModal {
+  display: none;
+}
+
+@media screen and (max-width: 425px) {
+  .titleContainer {
+    display: none;
+  }
+  .galleryContainer {
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+  }
+  .picContainer {
+    height: 40vmin;
+  }
+  .mobileModal {
+    display: none;
+    flex-direction: column;
+    background-color: red;
+    border: 3px solid black;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+  }
+}
