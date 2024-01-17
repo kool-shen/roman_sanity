@@ -105,7 +105,16 @@ const [indexClicked, setIndexClicked]= useState(false)
 
 const indexStyle = !indexClicked
 ? { transform: "translateY(100vh)", transition: "transform 0.5s" }
-: { transition: "transform 0.5s",  };  
+: { transition: "transform 0.5s",};  
+
+const indexButtonStyle = !indexClicked
+? { color: "grey"}
+: { color: "black"}; 
+
+const clickIndex = ()=>   {
+  setIndexClicked(!indexClicked)
+  
+}
 
   
     return (
@@ -135,9 +144,20 @@ const indexStyle = !indexClicked
             
           ))}
         </div>
-        <h3 onClick={()=> {setIndexClicked(!indexClicked)}}>Index</h3>
+        <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>Index</h1>
         <div className={styles.Container} >
-        <div className={styles.mobileModal} style={indexStyle}></div> 
+        <div className={styles.mobileModal} style={indexStyle}>
+        {props.albums.map((content: albumType) => (
+              <div className={styles.textContainer}>
+              <Link href={`photo/${content.slug}`} key={content._id}>
+              <h3>
+                {content.name}
+              </h3>
+              </Link>
+              </div>
+            
+          ))}
+          </div> 
         <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
         
 
