@@ -127,7 +127,7 @@ const clickIndex = ()=>   {
          
           <div className={`rightPartContainer ${styles.mainContainer}`}>
             
-            
+          <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>Index</h1>
            
         <div className={styles.titleContainer} ref={albumsRef}>
           {props.albums.map((content: albumType) => (
@@ -144,7 +144,7 @@ const clickIndex = ()=>   {
             
           ))}
         </div>
-        <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>Index</h1>
+        
         <div className={styles.Container} >
         <div className={styles.mobileModal} style={indexStyle}>
         {props.albums.map((content: albumType) => (
@@ -160,7 +160,7 @@ const clickIndex = ()=>   {
           </div> 
         <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
         
-
+       
           {data.map((content: any, index: number) => (
             <div key={index} className={styles.picContainer} >
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>

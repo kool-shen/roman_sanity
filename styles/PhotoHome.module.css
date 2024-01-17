@@ -5,6 +5,7 @@
   justify-content: space-between;
   padding-bottom: 0;
   gap: 10vmin;
+  height: 100vh;
 }
 
 .titleContainer {
@@ -37,6 +38,7 @@
   align-content: flex-start;
   overflow-y: scroll;
   gap: 2vmin;
+  position: relative;
   padding-bottom: 6vmin;
 }
 
@@ -103,13 +105,15 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
+    min-height: 80vh;
     background-color: white;
-    padding-bottom: 6vmin;
     z-index: 4;
     position: absolute;
     width: 100%;
-    height: 100%;
-    bottom: 0;
-    overflow-y: scroll;
+    /* bottom: 0; */
+    /* overflow-y: scroll; */
+    box-sizing: border-box;
+    padding-bottom: 6vmin;
+    border: 3px solid green;
   }
 }
