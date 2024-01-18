@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Layers from "@/components/Pic/Layers";
 import Link from "next/link";
+import PicHeight from "@/components/Pic/PicHeight";
 
 
 export default function singlePhoto({ photo, photo2, album   }: { album: albumType [], photo : albumType [], photo2 : albumType [] }) {
@@ -202,6 +203,7 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
 
           <>
            <div className={styles.photoBlockContainer}>
+           
       <div className={styles.picContainer}>
       <Layers 
           onClickRight={()=> {handleClickNextMobile()}}
@@ -212,9 +214,13 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
           alt={mergedImages[indexMobile].image}
           width={mergedImages[indexMobile].width} 
           height={mergedImages[indexMobile].height}/> 
-          
       </div>
+      <div className={styles.infoContainer}>
       <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>  
+      <Link href={`/photo/${album[0].slug}`}>
+      <p>{album[0].name}</p>
+        </Link>
+        </div>
     </div>
           </>
        ) } 

@@ -61,18 +61,23 @@ const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
   return (
     <div className={styles.mainContainer}>
      <div className={styles.titleContainer}>
-      <Link href={"/"}>
-      <h1 
-      onClick={()=>{clickHome()}}
-      >roman cadre</h1>
-      </Link>
+       <Link href={"/"}>
+       <h1 
+       onClick={()=>{clickHome()}}
+       >roman cadre</h1>
+       </Link>
+      
+      
       <div className={styles.photoArchiContainer}>
+
       <Link href={"/archi"}>
       <h1 
        onClick={()=>{clickArchi()}}
        style={archiStyle}
        >architecture</h1>
       </Link>
+      
+     
       <Link href={"/photo"}>
       <h1
       onClick={()=>{clickPhoto()}}
@@ -80,11 +85,16 @@ const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
       >photographie</h1>
       </Link>
       </div>
+    
+     
+
       <Link href={"/infos"}>
-      <h1  onClick={()=>{clickHome()}}
-      >infos</h1>
-      </Link>
+      <h1  onClick={() => { clickHome() }}>infos</h1>
+    
+  </Link>
+ 
      </div>
+     
     </div>
   )
 }

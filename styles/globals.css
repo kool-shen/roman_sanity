@@ -98,6 +98,10 @@ p {
   display: inline;
 }
 
+a {
+  width: fit-content;
+}
+
 @media screen and (max-width: 425px) {
   h2 {
     font-size: 3.5vmin;
