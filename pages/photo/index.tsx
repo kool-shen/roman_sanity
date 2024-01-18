@@ -144,8 +144,9 @@ const clickIndex = ()=>   {
           ))}
         </div>
         
-        <div className={styles.Container} >
-        <div className={styles.mobileModal} style={indexStyle}>
+        {/*  */}
+          <div className={styles.modalContainer}>
+          <div className={styles.mobileModal} style={indexStyle}>
         {props.albums.map((content: albumType) => (
               <div className={styles.textContainer}>
               <Link href={`photo/${content.slug}`} key={content._id}>
@@ -170,7 +171,7 @@ const clickIndex = ()=>   {
           ))}
         </div>
         </div>
-      </div>
+        </div>
     </>
 
    

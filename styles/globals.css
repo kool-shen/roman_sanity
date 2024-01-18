@@ -115,8 +115,9 @@ p {
     /* min-height: 100%; */
     width: 100vw;
     padding: 6vmin !important;
-    justify-content: center !important;
-    height: 84vh;
+    padding-bottom: 0 !important;
+    /* justify-content: center !important; */
+
     /* border: 1px solid red; */
   }
 }

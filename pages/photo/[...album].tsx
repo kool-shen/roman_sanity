@@ -2,17 +2,29 @@ import { getOneAlbum, getAllAlbums, getOnePhoto, getPhoto, getPhoto2 } from "@/s
 import { albumType, ImageDataType } from "@/types/Project-type";
 import styles from "@/styles/Photo.module.css"
 import Pic from "@/components/Pic/Pic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Layers from "@/components/Pic/Layers";
 import Link from "next/link";
 
 
-
 export default function singlePhoto({ photo, photo2, album   }: { album: albumType [], photo : albumType [], photo2 : albumType [] }) {
 
+/// Mobile ou web ///
 
- 
+
+  const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
+
+  const calculateScreen = () => {
+    window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
+  };
+  
+  useEffect(() => {
+   calculateScreen();
+  }, []);
+
+const mergedImages = album[0]?.images.concat(album[0]?.images2)
+console.log(mergedImages)
 
  const slider1IsClicked = photo[0].images.length == 0 ? false : true
 
@@ -27,12 +39,30 @@ export default function singlePhoto({ photo, photo2, album   }: { album: albumTy
     return index;
 }
 
-const indexPhotoClicked = findIndexByKeyValue(clickedPhotoKey)
+
+/// Trouver l'index de la photo cliquée sur mobile ///
+
+function findMobileIndexByKeyValue(keyToFind:string) {
+  for (let i = 0; i < mergedImages.length; i++) {
+      if (mergedImages[i].key === keyToFind) {
+          return i; 
+      }
+  }
+  return -1; 
+}
+
+const mobileIndexPhotoClicked =  findMobileIndexByKeyValue(clickedPhotoKey)
+
+/// index de la photo (web ou mobile)
+
+const indexPhotoClicked = !mobileScreen ? findIndexByKeyValue(clickedPhotoKey) : mobileIndexPhotoClicked
 
 const [indexClicked, setIndexClicked] = useState(indexPhotoClicked)
 const [indexUnclicked, setIndexUnclicked] = useState(0)
 
 const IndexClickedSlider = slider1IsClicked ? album[0].images.length : album[0].images2.length
+
+
 
 
 const IndexUnclickedSlider = !slider1IsClicked ? album[0].images.length : album[0].images2.length
@@ -42,22 +72,44 @@ const unclickedPhoto = slider1IsClicked? album[0].images2[indexUnclicked] : albu
 
 /// Fonction click next + previous 
 
-console.log('photo', clickedPhoto)
 
-
-const handleClickNext = (photoIndex : number, albumindex: number, setIndex: React.Dispatch<React.SetStateAction<number>>) => {
-  if (photoIndex + 1 >= albumindex) {
+const handleClickNext = (photoIndex: number, albumIndex: number, setIndex: React.Dispatch<React.SetStateAction<number>>) => {
+  if (photoIndex + 1 >= albumIndex) {
     setIndex(0);
   } else {
     setIndex(photoIndex + 1);
+    console.log("Next Index:", photoIndex + 1);
   }
 };
 
-const handleClickPrevious = (photoIndex : number, albumindex: number, setIndex: React.Dispatch<React.SetStateAction<number>>) => {
+const handleClickPrevious = (photoIndex: number, albumIndex: number, setIndex: React.Dispatch<React.SetStateAction<number>>) => {
   if (photoIndex - 1 < 0) {
-    setIndex(albumindex - 1);
+    setIndex(albumIndex - 1);
+    console.log("Previous Index:", albumIndex - 1);
   } else {
     setIndex(photoIndex - 1);
+    console.log("Previous Index:", photoIndex - 1);
+  }
+};
+
+
+////
+
+const handleClickNextMobile = () => {
+  if (indexClicked + 1 >= mergedImages.length) {
+    setIndexClicked(0);
+  } else {
+    setIndexClicked(indexClicked + 1);
+   
+  }
+};
+
+const handleClickPreviousMobile = () => {
+  if (indexClicked - 1 < 0) {
+    setIndexClicked(mergedImages.length - 1);
+  } else {
+    setIndexClicked(indexClicked - 1);
+   
   }
 };
 
@@ -65,6 +117,9 @@ const handleClickPrevious = (photoIndex : number, albumindex: number, setIndex: 
 //////
 
 function PhotoBlock({index , indexSlider, setIndex, photo}:
+
+
+
     {index : number, indexSlider : number, setIndex: React.Dispatch<React.SetStateAction<number>>, photo: ImageDataType} ) {
   return (
     <div className={styles.photoBlockContainer}>
@@ -82,8 +137,14 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
 }
 
 
+console.log ("index", mobileIndexPhotoClicked, "lenght", mergedImages.length, "photo", clickedPhoto)
+
+console.log("index", indexClicked, "lenght", IndexClickedSlider, "photo", clickedPhoto)
+
 
 ////
+
+
 
 
 
@@ -94,8 +155,8 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
         <h2>{album[0].name}</h2>
         </Link>
        <div className={styles.slidersContainer}>
-
-      {slider1IsClicked ? (
+        {!mobileScreen ? (<>
+          {slider1IsClicked ? (
         <>
           <PhotoBlock 
             index={indexClicked} 
@@ -126,6 +187,32 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
           />
         </>
       )}
+        
+        </>
+          
+        ): (
+
+          <>
+           <div className={styles.photoBlockContainer}>
+      <div className={styles.picContainer}>
+      <Layers 
+          onClickRight={()=> {handleClickNextMobile()}}
+          onClickLeft={()=> {handleClickPreviousMobile()}}
+        />
+        <Pic  
+        onClick={()=> {handleClickNextMobile()} }
+          src={mergedImages[indexClicked].image}
+          alt={mergedImages[indexClicked].image}
+          width={mergedImages[indexClicked].width} 
+          height={mergedImages[indexClicked].height}/> 
+          
+      </div>
+      <p>{`${indexClicked + 1}/${mergedImages.length}`}</p>  
+    </div>
+          </>
+        ) }
+       
+      
     
       </div>  
     

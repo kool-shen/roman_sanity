@@ -97,14 +97,7 @@ useEffect(() => {
      <PortableText value={album[0].content}/>
         </div>)}
      <div className={styles.galleryContainer } >
-     {/* {mobileScreen ? (
-     <PortableText value={album[0].content}/>
-        </div>):
-        (<div className={styles.modal}   style={descriptionStyle}>
-     <PortableText value={album[0].content}/>
-        </div>)}  */}
-          
-       
+    
      {photoData.map((content, i) => (
       <div className={styles.picContainer} 
       >             

@@ -66,47 +66,18 @@
 }
 
 @media screen and (max-width: 425px) {
-  .modalContainer {
+  /* .modalContainer {
     height: 100%;
     border: 1px solid blue;
     position: relative;
-  }
+  } */
+
   .galleryContainer {
     grid-template-columns: repeat(3, 1fr);
-    position: relative;
-  }
-  .picContainer {
-    height: 40vmin;
+    height: 74vh;
   }
 
-  .mobileModalUp {
-    position: absolute;
-    min-width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-top: 2vmin;
-    box-sizing: border-box;
-    background-color: white;
-    z-index: 8;
-    gap: 4vmin;
-    background-color: red;
-    bottom: 0;
-  }
-  .mobileModalDown {
-    display: flex;
-    position: absolute;
-    min-width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-top: 2vmin;
-    box-sizing: border-box;
-    background-color: red;
-    z-index: 8;
-    gap: 4vmin;
-    transform: translateY(100%);
+  .picContainer {
+    height: 40vmin;
   }
 }
