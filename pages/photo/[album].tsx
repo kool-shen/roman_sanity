@@ -28,6 +28,10 @@ const crossStyle = crossClicked
    ? { transform: "translateY(100vh)", transition: "transform 0.5s" }
    : { transition: "transform 0.5s",  };   
 
+   const galleryStyle = !crossClicked
+   ? {  }
+   : { overflow: "hidden",  };  
+
 const clickCross = () => {
 setCrossClicked(!crossClicked)
 console.log(crossClicked, crossStyle)
@@ -63,6 +67,19 @@ const router = useRouter();
 
 ////
 
+/// Mobile ///
+
+const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
+
+const calculateScreen = () => {
+  window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
+};
+
+useEffect(() => {
+ calculateScreen();
+ 
+}, []);
+
   return (
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer}>
@@ -75,11 +92,19 @@ const router = useRouter();
          </div>
       )}
      </div>
-     <div className={styles.galleryContainer }>
-          {contentExists && (<div className={styles.modal}   style={descriptionStyle}>
+      <div className={styles.modalContainer }>  
+      {contentExists && (<div className={styles.modal}   style={descriptionStyle}>
      <PortableText value={album[0].content}/>
         </div>)}
-     
+     <div className={styles.galleryContainer } >
+     {/* {mobileScreen ? (
+     <PortableText value={album[0].content}/>
+        </div>):
+        (<div className={styles.modal}   style={descriptionStyle}>
+     <PortableText value={album[0].content}/>
+        </div>)}  */}
+          
+       
      {photoData.map((content, i) => (
       <div className={styles.picContainer} 
       >             
@@ -89,6 +114,7 @@ const router = useRouter();
        </div>
           ))}
      </div>
+       </div>  
     </div>
   );
 }

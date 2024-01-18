@@ -28,6 +28,14 @@
 }
 
 @media screen and (max-width: 425px) {
+  .mainContainer {
+    max-height: 16vh;
+    /* border: 1px solid green; */
+    padding: 6vmin;
+    box-sizing: border-box;
+    padding-left: 6vmin;
+    padding-right: 6vmin;
+  }
   .titleContainer {
     width: 100%;
   }

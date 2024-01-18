@@ -3,42 +3,40 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5vmin;
+  justify-content: space-between;
+  padding-bottom: 0;
 }
 
 .infoContainer {
   display: flex;
   justify-content: space-between;
   gap: 2vmin;
+  position: relative;
 }
 
 .galleryContainer {
-  /* display: flex;
-    flex-wrap: wrap; */
-  position: relative;
+  height: 80vh;
   align-content: flex-start;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   align-content: flex-start;
   overflow-y: scroll;
+  grid-gap: 2vmin;
   gap: 2vmin;
-  padding-bottom: 6vmin;
-  box-sizing: border-box;
-  height: 100%;
+  position: relative;
 }
 
 .modal {
   position: absolute;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-top: 2vmin;
-  box-sizing: border-box;
-  background-color: white;
   z-index: 8;
-  gap: 4vmin;
+  padding-bottom: 6vmin;
 }
 
 .picContainer {
@@ -51,4 +49,64 @@
 .logoContainer {
   height: 5vmin;
   width: 5vmin;
+}
+
+.mobileModalUp {
+  display: none;
+}
+
+.mobileModalDown {
+  display: none;
+}
+
+.modalContainer {
+  border: 1px solid blue;
+  position: relative;
+  z-index: 0;
+}
+
+@media screen and (max-width: 425px) {
+  .modalContainer {
+    height: 100%;
+    border: 1px solid blue;
+    position: relative;
+  }
+  .galleryContainer {
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+  }
+  .picContainer {
+    height: 40vmin;
+  }
+
+  .mobileModalUp {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 2vmin;
+    box-sizing: border-box;
+    background-color: white;
+    z-index: 8;
+    gap: 4vmin;
+    background-color: red;
+    bottom: 0;
+  }
+  .mobileModalDown {
+    display: flex;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 2vmin;
+    box-sizing: border-box;
+    background-color: red;
+    z-index: 8;
+    gap: 4vmin;
+    transform: translateY(100%);
+  }
 }
