@@ -94,6 +94,10 @@ p {
   text-decoration: none;
 }
 
+[Link] {
+  display: inline;
+}
+
 @media screen and (max-width: 425px) {
   h2 {
     font-size: 3.5vmin;
@@ -115,7 +119,7 @@ p {
     /* min-height: 100%; */
     width: 100vw;
     padding: 6vmin !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 0;
     /* justify-content: center !important; */
 
     /* border: 1px solid red; */

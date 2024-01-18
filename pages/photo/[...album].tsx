@@ -54,18 +54,16 @@ function findMobileIndexByKeyValue(keyToFind:string) {
 const mobileIndexPhotoClicked =  findMobileIndexByKeyValue(clickedPhotoKey)
 
 
-console.log("KEY", findMobileIndexByKeyValue("ed3a98c1610a"))
+console.log("KEY", findMobileIndexByKeyValue(clickedPhotoKey))
 
 /// index de la photo (web ou mobile)
 
-const indexPhotoClicked = !mobileScreen ? findIndexByKeyValue(clickedPhotoKey) : mobileIndexPhotoClicked
+const indexPhotoClicked =findIndexByKeyValue(clickedPhotoKey)
 
 const [indexClicked, setIndexClicked] = useState(indexPhotoClicked)
 const [indexUnclicked, setIndexUnclicked] = useState(0)
 
 const IndexClickedSlider = slider1IsClicked ? album[0].images.length : album[0].images2.length
-
-
 
 
 const IndexUnclickedSlider = !slider1IsClicked ? album[0].images.length : album[0].images2.length
@@ -74,6 +72,10 @@ const clickedPhoto = slider1IsClicked? album[0].images[indexClicked] : album[0].
 const unclickedPhoto = slider1IsClicked? album[0].images2[indexUnclicked] : album[0].images[indexUnclicked]
 
 /// Fonction click next + previous 
+
+
+/// WEB
+
 
 
 const handleClickNext = (photoIndex: number, albumIndex: number, setIndex: React.Dispatch<React.SetStateAction<number>>) => {
@@ -95,22 +97,26 @@ const handleClickPrevious = (photoIndex: number, albumIndex: number, setIndex: R
 };
 
 
-////
+/// MOBILE
+
+
+const [indexMobile, setIndexMobile] = useState(mobileIndexPhotoClicked)
+console.log('mobileIndexPhotoClicked', mobileIndexPhotoClicked);
 
 const handleClickNextMobile = () => {
-  if (indexClicked + 1 >= mergedImages.length) {
-    setIndexClicked(0);
+  if (indexMobile + 1 >= mergedImages.length) {
+    setIndexMobile(0);
   } else {
-    setIndexClicked(indexClicked + 1);
+    setIndexMobile(indexMobile + 1);
    
   }
 };
 
 const handleClickPreviousMobile = () => {
-  if (indexClicked - 1 < 0) {
-    setIndexClicked(mergedImages.length - 1);
+  if (indexMobile - 1 < 0) {
+    setIndexMobile(mergedImages.length - 1);
   } else {
-    setIndexClicked(indexClicked - 1);
+    setIndexMobile(indexMobile - 1);
    
   }
 };
@@ -202,14 +208,13 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
           onClickLeft={()=> {handleClickPreviousMobile()}}
         />
         <Pic  
-        onClick={()=> {handleClickNextMobile()} }
-          src={mergedImages[mobileIndexPhotoClicked].image}
-          alt={mergedImages[mobileIndexPhotoClicked].image}
-          width={mergedImages[mobileIndexPhotoClicked].width} 
-          height={mergedImages[mobileIndexPhotoClicked].height}/> 
+          src={mergedImages[indexMobile].image}
+          alt={mergedImages[indexMobile].image}
+          width={mergedImages[indexMobile].width} 
+          height={mergedImages[indexMobile].height}/> 
           
       </div>
-      <p>{`${mobileIndexPhotoClicked + 1}/${mergedImages.length}`}</p>  
+      <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>  
     </div>
           </>
        ) } 

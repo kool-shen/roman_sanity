@@ -126,7 +126,7 @@ const clickIndex = ()=>   {
           </Head>
          
           <div className={`rightPartContainer ${styles.mainContainer}`}>
-          <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>Index</h1>
+          <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>index</h1>
            
         <div className={styles.titleContainer} ref={albumsRef}>
           {props.albums.map((content: albumType) => (
