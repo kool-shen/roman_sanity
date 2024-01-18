@@ -23,7 +23,7 @@ export default function singlePhoto({ photo, photo2, album   }: { album: albumTy
    calculateScreen();
   }, []);
 
-const mergedImages = album[0]?.images.concat(album[0]?.images2)
+const mergedImages = album[0].images.concat(album[0].images2)
 console.log(mergedImages)
 
  const slider1IsClicked = photo[0].images.length == 0 ? false : true
@@ -53,6 +53,9 @@ function findMobileIndexByKeyValue(keyToFind:string) {
 
 const mobileIndexPhotoClicked =  findMobileIndexByKeyValue(clickedPhotoKey)
 
+
+console.log("KEY", findMobileIndexByKeyValue("ed3a98c1610a"))
+
 /// index de la photo (web ou mobile)
 
 const indexPhotoClicked = !mobileScreen ? findIndexByKeyValue(clickedPhotoKey) : mobileIndexPhotoClicked
@@ -78,7 +81,7 @@ const handleClickNext = (photoIndex: number, albumIndex: number, setIndex: React
     setIndex(0);
   } else {
     setIndex(photoIndex + 1);
-    console.log("Next Index:", photoIndex + 1);
+    
   }
 };
 
@@ -88,7 +91,6 @@ const handleClickPrevious = (photoIndex: number, albumIndex: number, setIndex: R
     console.log("Previous Index:", albumIndex - 1);
   } else {
     setIndex(photoIndex - 1);
-    console.log("Previous Index:", photoIndex - 1);
   }
 };
 
@@ -137,9 +139,9 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
 }
 
 
-console.log ("index", mobileIndexPhotoClicked, "lenght", mergedImages.length, "photo", clickedPhoto)
+// console.log ("index", mobileIndexPhotoClicked, "lenght", mergedImages.length, "photo", clickedPhoto)
 
-console.log("index", indexClicked, "lenght", IndexClickedSlider, "photo", clickedPhoto)
+// console.log("index", indexClicked, "lenght", IndexClickedSlider, "photo", clickedPhoto)
 
 
 ////
@@ -190,7 +192,7 @@ console.log("index", indexClicked, "lenght", IndexClickedSlider, "photo", clicke
         
         </>
           
-        ): (
+        ): ( 
 
           <>
            <div className={styles.photoBlockContainer}>
@@ -201,16 +203,16 @@ console.log("index", indexClicked, "lenght", IndexClickedSlider, "photo", clicke
         />
         <Pic  
         onClick={()=> {handleClickNextMobile()} }
-          src={mergedImages[indexClicked].image}
-          alt={mergedImages[indexClicked].image}
-          width={mergedImages[indexClicked].width} 
-          height={mergedImages[indexClicked].height}/> 
+          src={mergedImages[mobileIndexPhotoClicked].image}
+          alt={mergedImages[mobileIndexPhotoClicked].image}
+          width={mergedImages[mobileIndexPhotoClicked].width} 
+          height={mergedImages[mobileIndexPhotoClicked].height}/> 
           
       </div>
-      <p>{`${indexClicked + 1}/${mergedImages.length}`}</p>  
+      <p>{`${mobileIndexPhotoClicked + 1}/${mergedImages.length}`}</p>  
     </div>
           </>
-        ) }
+       ) } 
        
       
     

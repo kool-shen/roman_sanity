@@ -15,7 +15,7 @@ export type albumType =   { _id : string; _createdAt : Date; name: string; slug?
     image: string;
     alt?: string;
     description?: string;
-    key?: string;
+    key: string;
     width : number;
     height : number
   }[];

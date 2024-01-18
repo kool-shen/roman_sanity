@@ -28,9 +28,7 @@ const crossStyle = crossClicked
    ? { transform: "translateY(100vh)", transition: "transform 0.5s" }
    : { transition: "transform 0.5s",  };   
 
-   const galleryStyle = !crossClicked
-   ? {  }
-   : { overflow: "hidden",  };  
+  
 
 const clickCross = () => {
 setCrossClicked(!crossClicked)
@@ -67,18 +65,6 @@ const router = useRouter();
 
 ////
 
-/// Mobile ///
-
-const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
-
-const calculateScreen = () => {
-  window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
-};
-
-useEffect(() => {
- calculateScreen();
- 
-}, []);
 
   return (
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
