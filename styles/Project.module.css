@@ -29,6 +29,7 @@
 }
 
 .modal {
+  right: 0;
   position: absolute;
   /* border: 3px solid white; */
   min-width: 100%;
@@ -101,9 +102,6 @@
 }
 
 @media screen and (max-width: 425px) {
-  .sliderContainer {
-    justify-content: center;
-  }
   .infoContainer {
     /* border: 1px solid red; */
     align-items: center;
@@ -128,13 +126,19 @@
     width: 10vmin;
   }
   .modal {
-    /* border: 1px solid red; */
+    /*border: 1px solid red; */
     justify-content: flex-start;
     flex-direction: row;
     align-items: flex-end;
     box-sizing: border-box;
   }
-
+  .prioritiesContainer {
+    flex-direction: column;
+    gap: 3vmin;
+    align-items: flex-start;
+    font-size: 2.8vmin;
+    font-family: "ReadexPro";
+  }
   .prioritiesContainer p {
     font-size: 2.8vmin;
     font-family: "ReadexPro";
@@ -146,6 +150,7 @@
   }
   .textContainer {
     flex-direction: column;
-    gap: 3vmin;
+    /* gap: 3vmin; */
+    box-sizing: border-box;
   }
 }

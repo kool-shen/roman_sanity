@@ -26,6 +26,10 @@
   position: relative;
 }
 
+.galleryContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .modal {
   position: absolute;
   width: 100%;
@@ -76,5 +80,9 @@
 
   .picContainer {
     height: 40vmin;
+  }
+  .logoContainer {
+    height: 10vmin;
+    width: 10vmin;
   }
 }

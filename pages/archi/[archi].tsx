@@ -127,7 +127,6 @@ useEffect(() => {
         </div>
         <div className={styles.prioritiesContainer} >
        
-       <div className={styles.textContainer} >
          <Priorities 
          name={"Programme"}
          value={archi[0].program}/>
@@ -143,7 +142,7 @@ useEffect(() => {
          <Priorities 
          name={"Surface"}
          value={archi[0].surface}/>
-       </div>
+       
        </div> 
         </div>
           {!mobileScreen ? (

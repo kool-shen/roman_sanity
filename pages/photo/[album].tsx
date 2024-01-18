@@ -69,7 +69,7 @@ const router = useRouter();
   return (
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer}>
-     <h1>{album[0].name}</h1> 
+     <h2>{album[0].name}</h2> 
       {album[0].content && (
           <div className={styles.logoContainer}  style={crossStyle} > 
           <Pic   
