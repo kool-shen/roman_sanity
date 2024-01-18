@@ -7,10 +7,6 @@
   /* box-sizing: border-box; */
 }
 
-.photoBlockContainer p {
-  display: none;
-}
-
 .slidersContainer {
   /* border: 1px solid orange; */
   display: flex;
@@ -78,11 +74,9 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    align-items: center;
   }
   .mainContainer h2 {
     display: none;
-  }
-  .photoBlockContainer p {
-    display: inline-block;
   }
 }

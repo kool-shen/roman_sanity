@@ -60,17 +60,14 @@
 }
 
 .modalContainer {
-  border: 1px solid blue;
   position: relative;
   z-index: 0;
 }
 
 @media screen and (max-width: 425px) {
-  /* .modalContainer {
-    height: 100%;
-    border: 1px solid blue;
-    position: relative;
-  } */
+  .mainContainer {
+    padding-bottom: 0 !important;
+  }
 
   .galleryContainer {
     grid-template-columns: repeat(3, 1fr);
