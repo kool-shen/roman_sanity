@@ -123,7 +123,7 @@ a {
   }
   .rightPartContainer {
     /* min-height: 100%; */
-    height: auto;
+    height: 80%;
     width: 100vw;
     padding: 6vmin !important;
     padding-bottom: 0;
