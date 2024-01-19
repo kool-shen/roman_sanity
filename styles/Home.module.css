@@ -18,6 +18,7 @@
     max-height: calc(
       100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
     );
+    justify-content: center;
   }
   .rightPartContainer {
     height: 100%;
