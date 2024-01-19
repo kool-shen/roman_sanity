@@ -9,7 +9,7 @@
 .titleContainer {
   display: flex;
   flex-direction: column;
-
+  /* min-height: 100vh; */
   min-width: 20%;
   overflow-y: scroll;
   gap: 3vmin;

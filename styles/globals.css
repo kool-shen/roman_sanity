@@ -124,8 +124,7 @@ a {
     font-size: 2.8vmin;
   }
   .rightPartContainer {
-    /* min-height: 100%; */
-    /* height: 80%; */
+    /* height: 80%; 
     width: 100vw;
     padding: 6vmin !important;
     padding-bottom: 0;

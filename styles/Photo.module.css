@@ -52,6 +52,10 @@
 @media screen and (max-width: 425px) {
   .mainContainer {
     padding-bottom: 6vmin;
+    box-sizing: border-box;
+    border: 2px solid green;
+    max-height: 100%;
+    display: block;
   }
 }
 @media screen and (max-width: 425px) {
@@ -75,6 +79,8 @@
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    padding-left: 6vmin;
+    padding-right: 6vmin;
   }
   .mainContainer h2 {
     display: none;
