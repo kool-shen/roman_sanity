@@ -104,7 +104,7 @@ const router = useRouter();
 const [indexClicked, setIndexClicked]= useState(false)
 
 const indexStyle = !indexClicked
-? { transform: "translateY(100vh)", transition: "transform 0.5s" }
+? { transform: "translateY(100%)", transition: "transform 0.5s" }
 : { transition: "transform 0.5s",};  
 
 const indexButtonStyle = !indexClicked

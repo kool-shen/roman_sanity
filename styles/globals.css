@@ -17,7 +17,7 @@ html,
   /* cursor: url("../public/cursor.png"), auto; */
 
   box-sizing: border-box;
-  /* border: 2px solid blue; */
+  border: 2px solid blue;
   display: flex;
 }
 
@@ -64,7 +64,7 @@ p {
   max-height: calc(
     100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
   );
-  overflow: hidden;
+  /* overflow: hidden; */
   box-sizing: border-box;
 }
 
@@ -79,6 +79,7 @@ p {
   box-sizing: border-box;
   opacity: 1;
   transition: opacity 0.4s;
+  border: 2px solid red;
 }
 
 .fadeOut {
@@ -112,9 +113,10 @@ a {
   .mainContainer {
     flex-direction: column;
     justify-content: space-between;
-    min-height: calc(
+    /* height: 100%; */
+    /* min-height: calc(
       100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
-    );
+    ); */
     /* border: 2px solid red; */
     box-sizing: border-box;
   }
@@ -123,8 +125,7 @@ a {
   }
   .rightPartContainer {
     /* min-height: 100%; */
-    height: calc(80% - env(safe-area-inset-bottom) - env(safe-area-inset-top));
-
+    /* height: 80%; */
     width: 100vw;
     padding: 6vmin !important;
     padding-bottom: 0;
