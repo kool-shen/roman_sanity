@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100vw;
+  height: 100%;
 }
 
 .picContainer {
@@ -13,9 +14,9 @@
 @media screen and (max-width: 425px) {
   .mainContainer {
     /* flex-direction: column; */
-    height: calc(100% - env(safe-area-inset-bottom) - env(safe-area-inset-top));
+    height: 100%;
     max-height: calc(
-      100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
+      100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
     );
   }
   .rightPartContainer {
