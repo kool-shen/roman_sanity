@@ -17,7 +17,7 @@ html,
   /* cursor: url("../public/cursor.png"), auto; */
 
   box-sizing: border-box;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
 }
 
@@ -59,12 +59,12 @@ p {
 
 .mainContainer {
   display: flex;
-  width: 100vw;
+
   height: calc(100% - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   max-height: calc(
     100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
   );
-  /* overflow: hidden; */
+  overflow: hidden;
   box-sizing: border-box;
 }
 
@@ -73,13 +73,13 @@ p {
     100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
   );
   height: 100%;
-  width: 100%;
+  max-width: 100%;
   padding: 6vmin;
-  padding-right: 11vmin;
+  /* padding-right: 11vmin; */
   box-sizing: border-box;
   opacity: 1;
   transition: opacity 0.4s;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 .fadeOut {
