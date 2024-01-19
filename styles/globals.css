@@ -5,20 +5,17 @@ html,
   max-height: calc(
     100vh - env(safe-area-inset-bottom) - env(safe-area-inset-top)
   );
-
   margin: 0;
   padding: 0;
   background-color: white;
   margin: 0;
   overflow: auto;
   cursor: url("../public/dot_black.png"), auto;
+  text-decoration: none;
   /* cursor: url("../public/cursor.png"), auto; */
 
-  * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-  }
+  box-sizing: border-box;
+  border: 2px solid blue;
 
   h1,
   h2,
