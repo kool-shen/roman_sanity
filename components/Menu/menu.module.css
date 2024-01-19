@@ -34,7 +34,8 @@
     /* border: 1px solid green; */
     /* padding: 6vmin; */
     box-sizing: border-box;
-    padding: 6vmin;
+    /* padding: 6vmin; */
+    padding: 0;
   }
   .titleContainer {
     width: 100%;
