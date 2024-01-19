@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100vw;
   /* align-items: center; */
   /* padding: 6vmin; */
   /* box-sizing: border-box; */
@@ -53,7 +54,7 @@
   .mainContainer {
     padding-bottom: 6vmin;
     box-sizing: border-box;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     max-height: 100%;
     display: block;
   }
