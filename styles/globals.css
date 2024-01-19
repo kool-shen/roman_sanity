@@ -1,6 +1,6 @@
 html,
 * body {
-  max-width: 100vw;
+  max-width: 100%;
   height: calc(100% - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   max-height: calc(
     100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
@@ -17,7 +17,7 @@ html,
   /* cursor: url("../public/cursor.png"), auto; */
 
   box-sizing: border-box;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
 }
 
@@ -115,7 +115,7 @@ a {
     min-height: calc(
       100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
     );
-    border: 2px solid red;
+    /* border: 2px solid red; */
     box-sizing: border-box;
   }
   p {
