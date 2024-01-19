@@ -12,16 +12,9 @@
 
 @media screen and (max-width: 425px) {
   .mainContainer {
-    /* flex-direction: column; */
-    /* height: 100%; */
-    max-height: calc(
-      100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
-    );
     justify-content: center;
   }
   .rightPartContainer {
-    height: 100%;
-    max-height: 100%;
     /* min-height: 100%; */
     width: 100vw;
     padding: 6vmin !important;
