@@ -1,6 +1,6 @@
 html,
 * body {
-  max-width: 100%;
+  /* max-width: 100%; */
   height: calc(100% - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   max-height: calc(
     100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
@@ -64,6 +64,7 @@ p {
   max-height: calc(
     100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
   );
+  width: 100vw;
   overflow: hidden;
   box-sizing: border-box;
 }

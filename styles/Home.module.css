@@ -1,7 +1,11 @@
 .mainContainer {
   display: flex;
   justify-content: flex-end;
-  width: 100vw;
+  /* width: 100vw; */
+
+  width: 100%;
+  /* border: 2px solid red;
+  box-sizing: border-box; */
 }
 
 .picContainer {
@@ -13,6 +17,7 @@
 @media screen and (max-width: 425px) {
   .mainContainer {
     justify-content: center;
+    width: 100vw;
   }
   .rightPartContainer {
     /* min-height: 100%; */
