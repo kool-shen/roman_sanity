@@ -67,6 +67,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     padding-bottom: 0 !important;
+    padding-top: 0;
   }
 
   .mainContainer h1 {
