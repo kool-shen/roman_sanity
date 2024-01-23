@@ -9,6 +9,7 @@
 }
 
 .titleContainer {
+  padding: 3vmin;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
