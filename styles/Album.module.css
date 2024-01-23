@@ -12,6 +12,7 @@
   justify-content: space-between;
   gap: 2vmin;
   position: relative;
+  align-items: center;
 }
 
 .galleryContainer {
@@ -75,7 +76,7 @@
 
   .galleryContainer {
     grid-template-columns: repeat(3, 1fr);
-    height: 74vh;
+    height: 68vh;
   }
 
   .picContainer {

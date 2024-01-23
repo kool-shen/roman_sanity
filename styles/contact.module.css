@@ -35,3 +35,9 @@
   color: grey;
   font-family: "ReadexProLight";
 }
+
+@media screen and (max-width: 425px) {
+  .textContainer {
+    width: 70%;
+  }
+}

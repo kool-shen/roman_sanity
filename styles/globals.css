@@ -59,7 +59,6 @@ p {
 
 .mainContainer {
   display: flex;
-
   height: calc(100% - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   max-height: calc(
     100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
