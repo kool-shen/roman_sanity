@@ -87,3 +87,11 @@
     width: 10vmin;
   }
 }
+
+/* FIX IPHONE + SAFARI */
+
+@media all and (min-resolution: 0.001dpcm) and (max-width: 425px) {
+  .galleryContainer {
+    height: 64vh;
+  }
+}

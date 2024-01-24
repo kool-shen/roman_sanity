@@ -15,6 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return ( 
     // <Provider store={store}>
+    
     <div className=   {isMenuNeeded ? "mainContainer" : ""}>
   {isMenuNeeded && <Menu />}
   <Component {...pageProps} />

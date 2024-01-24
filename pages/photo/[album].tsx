@@ -8,6 +8,7 @@ import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Head from "next/head";
 
 export default function Album({ album }: { album: albumType [] }) {
 
@@ -67,6 +68,13 @@ const router = useRouter();
 
 
   return (
+    <>
+    <Head>
+    <title> {`Roman Cadre - ${album[0].name}`}</title>
+    <link rel="icon" href="/dot_white_big.png" />
+    <meta name="Photographie" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </Head>
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer}>
      <h2>{album[0].name}</h2> 
@@ -95,6 +103,7 @@ const router = useRouter();
      </div>
        </div>  
     </div>
+    </>
   );
 }
 //// FETCH API SERVER-SIDE ////

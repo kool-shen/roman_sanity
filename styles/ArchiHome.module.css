@@ -1,6 +1,7 @@
 .mainContainer {
   display: flex;
   gap: 10vmin;
+  width: 100%;
 }
 
 .titleContainer {
@@ -62,6 +63,12 @@
 
 .projectContainer > h3 {
   display: none;
+}
+
+@media only screen and (min-width: 425px) and (max-width: 1070px) {
+  .galleryContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 425px) {

@@ -15,6 +15,10 @@
   gap: 3vmin;
 }
 
+.titleContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .infoBloc {
   display: flex;
   flex-direction: column;

@@ -6,6 +6,7 @@ import { getAllInfo } from '@/sanity/sanity-utils'
 import { infosType } from '@/types/Project-type'
 import  {PortableText} from "@portabletext/react"
 import Link from 'next/link'
+import Head from 'next/head'
 
 
 export default function InfoPage(props: { infos: infosType[] }) 
@@ -57,6 +58,14 @@ console.log('data', data);
 const instaurl = data.insta.replace("@", "");
 
   return (
+    <>
+    <Head>
+    <title> {`Roman Cadre - Infos`}</title>
+    <link rel="icon" href="/dot_white_big.png" />
+    <meta name="Home" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </Head>
+   
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.titleContainer}>
        <Infos priority="architecture" value={data.archi}/>
@@ -73,6 +82,7 @@ const instaurl = data.insta.replace("@", "");
       </div>
     
     </div>
+    </>
   )
 }
 

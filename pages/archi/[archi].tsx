@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import Priorities from '@/components/TextContent/Priorities';
 import Index from '@/components/Pic/Index';
 import Image from 'next/image';
+import Head from 'next/head';
 
 export default function archiProject ({archi  } : { archi: projectArchiType [] }){
 
@@ -107,6 +108,13 @@ useEffect(() => {
 ////
 
   return (
+    <>
+    <Head>
+    <title> {`Roman Cadre - ${archi[0].name}`}</title>
+    <link rel="icon" href="/dot_white_big.png" />
+    <meta name="Home" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </Head>
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer} >
         <h2>{archi[0].name}</h2>
@@ -199,6 +207,7 @@ useEffect(() => {
       </div>
     
     </div>
+    </>
   )
 }
 

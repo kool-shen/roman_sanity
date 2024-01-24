@@ -6,6 +6,7 @@ import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
 import { gsap } from "gsap";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Archi(props: { projectsArchi?: projectArchiType[] }) {
 
@@ -85,6 +86,13 @@ const router = useRouter();
 
 
   return (
+    <>
+    <Head>
+    <title> {`Roman Cadre - Architecture`}</title>
+    <link rel="icon" href="/dot_white_big.png" />
+    <meta name="Home" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </Head>
    
    <div className={`rightPartContainer ${styles.mainContainer}`}>
     <div className={styles.titleContainer} ref={projectsRef} >
@@ -125,6 +133,7 @@ const router = useRouter();
       ))}        
   </div>
 </div>
+</>
   )
 }
 

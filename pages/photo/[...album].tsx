@@ -7,6 +7,7 @@ import Image from "next/image";
 import Layers from "@/components/Pic/Layers";
 import Link from "next/link";
 import PicHeight from "@/components/Pic/PicHeight";
+import Head from "next/head";
 
 
 export default function singlePhoto({ photo, photo2, album   }: { album: albumType [], photo : albumType [], photo2 : albumType [] }) {
@@ -131,6 +132,7 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
 
     {index : number, indexSlider : number, setIndex: React.Dispatch<React.SetStateAction<number>>, photo: ImageDataType} ) {
   return (
+    
     <div className={styles.photoBlockContainer}>
       <div className={styles.picContainer}>
         <Layers 
@@ -142,6 +144,7 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
       </div>
         <p>{`${index + 1}/${indexSlider}`}</p>  
     </div>
+   
   );
 }
 
@@ -159,6 +162,13 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
 
 
     return (
+      <>
+      <Head>
+      <title> {`Roman Cadre - ${album[0].name}`}</title>
+      <link rel="icon" href="/dot_white_big.png" />
+      <meta name="Photographie" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </Head>
       <div className={`rightPartContainer ${styles.mainContainer}`}>
         <Link href={`/photo/${album[0].slug}`}>
         <h2>{album[0].name}</h2>
@@ -231,6 +241,7 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
     
       
   </div>
+  </>
     )
   }
 
