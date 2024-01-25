@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   /// ne pas afficher le menu dans la partie admin
   const router = useRouter();
-  const isMenuNeeded = router.pathname !== '/admin' || '/Screen'
+  const isMenuNeeded = router.pathname !== '/admin' 
 
 
 

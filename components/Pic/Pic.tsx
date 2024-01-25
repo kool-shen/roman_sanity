@@ -21,7 +21,7 @@ const handleLoad = () =>
           width={props.width}
           height={props.height}
           alt={props?.alt}
-          className={`${styles.picLoaded} ${isLoaded ? '' : styles.hidden}`}  
+          className={styles.picLoaded}            
           onClick={props.onClick}
           style={props.style}
           onMouseEnter={props.onMouseEnter}

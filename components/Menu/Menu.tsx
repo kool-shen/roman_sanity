@@ -27,8 +27,8 @@ export default function Menu() {
           opacity: 1,
           duration: 0.5,
           onComplete: () => {
-            gsap.to(archiRef.current, {transform: 'translateX(-200%)', duration: 0.5, onComplete: () => {
-            gsap.to(photoRef.current, {transform: 'translateX(-200%)', duration: 0.5});
+            gsap.to(archiRef.current, {transform: 'translateY(-200%)', duration: 0.8, onComplete: () => {
+            gsap.to(photoRef.current, {transform: 'translateY(200%)', duration: 0.8});
             }});
           }
         });
@@ -36,8 +36,14 @@ export default function Menu() {
     });
   };
 
+  const router = useRouter();
+
+  const isHomepage = router.pathname === '/'
+
   useEffect(() => {
-    animationHome();
+   
+    isHomepage ?
+    animationHome() : ""
     
   }, []);
 
@@ -59,7 +65,7 @@ export default function Menu() {
 
   //////
 
-const router = useRouter();
+
 
 const [archiClicked, setArchiClicked] = useState(false)
 const [photoClicked, setPhotoClicked] = useState(false)
@@ -116,7 +122,7 @@ const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWi
        style={archiStyle}
        
        >architecture</h1>
-        <div className={styles.layer1} ref={archiRef}></div> 
+        <div className={styles.layer1} ref={archiRef} style={{display:  isHomepage ? "block" : "none"}}></div> 
         </div>
       
        
@@ -130,7 +136,7 @@ const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWi
       style={photoStyle}
       ref={photoRef}
       >photographie</h1>
-        <div className={styles.layer2} ref={photoRef}></div> 
+        <div className={styles.layer2} ref={photoRef} style={{display:  isHomepage ? "block" : "none"}}></div> 
 
       </div>
       </Link>
