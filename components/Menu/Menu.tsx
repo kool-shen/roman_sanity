@@ -17,7 +17,7 @@ export default function Menu() {
   const animationHome = () =>   {
     // gsap.set(infoRef.current, {opacity: 0});
 
-gsap.fromTo(romanRef.current,  {opacity: 0  },  {opacity: 1, duration: 2, 
+gsap.from(romanRef.current,  {opacity: 0, duration: 2, 
   // onComplete : () => 
   // gsap.fromTo(infoRef.current, {opacity: 0  },  {opacity: 1, duration: 1 })
  
