@@ -1,9 +1,37 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef, useLayoutEffect } from "react"
 import styles from "./menu.module.css"
 import Link from "next/link"
 import { useRouter } from "next/router";
+import  {gsap} from "gsap";
+
 
 export default function Menu() {
+
+  /// Animation ///
+
+  const romanRef = useRef<HTMLDivElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
+  const archiRef = useRef<HTMLDivElement>(null);
+  const photoRef = useRef<HTMLDivElement>(null);
+
+  const animationHome = () =>   {
+    // gsap.set(infoRef.current, {opacity: 0});
+
+gsap.fromTo(romanRef.current,  {opacity: 0  },  {opacity: 1, duration: 2, 
+  // onComplete : () => 
+  // gsap.fromTo(infoRef.current, {opacity: 0  },  {opacity: 1, duration: 1 })
+ 
+})
+
+  }
+
+
+  useEffect(() => {
+    animationHome();
+    
+  }, []);
+
+  
 
    /// Mobile ///
 
@@ -29,7 +57,7 @@ const [photoClicked, setPhotoClicked] = useState(false)
 const clickArchi =()=>{
   setArchiClicked(true),
   setPhotoClicked(false)
-  console.log(photoClicked, archiClicked)
+  // console.log(photoClicked, archiClicked)
   }
   
   // 
@@ -64,6 +92,7 @@ const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
        <Link href={"/"}>
        <h1 
        onClick={()=>{clickHome()}}
+       ref={romanRef}
        >roman cadre</h1>
        </Link>
       
@@ -74,6 +103,7 @@ const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
       <h1 
        onClick={()=>{clickArchi()}}
        style={archiStyle}
+       ref={archiRef}
        >architecture</h1>
       </Link>
       
@@ -82,6 +112,7 @@ const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
       <h1
       onClick={()=>{clickPhoto()}}
       style={photoStyle}
+      ref={photoRef}
       >photographie</h1>
       </Link>
       </div>
@@ -89,7 +120,10 @@ const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
      
 
       <Link href={"/infos"}>
-      <h1  onClick={() => { clickHome() }}>infos</h1>
+      <h1  
+      onClick={() => { clickHome() }}
+      ref={infoRef}
+      >infos</h1>
     
   </Link>
  

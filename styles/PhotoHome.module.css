@@ -11,6 +11,7 @@
   min-height: 100vh;
   min-width: 20%;
   overflow-y: scroll;
+  padding-bottom: 6vmin;
 }
 
 .textContainer {
@@ -39,11 +40,6 @@
   align-content: flex-start;
   overflow-y: scroll;
   gap: 2vmin;
-}
-
-.galleryContainer::-webkit-scrollbar,
-.titleContainer::-webkit-scrollbar {
-  display: none;
 }
 
 .picContainer {
@@ -117,8 +113,39 @@
   }
 }
 
+/*FIX IPHONE*/
+
 @media only screen and (-webkit-min-device-pixel-ratio: 3) {
   .galleryContainer {
     height: 67vh;
   }
 }
+
+/* ////// */
+
+@media screen and (max-width: 1220px) {
+  .galleryContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .galleryContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* HIDE SCROLLBAR FOR CHROME & FIREFOX */
+
+.galleryContainer::-webkit-scrollbar,
+.titleContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.galleryContainer,
+.titleContainer {
+  scrollbar-color: transparent transparent;
+  scrollbar-width: none;
+}
+
+/* ///////////// */

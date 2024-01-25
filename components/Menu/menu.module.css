@@ -15,6 +15,10 @@
   /* display: inline-block; */
 }
 
+.titleContainer h1 {
+  opacity: 1;
+}
+
 .photoArchiContainer {
   display: flex;
   flex-direction: column;

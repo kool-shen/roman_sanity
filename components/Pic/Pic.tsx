@@ -12,7 +12,7 @@ const [isLoaded, setIsLoaded] = useState(false)
 const handleLoad = () =>  
 {
  setIsLoaded(true); 
-console.log("yes")
+// console.log("yes")
 }
  
   return (

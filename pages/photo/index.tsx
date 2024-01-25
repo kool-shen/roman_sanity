@@ -120,7 +120,7 @@ const clickIndex = ()=>   {
     return (
         <>
           <Head>
-        <title> {`Roman Cadre - Photographie`}</title>
+        <title> {`Roman Cadre - photographie`}</title>
         <link rel="icon" href="/dot_white_big.png" />
         <meta name="Photographie" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

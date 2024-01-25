@@ -67,7 +67,7 @@ export async function getStaticProps() {
   }
 
   const photosArray = Object.values(photos);
-  console.log('photos', photos);
+  // console.log('photos', photos);
   
 
   return {

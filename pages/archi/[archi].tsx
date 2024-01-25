@@ -136,19 +136,19 @@ useEffect(() => {
         <div className={styles.prioritiesContainer} >
        
          <Priorities 
-         name={"Programme"}
+         name={"programme"}
          value={archi[0].program}/>
          <Priorities 
-         name={"Commanditaire"}
+         name={"commanditaire"}
          value={archi[0].sponsor}/>
          <Priorities 
-         name={"Localisation"}
+         name={"localisation"}
          value={archi[0].localisation}/>
          <Priorities 
-         name={"Calendrier"}
+         name={"calendrier"}
          value={archi[0].calendar}/>
          <Priorities 
-         name={"Surface"}
+         name={"surface"}
          value={archi[0].surface}/>
        
        </div> 
