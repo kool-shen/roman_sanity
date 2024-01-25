@@ -14,17 +14,27 @@ export default function Menu() {
   const archiRef = useRef<HTMLDivElement>(null);
   const photoRef = useRef<HTMLDivElement>(null);
 
-  const animationHome = () =>   {
-    // gsap.set(infoRef.current, {opacity: 0});
 
-gsap.from(romanRef.current,  {opacity: 0, duration: 2, 
-  // onComplete : () => 
-  // gsap.fromTo(infoRef.current, {opacity: 0  },  {opacity: 1, duration: 1 })
- 
-})
-
-  }
-
+  const animationHome = () => {
+    gsap.set(infoRef.current, {opacity: 0});
+    gsap.set(romanRef.current, {opacity: 0});
+  
+    gsap.to(romanRef.current, {
+      opacity: 1,
+      duration: 0.5,
+      onComplete: () => {
+        gsap.to(infoRef.current, {
+          opacity: 1,
+          duration: 0.5,
+          onComplete: () => {
+            gsap.to(archiRef.current, {transform: 'translateX(-200%)', duration: 0.5, onComplete: () => {
+            gsap.to(photoRef.current, {transform: 'translateX(-200%)', duration: 0.5});
+            }});
+          }
+        });
+      }
+    });
+  };
 
   useEffect(() => {
     animationHome();
@@ -76,8 +86,8 @@ const clickArchi =()=>{
 const clickedStyle = mobileScreen ? "-5vmin" : "5vmin"
 
 const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
-  {transition: "transform 0.2s", transform: `translateX(${clickedStyle})`} :
-    {transition: "transform 0.2s", color: "grey" }
+  {transition: "transform 0.2s", transform: `translateX(${clickedStyle})`, position: "relative"} :
+    {transition: "transform 0.2s", color: "grey", position: "relative"}
 
 
     const photoStyle = photoClicked || router.pathname.startsWith('/photo') ?
@@ -100,20 +110,29 @@ const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
       <div className={styles.photoArchiContainer}>
 
       <Link href={"/archi"}>
-      <h1 
+        <div className={styles.textContainer}>
+        <h1 
        onClick={()=>{clickArchi()}}
        style={archiStyle}
-       ref={archiRef}
+       
        >architecture</h1>
+        <div className={styles.layer1} ref={archiRef}></div> 
+        </div>
+      
+       
       </Link>
       
      
       <Link href={"/photo"}>
+      <div className={styles.textContainer}>
       <h1
       onClick={()=>{clickPhoto()}}
       style={photoStyle}
       ref={photoRef}
       >photographie</h1>
+        <div className={styles.layer2} ref={photoRef}></div> 
+
+      </div>
       </Link>
       </div>
     

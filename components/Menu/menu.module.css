@@ -15,15 +15,32 @@
   /* display: inline-block; */
 }
 
-.titleContainer h1 {
-  opacity: 1;
-}
-
 .photoArchiContainer {
   display: flex;
   flex-direction: column;
   gap: 2vmin;
   cursor: url("../../public/dot_white.png"), auto;
+}
+
+.textContainer {
+  position: relative;
+  height: 110%;
+}
+
+.layer1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  bottom: 0;
+}
+
+.layer2 {
+  position: absolute;
+  height: 110%;
+  width: 100%;
+  background-color: white;
+  bottom: -10%;
 }
 
 @media screen and (max-width: 425px) {

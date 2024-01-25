@@ -123,15 +123,6 @@ a {
   p {
     font-size: 2.8vmin;
   }
-  .rightPartContainer {
-    /* height: 80%; 
-    width: 100vw;
-    padding: 6vmin !important;
-    padding-bottom: 0;
-    /* justify-content: center !important; */
-
-    /* border: 1px solid red; */
-  }
 }
 
 /*FIX SAFARI */
