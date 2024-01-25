@@ -75,10 +75,11 @@ useEffect(() => {
 }, []);
 
 
-
 //// animation sortie
 
 const router = useRouter();
+
+
     const [isRouteChanging, setIsRouteChanging] = useState(false);
   
     useEffect(() => {

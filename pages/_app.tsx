@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Menu from '@/components/Menu/Menu'
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 
 
@@ -12,6 +13,13 @@ export default function App({ Component, pageProps }: AppProps) {
   const isMenuNeeded = router.pathname !== '/admin' 
 
 
+  useEffect(() => {
+    const firstVisit = sessionStorage.getItem('firstVisit');
+    if (!firstVisit) {
+      sessionStorage.setItem('firstVisit', 'true');
+      console.log('First visit');
+    }
+  }, []);
 
   return ( 
     // <Provider store={store}>

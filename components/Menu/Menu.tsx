@@ -27,9 +27,10 @@ export default function Menu() {
           opacity: 1,
           duration: 0.5,
           onComplete: () => {
-            gsap.to(archiRef.current, {transform: 'translateY(-200%)', duration: 0.8, onComplete: () => {
-            gsap.to(photoRef.current, {transform: 'translateY(200%)', duration: 0.8});
-            }});
+             gsap.to(archiRef.current, {transform: 'translateY(-200%)', duration: 0.8, onComplete: () => {
+             gsap.to(photoRef.current, {transform: 'translateY(200%)', duration: 0.8});
+             }});
+           
           }
         });
       }
@@ -38,12 +39,17 @@ export default function Menu() {
 
   const router = useRouter();
 
+  const [layersDisplay, setLayersDisplay]= useState("block")
+
   const isHomepage = router.pathname === '/'
 
   useEffect(() => {
-   
-    isHomepage ?
-    animationHome() : ""
+    if (isHomepage) {
+      animationHome();
+      setLayersDisplay("block");
+    } 
+else    {      setLayersDisplay("none");
+}
     
   }, []);
 
@@ -86,10 +92,13 @@ const clickArchi =()=>{
   const clickHome =()=>{
     setArchiClicked(false),
     setPhotoClicked(false)
+  setLayersDisplay("none")
   }
 
     
 const clickedStyle = mobileScreen ? "-5vmin" : "5vmin"
+
+
 
 const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWith('/archi') ?
   { transition: "transform 0.2s", transform: `translateX(${clickedStyle})`, position: "relative" } :
@@ -116,13 +125,13 @@ const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWi
       <div className={styles.photoArchiContainer}>
 
       <Link href={"/archi"}>
-        <div className={styles.textContainer}>
+        <div className={styles.textContainer} style={archiStyle}>
         <h1 
        onClick={()=>{clickArchi()}}
-       style={archiStyle}
+      style={{color: archiClicked || router.pathname.startsWith('/archi')? "black":"grey"}}
        
        >architecture</h1>
-        <div className={styles.layer1} ref={archiRef} style={{display:  isHomepage ? "block" : "none"}}></div> 
+        <div className={styles.layer1} ref={archiRef} style={{display:  layersDisplay}}></div> 
         </div>
       
        
@@ -130,13 +139,13 @@ const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWi
       
      
       <Link href={"/photo"}>
-      <div className={styles.textContainer}>
+      <div className={styles.textContainer} style={photoStyle}>
       <h1
       onClick={()=>{clickPhoto()}}
-      style={photoStyle}
+      style={{color : photoClicked || router.pathname.startsWith('/photo')? "black" : "grey" }}
       ref={photoRef}
       >photographie</h1>
-        <div className={styles.layer2} ref={photoRef} style={{display:  isHomepage ? "block" : "none"}}></div> 
+        <div className={styles.layer2} ref={photoRef} style={{display:  layersDisplay}  }></div> 
 
       </div>
       </Link>
