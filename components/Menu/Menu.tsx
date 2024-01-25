@@ -85,9 +85,9 @@ const clickArchi =()=>{
     
 const clickedStyle = mobileScreen ? "-5vmin" : "5vmin"
 
-const archiStyle = archiClicked || router.pathname.startsWith('/archi') ?
-  {transition: "transform 0.2s", transform: `translateX(${clickedStyle})`, position: "relative"} :
-    {transition: "transform 0.2s", color: "grey", position: "relative"}
+const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWith('/archi') ?
+  { transition: "transform 0.2s", transform: `translateX(${clickedStyle})`, position: "relative" } :
+  { transition: "transform 0.2s", color: "grey", position: "relative" };
 
 
     const photoStyle = photoClicked || router.pathname.startsWith('/photo') ?
