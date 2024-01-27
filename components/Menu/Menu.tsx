@@ -48,8 +48,8 @@ export default function Menu() {
       animationHome();
       setLayersDisplay("block");
     } 
-else    {      setLayersDisplay("none");
-}
+    else    
+      {setLayersDisplay("none");}
     
   }, []);
 

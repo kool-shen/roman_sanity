@@ -115,7 +115,19 @@
 
 /*FIX IPHONE*/
 
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+/* @media only screen and (-webkit-min-device-pixel-ratio: 3) and (-webkit-device-pixel-ratio: 2) {
+  .galleryContainer {
+    height: 67vh;
+  }
+}
+
+@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  .galleryContainer {
+    height: 67vh;
+  }
+} */
+
+@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
   .galleryContainer {
     height: 67vh;
   }

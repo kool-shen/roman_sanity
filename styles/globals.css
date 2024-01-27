@@ -68,6 +68,11 @@ p {
   box-sizing: border-box;
 }
 
+.adminContainer {
+  width: 100vw;
+  cursor: auto;
+}
+
 .rightPartContainer {
   max-height: calc(
     100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)

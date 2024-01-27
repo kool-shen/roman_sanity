@@ -11,6 +11,8 @@ import Head from "next/head";
 
 
 export default function singlePhoto({ photo, photo2, album   }: { album: albumType [], photo : albumType [], photo2 : albumType [] }) {
+console.log('photo', photo);
+console.log('album', album);
 
 /// Mobile ou web ///
 
@@ -128,8 +130,6 @@ const handleClickPreviousMobile = () => {
 
 function PhotoBlock({index , indexSlider, setIndex, photo}:
 
-
-
     {index : number, indexSlider : number, setIndex: React.Dispatch<React.SetStateAction<number>>, photo: ImageDataType} ) {
   return (
     
@@ -140,7 +140,8 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
           onClickLeft={()=> {handleClickPrevious(index, indexSlider, setIndex)}}
         />
         <Pic onClick={()=> {handleClickNext(index, indexSlider, setIndex)} }   
-          src={photo.image} alt={photo.image} width={photo.width} height={photo.height}/> 
+          src={photo.image} alt={photo.image} width={photo.width} height={photo.height}
+           key={photo.image}/> 
       </div>
         <p>{`${index + 1}/${indexSlider}`}</p>  
     </div>

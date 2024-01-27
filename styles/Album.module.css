@@ -95,3 +95,17 @@
     height: 64vh;
   }
 }
+
+/* FIX IPHONE 8 & 8 Plus */
+
+@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  .galleryContainer {
+    height: 60vh;
+  }
+}
+
+@media only screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
+  .galleryContainer {
+    height: 60vh;
+  }
+}
