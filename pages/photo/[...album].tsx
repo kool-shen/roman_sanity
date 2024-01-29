@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Layers from "@/components/Pic/Layers";
 import Link from "next/link";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 
 export default function singlePhoto({ photo, photo2, album   }: { album: albumType [], photo : albumType [], photo2 : albumType [] }) {
@@ -74,18 +75,17 @@ const [indexUnclicked, setIndexUnclicked] = useState(0)
 
 
 
-const handleClickNext1 = () => {
-  if (indexClicked + 1 >= album[0].images.length) {
+const handleClickNext1 = (total:number) => {
+  if (indexClicked + 1 >=total) {
     setIndexClicked(0);
   } else {
     setIndexClicked(indexClicked + 1);
   }
 };
 
-const handleClickPrevious1 = () => {
+const handleClickPrevious1 = (total:number) => {
   if (indexClicked - 1 < 0) {
-    setIndexClicked(album[0].images.length - 1);
-    // console.log("Previous Index:", albumIndex - 1);
+    setIndexClicked(total);
   } else {
     setIndexClicked(indexClicked - 1);
   }
@@ -146,12 +146,11 @@ const handleClickPreviousMobile = () => {
 
 return (
   <>
-    <Head>
-      <title>{`Roman Cadre - ${album[0].name}`}</title>
-      <link rel="icon" href="/dot_white_big.png" />
-      <meta name="Photographie" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </Head>
+      <NextSeo
+    title={album[0].name}
+    description={`photos de l'album ${album[0].name}`}
+    
+  />
     <div className={`rightPartContainer ${styles.mainContainer}`}>
       <Link href={`/photo/${album[0].slug}`}>
         <h2>{album[0].name}</h2>
@@ -165,10 +164,10 @@ return (
                   <div className={styles.picContainer}>
                     <Layers
                       onClickRight={() => {
-                        handleClickNext1();
+                        handleClickNext1( album[0].images.length);
                       }}
                       onClickLeft={() => {
-                        handleClickPrevious1();
+                        handleClickPrevious1(album[0].images.length - 1);
                       }}
                     />
                     <Pic
@@ -209,10 +208,10 @@ return (
                   <div className={styles.picContainer}>
                     <Layers
                       onClickRight={() => {
-                        handleClickNext1();
+                        handleClickNext1( album[0].images2.length);
                       }}
                       onClickLeft={() => {
-                        handleClickPrevious1();
+                        handleClickPrevious1(album[0].images2.length - 1);
                       }}
                     />
                     <Pic

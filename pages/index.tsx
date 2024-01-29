@@ -7,6 +7,8 @@ import styles from "@/styles/Home.module.css"
 import { useEffect, useState } from 'react'
 import Layers from '@/components/Pic/Layers'
 
+import { DefaultSeo } from 'next-seo';
+
 
 export default function Home(props: {homePhotos:homepagePhotosType[]}) {
 
@@ -35,12 +37,14 @@ const handleClickPrevious = () => {
 
   return (
       <>
-    <Head>
-        <title> {`Roman Cadre`}</title>
+    {/* <Head>
+      <title> {`Roman Cadre`}</title>
         <link rel="icon" href="/dot_white_big.png" />
         <meta name="Home" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
+    
+      </Head>  */}
+   
     <div className={`rightPartContainer ${styles.mainContainer}`}>
      <div className={styles.picContainer}>
      <Layers 

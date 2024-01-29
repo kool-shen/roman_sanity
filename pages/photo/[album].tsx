@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 export default function Album({ album }: { album: albumType [] }) {
 
@@ -69,12 +70,10 @@ const router = useRouter();
 
   return (
     <>
-    <Head>
-    <title> {`Roman Cadre - ${album[0].name}`}</title>
-    <link rel="icon" href="/dot_white_big.png" />
-    <meta name="Photographie" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </Head>
+     <NextSeo
+    title={album[0].name}
+    description={`Mosaique de l'album "${album[0].name}"`}
+  />
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer}>
      <h2>{album[0].name}</h2> 

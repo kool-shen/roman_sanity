@@ -10,6 +10,7 @@ import PicHeight from '@/components/Pic/PicHeight'
 import  {gsap} from "gsap"
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { NextSeo } from 'next-seo';
 
 let initialData : albumType[] = [];
 
@@ -120,12 +121,11 @@ const clickIndex = ()=>   {
   
     return (
         <>
-          <Head>
-        <title> {`Roman Cadre - photographie`}</title>
-        <link rel="icon" href="/dot_white_big.png" />
-        <meta name="Photographie" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
+         <NextSeo
+    title={"photographie"}
+    description={`section photographie`}
+    
+  />
          
           <div className={`rightPartContainer ${styles.mainContainer}`}>
           <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>index</h1>

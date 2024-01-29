@@ -4,7 +4,6 @@ import styles from "./Pic.module.css"
 import { projectPicProps } from '@/types/Project-type'
 
 
-
 export default function Pic(props : projectPicProps ) {
 
 const [isLoaded, setIsLoaded] = useState(false)
