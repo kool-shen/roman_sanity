@@ -12,7 +12,6 @@ const [isLoaded, setIsLoaded] = useState(false)
 const handleLoad = () =>  
 {
  setIsLoaded(true); 
-// console.log("yes")
 }
  
   return (

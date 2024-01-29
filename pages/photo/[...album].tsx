@@ -3,16 +3,13 @@ import { albumType, ImageDataType } from "@/types/Project-type";
 import styles from "@/styles/Photo.module.css"
 import Pic from "@/components/Pic/Pic";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Layers from "@/components/Pic/Layers";
 import Link from "next/link";
-import PicHeight from "@/components/Pic/PicHeight";
 import Head from "next/head";
 
 
 export default function singlePhoto({ photo, photo2, album   }: { album: albumType [], photo : albumType [], photo2 : albumType [] }) {
-console.log('photo', photo);
-console.log('album', album);
+console.log('photo', photo); console.log('album', album);
 
 /// Mobile ou web ///
 
@@ -28,7 +25,7 @@ console.log('album', album);
   }, []);
 
 const mergedImages = album[0].images.concat(album[0].images2)
-console.log(mergedImages)
+// console.log(mergedImages)
 
  const slider1IsClicked = photo[0].images.length == 0 ? false : true
 
@@ -58,7 +55,7 @@ function findMobileIndexByKeyValue(keyToFind:string) {
 const mobileIndexPhotoClicked =  findMobileIndexByKeyValue(clickedPhotoKey)
 
 
-console.log("KEY", findMobileIndexByKeyValue(clickedPhotoKey))
+// console.log("KEY", findMobileIndexByKeyValue(clickedPhotoKey))
 
 /// index de la photo (web ou mobile)
 
@@ -67,13 +64,6 @@ const indexPhotoClicked =findIndexByKeyValue(clickedPhotoKey)
 const [indexClicked, setIndexClicked] = useState(indexPhotoClicked)
 const [indexUnclicked, setIndexUnclicked] = useState(0)
 
-const IndexClickedSlider = slider1IsClicked ? album[0].images.length : album[0].images2.length
-
-
-const IndexUnclickedSlider = !slider1IsClicked ? album[0].images.length : album[0].images2.length
-
-const clickedPhoto = slider1IsClicked? album[0].images[indexClicked] : album[0].images2[indexClicked]
-const unclickedPhoto = slider1IsClicked? album[0].images2[indexUnclicked] : album[0].images[indexUnclicked]
 
 /// Fonction click next + previous 
 
@@ -82,30 +72,51 @@ const unclickedPhoto = slider1IsClicked? album[0].images2[indexUnclicked] : albu
 
 
 
-const handleClickNext = (photoIndex: number, albumIndex: number, setIndex: React.Dispatch<React.SetStateAction<number>>) => {
-  if (photoIndex + 1 >= albumIndex) {
-    setIndex(0);
+
+
+const handleClickNext1 = () => {
+  if (indexClicked + 1 >= album[0].images.length) {
+    setIndexClicked(0);
   } else {
-    setIndex(photoIndex + 1);
+    setIndexClicked(indexClicked + 1);
+  }
+};
+
+const handleClickPrevious1 = () => {
+  if (indexClicked - 1 < 0) {
+    setIndexClicked(album[0].images.length - 1);
+    // console.log("Previous Index:", albumIndex - 1);
+  } else {
+    setIndexClicked(indexClicked - 1);
+  }
+};
+
+
+
+const handleClickNext2 = (total:number) => {
+  if (indexUnclicked + 1 >= total) {
+    setIndexUnclicked(0);
+  } else {
+    setIndexUnclicked(indexUnclicked + 1);
     
   }
 };
 
-const handleClickPrevious = (photoIndex: number, albumIndex: number, setIndex: React.Dispatch<React.SetStateAction<number>>) => {
-  if (photoIndex - 1 < 0) {
-    setIndex(albumIndex - 1);
-    console.log("Previous Index:", albumIndex - 1);
+
+const handleClickPrevious2 = (total:number) => {
+  if (indexUnclicked - 1 < 0) {
+    setIndexUnclicked(total);
   } else {
-    setIndex(photoIndex - 1);
+    setIndexUnclicked(indexUnclicked - 1);
   }
 };
+
 
 
 /// MOBILE
 
 
 const [indexMobile, setIndexMobile] = useState(mobileIndexPhotoClicked)
-console.log('mobileIndexPhotoClicked', mobileIndexPhotoClicked);
 
 const handleClickNextMobile = () => {
   if (indexMobile + 1 >= mergedImages.length) {
@@ -126,35 +137,6 @@ const handleClickPreviousMobile = () => {
 };
 
 
-//////
-
-function PhotoBlock({index , indexSlider, setIndex, photo}:
-
-    {index : number, indexSlider : number, setIndex: React.Dispatch<React.SetStateAction<number>>, photo: ImageDataType} ) {
-  return (
-    
-    <div className={styles.photoBlockContainer}>
-      <div className={styles.picContainer}>
-        <Layers 
-          onClickRight={()=> {handleClickNext(index, indexSlider, setIndex)}}
-          onClickLeft={()=> {handleClickPrevious(index, indexSlider, setIndex)}}
-        />
-        <Pic onClick={()=> {handleClickNext(index, indexSlider, setIndex)} }   
-          src={photo.image} alt={photo.image} width={photo.width} height={photo.height}
-           key={photo.image}/> 
-      </div>
-        <p>{`${index + 1}/${indexSlider}`}</p>  
-    </div>
-   
-  );
-}
-
-
-// console.log ("index", mobileIndexPhotoClicked, "lenght", mergedImages.length, "photo", clickedPhoto)
-
-// console.log("index", indexClicked, "lenght", IndexClickedSlider, "photo", clickedPhoto)
-
-
 ////
 
 
@@ -162,88 +144,143 @@ function PhotoBlock({index , indexSlider, setIndex, photo}:
 
 
 
-    return (
-      <>
-      <Head>
-      <title> {`Roman Cadre - ${album[0].name}`}</title>
+return (
+  <>
+    <Head>
+      <title>{`Roman Cadre - ${album[0].name}`}</title>
       <link rel="icon" href="/dot_white_big.png" />
       <meta name="Photographie" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </Head>
-      <div className={`rightPartContainer ${styles.mainContainer}`}>
-        <Link href={`/photo/${album[0].slug}`}>
-        <h2>{album[0].name}</h2>
-        </Link>
-       <div className={styles.slidersContainer}>
-        {!mobileScreen ? (<>
-          {slider1IsClicked ? (
-        <>
-          <PhotoBlock 
-            index={indexClicked} 
-            indexSlider={IndexClickedSlider} 
-            setIndex={setIndexClicked} 
-            photo={clickedPhoto} 
-          />
-          <PhotoBlock 
-            index={indexUnclicked} 
-            indexSlider={IndexUnclickedSlider} 
-            setIndex={setIndexUnclicked} 
-            photo={unclickedPhoto} 
-          />
-        </>
-      ) : (
-        <>
-          <PhotoBlock 
-            index={indexUnclicked} 
-            indexSlider={IndexUnclickedSlider} 
-            setIndex={setIndexUnclicked} 
-            photo={unclickedPhoto} 
-          />
-          <PhotoBlock 
-            index={indexClicked} 
-            indexSlider={IndexClickedSlider} 
-            setIndex={setIndexClicked} 
-            photo={clickedPhoto} 
-          />
-        </>
-      )}
-        
-        </>
-          
-        ): ( 
-
-          <>
-           <div className={styles.photoBlockContainer}>
-           
-      <div className={styles.picContainer}>
-      <Layers 
-          onClickRight={()=> {handleClickNextMobile()}}
-          onClickLeft={()=> {handleClickPreviousMobile()}}
-        />
-        <Pic  
-          src={mergedImages[indexMobile].image}
-          alt={mergedImages[indexMobile].image}
-          width={mergedImages[indexMobile].width} 
-          height={mergedImages[indexMobile].height}/> 
-      </div>
-      <div className={styles.infoContainer}>
-      <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>  
+    <div className={`rightPartContainer ${styles.mainContainer}`}>
       <Link href={`/photo/${album[0].slug}`}>
-      <p>{album[0].name}</p>
-        </Link>
-        </div>
-    </div>
+        <h2>{album[0].name}</h2>
+      </Link>
+      <div className={styles.slidersContainer}>
+        {!mobileScreen ? (
+          <>
+            {slider1IsClicked ? (
+              <>
+                <div className={styles.photoBlockContainer}>
+                  <div className={styles.picContainer}>
+                    <Layers
+                      onClickRight={() => {
+                        handleClickNext1();
+                      }}
+                      onClickLeft={() => {
+                        handleClickPrevious1();
+                      }}
+                    />
+                    <Pic
+                      src={album[0].images[indexClicked].image}
+                      alt={album[0].images[indexClicked].image}
+                      width={album[0].images[indexClicked].width}
+                      height={album[0].images[indexClicked].height}
+                      key={album[0].images[indexClicked].image}
+                    />
+                  </div>
+                  <p>{`${indexClicked + 1}/${album[0].images.length}`}</p>
+                </div>
+
+                <div className={styles.photoBlockContainer}>
+                  <div className={styles.picContainer}>
+                    <Layers
+                      onClickRight={() => {
+                        handleClickNext2(album[0].images2.length);
+                      }}
+                      onClickLeft={() => {
+                        handleClickPrevious2(album[0].images2.length - 1);
+                      }}
+                    />
+                    <Pic
+                      src={album[0].images2[indexUnclicked].image}
+                      alt={album[0].images2[indexUnclicked].image}
+                      width={album[0].images2[indexUnclicked].width}
+                      height={album[0].images2[indexUnclicked].height}
+                      key={album[0].images2[indexUnclicked].image}
+                    />
+                  </div>
+                  <p>{`${indexUnclicked + 1}/${album[0].images2.length}`}</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={styles.photoBlockContainer}>
+                  <div className={styles.picContainer}>
+                    <Layers
+                      onClickRight={() => {
+                        handleClickNext1();
+                      }}
+                      onClickLeft={() => {
+                        handleClickPrevious1();
+                      }}
+                    />
+                    <Pic
+                      src={album[0].images2[indexClicked].image}
+                      alt={album[0].images2[indexClicked].image}
+                      width={album[0].images2[indexClicked].width}
+                      height={album[0].images2[indexClicked].height}
+                      key={album[0].images2[indexClicked].image}
+                    />
+                  </div>
+                  <p>{`${indexClicked + 1}/${album[0].images2.length}`}</p>
+                </div>
+                <div className={styles.photoBlockContainer}>
+                  <div className={styles.picContainer}>
+                    <Layers
+                      onClickRight={() => {
+                        handleClickNext2(album[0].images.length);
+                      }}
+                      onClickLeft={() => {
+                        handleClickPrevious2(album[0].images.length - 1);
+                      }}
+                    />
+                    <Pic
+                      src={album[0].images[indexUnclicked].image}
+                      alt={album[0].images[indexUnclicked].image}
+                      width={album[0].images[indexUnclicked].width}
+                      height={album[0].images[indexUnclicked].height}
+                      key={album[0].images[indexUnclicked].image}
+                    />
+                  </div>
+                  <p>{`${indexUnclicked + 1}/${album[0].images.length}`}</p>
+                </div>
+              </>
+            )}
           </>
-       ) } 
-       
-      
-    
-      </div>  
-    
-      
-  </div>
+        ) : (
+          <>
+            <div className={styles.photoBlockContainer}>
+              <div className={styles.picContainer}>
+                <Layers
+                  onClickRight={() => {
+                    handleClickNextMobile();
+                  }}
+                  onClickLeft={() => {
+                    handleClickPreviousMobile();
+                  }}
+                />
+                <Pic
+                  src={mergedImages[indexMobile].image}
+                  alt={mergedImages[indexMobile].image}
+                  width={mergedImages[indexMobile].width}
+                  height={mergedImages[indexMobile].height}
+                />
+              </div>
+              <div className={styles.infoContainer}>
+                <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>
+                <Link href={`/photo/${album[0].slug}`}>
+                  <p>{album[0].name}</p>
+                </Link>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
   </>
-    )
+);
+
   }
 
 
