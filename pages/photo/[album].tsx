@@ -73,6 +73,8 @@ const router = useRouter();
      <NextSeo
     title={album[0].name.toLowerCase()}
     description={`Mosaique de l'album "${album[0].name}"`}
+    // canonical =   {`https://www.romancadre.com/photo/${album[0].slug}`}
+
   />
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.infoContainer}>

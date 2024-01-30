@@ -35,8 +35,9 @@ export default function App({ Component, pageProps }: AppProps) {
     {
       rel: 'icon',
       href: '/dot_white_big.png',
-    }
-  ]}
+    },
+      ]}
+      canonical =  {`https://www.romancadre.com${router.asPath}`}
   />
   <SocialProfileJsonLd
       type="Person"

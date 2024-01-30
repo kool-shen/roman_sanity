@@ -1,12 +1,14 @@
 import { DefaultSeoProps } from 'next-seo';
 
+
+
 const config: DefaultSeoProps = {
     
     title: undefined,
-    canonical :'https://www.romancadre.com',
     defaultTitle : 'roman cadre',
     titleTemplate : '%s | roman cadre',
     description: 'architecte + photographe basé à Rennes',
+    
   openGraph: {
     images : [
         {
@@ -18,7 +20,7 @@ const config: DefaultSeoProps = {
       ],
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://www.romancadre.com/',
+    // url: 'https://www.romancadre.com/',
     siteName: 'romancadre.com',
   },
   themeColor : "black"
