@@ -58,7 +58,7 @@ useEffect(() => {
   projectsAnimation()
 }, []);
 
-console.log(projectsRef.current?.children)
+// console.log(projectsRef.current?.children)
 
 //// animation sortie
 
@@ -96,7 +96,7 @@ const router = useRouter();
    <div className={`rightPartContainer ${styles.mainContainer}`}>
     <div className={styles.titleContainer} ref={projectsRef} >
         {data?.map((project, index) => (
-          <div className={styles.textContainer}>
+          <div className={styles.textContainer} key={project._id}>
           <Link href={`/archi/${project.slug}`}>
           <h3 key={index} 
           className={hoveredData !== project.name && hoveredData !== null ?   styles.hiddenText : ""}
@@ -111,7 +111,7 @@ const router = useRouter();
     </div>
     <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
       {data?.map((project, index) => ( 
-        <div className={styles.projectContainer}>  
+        <div className={styles.projectContainer} key={project._id}>  
        <div 
        className={styles.picContainer} 
        key={index}>

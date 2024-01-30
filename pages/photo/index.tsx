@@ -121,19 +121,18 @@ const clickIndex = ()=>   {
   
     return (
         <>
-         <NextSeo
+           <NextSeo
     title={"photographie"}
     description={`section photographie`}
     
   />
-         
           <div className={`rightPartContainer ${styles.mainContainer}`}>
           <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>index</h1>
            
         <div className={styles.titleContainer} ref={albumsRef}>
           {props.albums.map((content: albumType) => (
-              <div className={styles.textContainer}>
-              <Link href={`photo/${content.slug}`} key={content._id}>
+              <div className={styles.textContainer} key={content._id}>
+              <Link href={`photo/${content.slug}`} >
               <h3 
                className={hoveredData !== content.name && hoveredData !== null ? styles.hiddenText : ""}
                onMouseEnter={()=>{hover(content.name)}}
@@ -150,8 +149,8 @@ const clickIndex = ()=>   {
           <div className={styles.modalContainer}>
           <div className={styles.mobileModal} style={indexStyle}>
         {props.albums.map((content: albumType) => (
-              <div className={styles.textContainer}>
-              <Link href={`photo/${content.slug}`} key={content._id}>
+              <div className={styles.textContainer} key={content._id}>
+              <Link href={`photo/${content.slug}`} >
               <h3>
                 {content.name}
               </h3>
@@ -166,7 +165,7 @@ const clickIndex = ()=>   {
           {data.map((content: any, index: number) => (
             <div key={index} className={styles.picContainer} >
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>
-                <PicHeight src={content.image} alt={content.albumSlug} width={content.width} height={content.height} onMouseEnter={()=>{hover(content.albumName)}}
+                <PicHeight src={content.image} alt={`photo ${index} de l'album ${content.albumSlug}`} width={content.width} height={content.height} onMouseEnter={()=>{hover(content.albumName)}}
             onMouseLeave={()=>{hover(null)}}/>
               </Link>
             </div>

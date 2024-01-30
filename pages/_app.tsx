@@ -7,9 +7,9 @@ import { Metadata } from 'next';
 import Head from 'next/head'
 import { NextSeo } from 'next-seo';
 import SEO from '../next-seo.config';
-
 import { DefaultSeo } from 'next-seo';
 import React from 'react';
+import { SocialProfileJsonLd } from 'next-seo';
 
 
 
@@ -31,7 +31,22 @@ export default function App({ Component, pageProps }: AppProps) {
   return ( 
     <React.Fragment>
   <DefaultSeo {...SEO} 
+  additionalLinkTags={[
+    {
+      rel: 'icon',
+      href: '/dot_white_big.png',
+    }
+  ]}
   />
+  <SocialProfileJsonLd
+      type="Person"
+      name="Roman Cadre"
+      url="https://www.romancadre.com"
+      sameAs={[
+        'https://www.instagram.com/roman_cadre',
+        'https://www.facebook.com/rcadre',
+      ]}
+    />
     <div className=   {isMenuNeeded ? "mainContainer" : "adminContainer"}>
   {isMenuNeeded && <Menu />}
   <Component {...pageProps} />

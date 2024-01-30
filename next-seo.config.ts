@@ -3,6 +3,7 @@ import { DefaultSeoProps } from 'next-seo';
 const config: DefaultSeoProps = {
     
     title: undefined,
+    canonical :'https://www.romancadre.com',
     defaultTitle : 'roman cadre',
     titleTemplate : '%s | roman cadre',
     description: 'architecte + photographe basé à Rennes',
@@ -10,8 +11,8 @@ const config: DefaultSeoProps = {
     images : [
         {
           url: 'https://cdn.sanity.io/images/h6makjy9/production/626a8a2c3a562ec1fd5f87723185be1a9d6ee0b0-1333x2000.jpg',
-          width: 1333,
-          height: 2000,
+          width: 1333 * 0.75,
+          height: 2000* 0.75,
           alt: 'Image Roman Cadre',
         },
       ],

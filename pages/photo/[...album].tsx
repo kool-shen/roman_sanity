@@ -10,7 +10,7 @@ import { NextSeo } from "next-seo";
 
 
 export default function singlePhoto({ photo, photo2, album   }: { album: albumType [], photo : albumType [], photo2 : albumType [] }) {
-console.log('photo', photo); console.log('album', album);
+// console.log('photo', photo); console.log('album', album);
 
 /// Mobile ou web ///
 
@@ -147,7 +147,7 @@ const handleClickPreviousMobile = () => {
 return (
   <>
       <NextSeo
-    title={album[0].name}
+    title={album[0].name.toLowerCase()}
     description={`photos de l'album ${album[0].name}`}
     
   />
@@ -172,7 +172,7 @@ return (
                     />
                     <Pic
                       src={album[0].images[indexClicked].image}
-                      alt={album[0].images[indexClicked].image}
+                      alt={`photo ${indexClicked} sur ${album[0].images.length} de l'album ${album[0].name}`}
                       width={album[0].images[indexClicked].width}
                       height={album[0].images[indexClicked].height}
                       key={album[0].images[indexClicked].image}
@@ -193,7 +193,7 @@ return (
                     />
                     <Pic
                       src={album[0].images2[indexUnclicked].image}
-                      alt={album[0].images2[indexUnclicked].image}
+                      alt={`photo ${indexUnclicked} sur ${album[0].images2.length} de l'album ${album[0].name}`}
                       width={album[0].images2[indexUnclicked].width}
                       height={album[0].images2[indexUnclicked].height}
                       key={album[0].images2[indexUnclicked].image}
@@ -216,7 +216,7 @@ return (
                     />
                     <Pic
                       src={album[0].images2[indexClicked].image}
-                      alt={album[0].images2[indexClicked].image}
+                      alt={`photo ${indexClicked} sur ${album[0].images2.length} de l'album ${album[0].name}`}
                       width={album[0].images2[indexClicked].width}
                       height={album[0].images2[indexClicked].height}
                       key={album[0].images2[indexClicked].image}
@@ -236,7 +236,7 @@ return (
                     />
                     <Pic
                       src={album[0].images[indexUnclicked].image}
-                      alt={album[0].images[indexUnclicked].image}
+                      alt={`photo ${indexUnclicked} sur ${album[0].images.length} de l'album ${album[0].name}`}
                       width={album[0].images[indexUnclicked].width}
                       height={album[0].images[indexUnclicked].height}
                       key={album[0].images[indexUnclicked].image}
@@ -261,7 +261,7 @@ return (
                 />
                 <Pic
                   src={mergedImages[indexMobile].image}
-                  alt={mergedImages[indexMobile].image}
+                  alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
                   width={mergedImages[indexMobile].width}
                   height={mergedImages[indexMobile].height}
                 />

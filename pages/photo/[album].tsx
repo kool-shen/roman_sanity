@@ -34,12 +34,12 @@ const crossStyle = crossClicked
 
 const clickCross = () => {
 setCrossClicked(!crossClicked)
-console.log(crossClicked, crossStyle)
+// console.log(crossClicked, crossStyle)
 
 }   
 
 const contentExists = album[0].content?.length > 0 ? true : false
-console.log(contentExists);
+// console.log(contentExists);
 
 
 //// animation sortie
@@ -71,7 +71,7 @@ const router = useRouter();
   return (
     <>
      <NextSeo
-    title={album[0].name}
+    title={album[0].name.toLowerCase()}
     description={`Mosaique de l'album "${album[0].name}"`}
   />
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
@@ -92,10 +92,10 @@ const router = useRouter();
      <div className={styles.galleryContainer } >
     
      {photoData.map((content, i) => (
-      <div className={styles.picContainer} 
+      <div className={styles.picContainer} key={content.key}
       >             
         <Link href={`/photo/${album[0].slug}/${content.key}`} >
-         <PicHeight src={content.image} alt={content.albumName} width={content.width} height={content.height}/>
+         <PicHeight src={content.image} alt={`photo ${i} de l'album ${content.albumName}`} width={content.width} height={content.height}/>
         </Link>
        </div>
           ))}
@@ -109,10 +109,10 @@ const router = useRouter();
 
 export async function getStaticProps({ params }: { params: { album: string } }) {
   const { album } = params;
-  console.log('SlugAlbum', album);
+  // console.log('SlugAlbum', album);
 
   const albumData = await getOneAlbum(album); 
-  console.log('Data de l album', albumData[0].images[0] );
+  // console.log('Data de l album', albumData[0].images[0] );
 
   const allData = await getAllAlbums(); 
 
@@ -131,8 +131,8 @@ export async function getStaticPaths() {
   const paths = albums?.map((album: albumType) => ({
     params: { album: album.slug }, 
   }));
-  console.log("DATA DE BASE",albums)
-  console.log("ALBUMPATHS", paths)
+  // console.log("DATA DE BASE",albums)
+  // console.log("ALBUMPATHS", paths)
   
 
 

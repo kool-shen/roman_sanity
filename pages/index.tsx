@@ -1,13 +1,10 @@
 import Head from 'next/head'
-import  {getHomepagePhotos, getHomepagePhotoType} from "@/sanity/sanity-utils"
+import  {getHomepagePhotos} from "@/sanity/sanity-utils"
 import { homepagePhotosType } from '@/types/Project-type'
-import PicHeight from '@/components/Pic/PicHeight'
 import Pic from '@/components/Pic/Pic'
 import styles from "@/styles/Home.module.css"
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import Layers from '@/components/Pic/Layers'
-
-import { DefaultSeo } from 'next-seo';
 
 
 export default function Home(props: {homePhotos:homepagePhotosType[]}) {
@@ -35,15 +32,13 @@ const handleClickPrevious = () => {
   }
 };
 
+
+const altText = `photo homepage`;
+
+
   return (
       <>
-    {/* <Head>
-      <title> {`Roman Cadre`}</title>
-        <link rel="icon" href="/dot_white_big.png" />
-        <meta name="Home" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-      </Head>  */}
+
    
     <div className={`rightPartContainer ${styles.mainContainer}`}>
      <div className={styles.picContainer}>
@@ -55,7 +50,7 @@ const handleClickPrevious = () => {
       src={data[0].images[activeIndex].image} 
       width={data[0].images[activeIndex].width} 
       height={data[0].images[activeIndex].height} 
-      alt={data[0].name} /> 
+      alt={altText} /> 
      </div>
    </div>
     </>    

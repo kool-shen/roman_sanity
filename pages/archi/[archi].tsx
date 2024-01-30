@@ -17,7 +17,7 @@ export default function archiProject ({archi  } : { archi: projectArchiType [] }
 
   const mergedImages = archi[0]?.images.concat(archi[0]?.images2)
 
-  console.log(mergedImages)
+  // console.log(mergedImages)
 
 
    /// Mobile ///
@@ -59,7 +59,7 @@ const image2 = archi[0]?.images2?.[secondSliderIndex] || { image: '', width: 0, 
  const handleClickPrevious = (photoIndex:number, albumindex:number, setIndex:React.Dispatch<React.SetStateAction<number>>) => {
    if (photoIndex - 1 < 0) {
      setIndex(albumindex - 1);
-     console.log(photoIndex)
+    //  console.log(photoIndex)
    } else {
      setIndex(photoIndex - 1);
 
@@ -163,7 +163,7 @@ useEffect(() => {
             onClickLeft={()=> {handleClickPrevious(firstSliderIndex, firstSliderLenght, setFirstSliderIndex)}}
           />
           <Pic   
-          src={image1.image} alt={image1.image} 
+          src={image1.image} alt={`photo ${firstSliderIndex +1} sur ${firstSliderLenght} du projet ${archi[0].name}`} 
           width={image1.width} height={image1.height}/>  
         </div>
         <Index index={firstSliderIndex +1} length={firstSliderLenght}/>
@@ -176,7 +176,7 @@ useEffect(() => {
             onClickLeft={()=> {handleClickPrevious(secondSliderIndex, secondSliderLenght, setSecondSliderIndex)}}
           />
          <Pic   
-          src={image2.image} alt={image2.image} 
+          src={image2.image} alt={`photo ${secondSliderIndex +1} sur ${secondSliderLenght} du projet ${archi[0].name}`}
           width={image2.width} height={image2.height}/>
         </div>
         <Index index={secondSliderIndex +1} length={secondSliderLenght}/> </div>
@@ -215,10 +215,10 @@ useEffect(() => {
 
 export async function getStaticProps({ params }: { params: { archi: string } }) {
     const { archi } = params;
-    console.log('SlugArchi', archi);
+    // console.log('SlugArchi', archi);
   
     const projectData = await getOneProject(archi); 
-    console.log('Data du projet', projectData );
+    // console.log('Data du projet', projectData );
   
     return {
       
@@ -235,8 +235,8 @@ export async function getStaticPaths() {
     const paths = projects?.map((album: projectArchiType) => ({
       params: { archi: album.slug }, 
     }));
-    console.log("DATA DE BASE",projects)
-    console.log("PROJECTPATHS", paths)
+    // console.log("DATA DE BASE",projects)
+    // console.log("PROJECTPATHS", paths)
     
   
   
