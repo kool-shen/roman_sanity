@@ -26,7 +26,7 @@ h2,
 h3,
 p {
   color: black;
-  font-family: "ReadexProRegular";
+  font-family: var(--readexRegular);
   text-align: justify;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -36,7 +36,8 @@ p {
 
 h1 {
   font-size: 5.8vmin;
-  font-family: "ReadexProRegular";
+  font-family: var(--readexRegular);
+
   display: inline-block;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -50,7 +51,7 @@ h3 {
 p {
   font-size: 2vmin;
   /* Fix Safari */
-  font-family: "ReadexProRegular";
+  font-family: var(--readexRegular);
   text-align: justify;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -135,7 +136,7 @@ a {
 _::-webkit-full-page-media,
 _:future,
 :root h3 {
-  font-family: "ReadexProLight";
+  font-family: var(--readexLight);
   margin-block-start: 0;
   margin-block-end: 0;
   font-size: 1.5vmin;
@@ -144,7 +145,7 @@ _:future,
 _::-webkit-full-page-media,
 _:future,
 :root h1 {
-  font-family: "ReadexProRegular";
+  font-family: var(--readexRegular);
   margin-block-start: 0;
   margin-block-end: 0;
   font-size: 5vmin;
@@ -154,31 +155,12 @@ _:future,
 
 @-moz-document url-prefix() {
   h3 {
-    font-family: "ReadexProLight";
+    font-family: var(--readexLight);
   }
 }
 
 @supports (-moz-appearance: none) {
   h3 {
-    font-family: "ReadexProLight";
+    font-family: var(--readexLight);
   }
-}
-
-@font-face {
-  font-family: "ReadexPro";
-  src: local("ReadexPro"),
-    url("../public/fonts/ReadexPro-VariableFont_HEXP\,wght.ttf")
-      format("truetype");
-}
-
-@font-face {
-  font-family: "ReadexProRegular";
-  src: local("ReadexProRegular"),
-    url("../public/fonts/ReadexPro-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "ReadexProLight";
-  src: local("ReadexProLight"),
-    url("../public/fonts/ReadexPro-ExtraLight.ttf") format("truetype");
 }

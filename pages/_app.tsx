@@ -3,14 +3,11 @@ import type { AppProps } from 'next/app'
 import Menu from '@/components/Menu/Menu'
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { Metadata } from 'next';
-import Head from 'next/head'
-import { NextSeo } from 'next-seo';
 import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
 import React from 'react';
 import { SocialProfileJsonLd } from 'next-seo';
-
+import  {readexLight, readexRegular} from '@/font/font'
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -48,7 +45,8 @@ export default function App({ Component, pageProps }: AppProps) {
         'https://www.facebook.com/rcadre',
       ]}
     />
-    <div className=   {isMenuNeeded ? "mainContainer" : "adminContainer"}>
+    
+    <div className={`${isMenuNeeded ? "mainContainer" : "adminContainer"} ${readexLight.variable} ${readexRegular.variable}`}>
   {isMenuNeeded && <Menu />}
   <Component {...pageProps} />
   </div>

@@ -29,7 +29,7 @@ const handleLoad = () =>
           sizes={`(min-width: 768px) 20vw, 50vw `}
           loading='lazy'
           onLoad={()=>{handleLoad()}}
-        />
+          />
       </div>
   )
 }
