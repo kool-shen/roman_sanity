@@ -12,8 +12,24 @@ const config: DefaultSeoProps = {
   openGraph: {
     images : [
         {
-          url: '/dot_white_big.png',
+          url: 
+          'https://cdn.sanity.io/images/h6makjy9/production/626a8a2c3a562ec1fd5f87723185be1a9d6ee0b0-1333x2000.jpg',
      
+          alt: 'Image Roman Cadre',
+        },
+        {
+          url: 
+          'https://cdn.sanity.io/images/h6makjy9/production/f53ba781414c0569ccb25be0e49c24a2206f9758-1334x2000.jpg',     
+          alt: 'Image Roman Cadre',
+        },
+        {
+          url: 
+          'https://cdn.sanity.io/images/h6makjy9/production/a2a2bb86a3d28ba972455900c9446b22b368d3e8-3448x5168.jpg',     
+          alt: 'Image Roman Cadre',
+        },
+        {
+          url: 
+          'https://cdn.sanity.io/images/h6makjy9/production/99120511dda0ece904e5f182600d5852028b0282-3448x5168.jpg',     
           alt: 'Image Roman Cadre',
         },
       ],

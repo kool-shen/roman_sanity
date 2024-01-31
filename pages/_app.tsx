@@ -43,6 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
       sameAs={[
         'https://www.instagram.com/roman_cadre',
         'https://www.facebook.com/rcadre',
+        'https://fr.linkedin.com/in/roman-cadre-1ab15575'
       ]}
     />
     

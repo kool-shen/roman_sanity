@@ -1,27 +1,8 @@
-import { albumType, projectType, projectArchiType, infosType } from "@/types/Project-type";
+import { albumType, projectArchiType, infosType } from "@/types/Project-type";
 import { createClient, groq } from "next-sanity";
 import config from "./config/client-config";
 
-export async function getProject(): Promise<projectType[] | undefined>  {
 
-    const client = createClient(config)
-  
-    return client.fetch(
-
-
-        groq`*[_type == "project"] {
-            _id,
-            _createdAt,
-            name,
-            "slug": slug.current,
-            "image": image.asset->url,
-            url,
-            content
-          }`
-
-    )
-
-}
 
 export async function getAllAlbums(): Promise<albumType[] | undefined>  {
     return createClient(config).fetch(
