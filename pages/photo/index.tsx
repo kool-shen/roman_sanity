@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import  {getAllAlbums, getOneAlbum} from "@/sanity/sanity-utils"
 import { albumType } from '@/types/Project-type';
-import Image from 'next/image';
 import styles from "@/styles/PhotoHome.module.css"
 import Link from 'next/link';
-import Pic from '@/components/Pic/Pic';
 import React, { useEffect, useRef } from 'react';
 import PicHeight from '@/components/Pic/PicHeight'
 import  {gsap} from "gsap"
