@@ -6,7 +6,6 @@ import { getAllInfo } from '@/sanity/sanity-utils'
 import { infosType } from '@/types/Project-type'
 import  {PortableText} from "@portabletext/react"
 import Link from 'next/link'
-import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 
 
@@ -54,7 +53,7 @@ export default function InfoPage(props: { infos: infosType[] })
 
 const data = props.infos[0]
 
-console.log('data', data);
+// console.log('data', data);
 
 const instaurl = data.insta.replace("@", "");
 
@@ -89,7 +88,6 @@ const instaurl = data.insta.replace("@", "");
 
 export async function getStaticProps() {
   const infodata = await getAllInfo();
-  console.log('infodata', infodata);
 
 
   if (!infodata || Object.keys(infodata).length === 0) {
@@ -97,7 +95,6 @@ export async function getStaticProps() {
   }
 
   const infosArray = Object.values(infodata);
-  console.log('infoData', infodata);
   
 
   return {

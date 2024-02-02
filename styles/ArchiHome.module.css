@@ -10,25 +10,26 @@
   min-height: 100vh;
   min-width: 20%;
   overflow-y: scroll;
+  scrollbar-color: transparent;
+  scrollbar-width: none;
 }
 
 .textContainer {
   width: auto;
   display: inline-block;
   width: fit-content;
-  /* visibility: hidden; */
   opacity: 0;
   transition: opacity, 0.3s;
 }
 
 .galleryContainer {
-  /* display: flex;
-  flex-wrap: wrap;*/
   align-content: flex-start;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   overflow-y: scroll;
   gap: 2vmin;
+  scrollbar-color: transparent;
+  scrollbar-width: none;
   /* border: 1px solid red; */
 }
 

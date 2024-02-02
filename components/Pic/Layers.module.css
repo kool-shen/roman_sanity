@@ -5,13 +5,12 @@
   height: 100%;
   width: 50%;
   transform: translateX(100%);
-  cursor: url(../../public/arrow_right_white.png), auto;
 }
+
 .leftLayer {
   position: absolute;
   background-color: transparent;
   z-index: 3;
   height: 100%;
   width: 50%;
-  cursor: url(../../public/arrow_left_white.png), auto;
 }

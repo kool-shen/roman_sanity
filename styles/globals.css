@@ -37,7 +37,6 @@ p {
 h1 {
   font-size: 5.8vmin;
   font-family: var(--readexRegular);
-
   display: inline-block;
   margin-block-start: 0;
   margin-block-end: 0;
