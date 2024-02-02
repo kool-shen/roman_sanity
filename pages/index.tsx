@@ -45,6 +45,8 @@ const altText = `photo homepage`;
      <Layers 
           onClickRight={()=> {handleClickNext()}}
           onClickLeft={()=> {handleClickPrevious()}}
+          index= {activeIndex + 1}
+          total=  {data[0].images.length}
         />
       <Pic
       src={data[0].images[activeIndex].image} 

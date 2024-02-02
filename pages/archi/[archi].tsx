@@ -161,12 +161,14 @@ useEffect(() => {
           <Layers 
             onClickRight={()=> {handleClickNext(firstSliderIndex, firstSliderLenght, setFirstSliderIndex)}}
             onClickLeft={()=> {handleClickPrevious(firstSliderIndex, firstSliderLenght, setFirstSliderIndex)}}
+            index= {firstSliderIndex +1}
+            total=  {firstSliderLenght}
           />
           <Pic   
           src={image1.image} alt={`photo ${firstSliderIndex +1} sur ${firstSliderLenght} du projet ${archi[0].name}`} 
           width={image1.width} height={image1.height}/>  
         </div>
-        <Index index={firstSliderIndex +1} length={firstSliderLenght}/>
+     
        </div>
        <div className={styles.photoBlockContainer}>
          
@@ -174,12 +176,14 @@ useEffect(() => {
           <Layers 
             onClickRight={()=> {handleClickNext(secondSliderIndex, secondSliderLenght, setSecondSliderIndex)}}
             onClickLeft={()=> {handleClickPrevious(secondSliderIndex, secondSliderLenght, setSecondSliderIndex)}}
+            index= {secondSliderIndex +1}
+            total=  {secondSliderLenght}
           />
          <Pic   
           src={image2.image} alt={`photo ${secondSliderIndex +1} sur ${secondSliderLenght} du projet ${archi[0].name}`}
           width={image2.width} height={image2.height}/>
         </div>
-        <Index index={secondSliderIndex +1} length={secondSliderLenght}/> </div>
+         </div>
         </> )
         :
         (
@@ -189,6 +193,7 @@ useEffect(() => {
             <Layers 
               onClickRight={()=> {handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)}}
               onClickLeft={()=> {handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)}}
+            
             />
            <Pic   
             src={mergedImages[mobileIndex].image} alt={mergedImages[mobileIndex].image} 
