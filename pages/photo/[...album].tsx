@@ -11,7 +11,7 @@ import { NextSeo } from "next-seo";
 
 export default function singlePhoto({ photo, photo2, album   }: { album: albumType [], photo : albumType [], photo2 : albumType [] }) {
 // console.log('photo', photo2);
- console.log('album', album);
+//  console.log('album', album);
 
 /// Mobile ou web ///
 
@@ -27,7 +27,6 @@ export default function singlePhoto({ photo, photo2, album   }: { album: albumTy
   }, []);
 
 const mergedImages = album[0].images.concat(album[0].images2)
-// console.log(mergedImages)
 
  const slider1IsClicked = photo[0].images.length == 0 ? false : true
 
@@ -56,6 +55,7 @@ function findMobileIndexByKeyValue(keyToFind:string) {
 
 const mobileIndexPhotoClicked =  findMobileIndexByKeyValue(clickedPhotoKey)
 
+console.log(mergedImages[mobileIndexPhotoClicked])
 
 // console.log("KEY", findMobileIndexByKeyValue(clickedPhotoKey))
 
@@ -142,7 +142,7 @@ const handleClickPreviousMobile = () => {
 
 
 function Description(props: { index: number;  images:any}) {
-console.log('images', props.images);
+// console.log('images', props.images);
   
   return (
     props.images[props.index].description && (
@@ -161,9 +161,9 @@ return (
     
   />
     <div className={`rightPartContainer ${styles.mainContainer}`}>
-      <Link href={`/photo/${album[0].slug}`}>
+  <Link href={`/photo/${album[0].slug}`}>
         <h2>{album[0].name}</h2>
-      </Link>
+      </Link> 
       <div className={styles.slidersContainer}>
         {!mobileScreen ? (
           <>
@@ -269,8 +269,16 @@ return (
           </>
         ) : (
           <>
+          
             <div className={styles.photoBlockContainer}>
+            <div className={styles.infoContainer}>
+                <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>
+                <Link href={`/photo/${album[0].slug}`}>
+                  <p>{album[0].name}</p>
+                </Link> 
+              </div>
               <div className={styles.picContainer}>
+             
                 <Layers
                   onClickRight={() => {
                     handleClickNextMobile();
@@ -286,14 +294,11 @@ return (
                   width={mergedImages[indexMobile].width}
                   height={mergedImages[indexMobile].height}
                 />
+                
               </div>
-              <div className={styles.infoContainer}>
-                <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>
-                <Link href={`/photo/${album[0].slug}`}>
-                  <p>{album[0].name}</p>
-                </Link>
-              </div>
+              <p> {mergedImages[indexMobile].description}</p>
             </div>
+           
           </>
         )}
       </div>

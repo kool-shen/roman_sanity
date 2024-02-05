@@ -1,4 +1,4 @@
-import { Readex_Pro } from "@next/font/google";
+import { Readex_Pro } from "next/font/google";
 
 export const readexLight = Readex_Pro({
   subsets: ["latin"],
