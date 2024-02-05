@@ -77,6 +77,8 @@
   .galleryContainer {
     grid-template-columns: repeat(3, 1fr);
     height: 68vh;
+    padding-bottom: 6vmin;
+    box-sizing: border-box;
   }
 
   .picContainer {
@@ -88,13 +90,13 @@
   }
 }
 
-/* FIX IPHONE + SAFARI */
+/* FIX IPHONE + SAFARI
 
 @media all and (min-resolution: 0.001dpcm) and (max-width: 425px) {
   .galleryContainer {
     height: 64vh;
   }
-}
+} */
 
 /* FIX IPHONE 8 & 8 Plus */
 
