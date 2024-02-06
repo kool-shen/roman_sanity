@@ -163,7 +163,7 @@ const clickIndex = ()=>   {
           {data.map((content: any, index: number) => (
             <div key={index} className={styles.picContainer} >
               <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>
-                <PicHeight src={content.image} alt={`photo ${index} de l'album ${content.albumSlug}`} width={content.width} height={content.height} onMouseEnter={()=>{hover(content.albumName)}}
+                <PicHeight src={content.image} alt={`photo`} width={content.width} height={content.height} onMouseEnter={()=>{hover(content.albumName)}}
             onMouseLeave={()=>{hover(null)}}/>
               </Link>
             </div>
