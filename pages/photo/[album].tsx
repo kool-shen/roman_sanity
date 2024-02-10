@@ -110,10 +110,8 @@ const router = useRouter();
 
 export async function getStaticProps({ params }: { params: { album: string } }) {
   const { album } = params;
-  // console.log('SlugAlbum', album);
 
   const albumData = await getOneAlbum(album); 
-  // console.log('Data de l album', albumData[0].images[0] );
 
   const allData = await getAllAlbums(); 
 
@@ -139,7 +137,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false, 
+    fallback: true, 
   };
 } 
 
