@@ -14,7 +14,7 @@ export default function Layers(props:
 }
   
   return (
-  <div  style={cursorStyle}>
+  <div  >
   
     <div className={styles.rightLayer} onClick={props.onClickRight}
    

@@ -31,7 +31,7 @@
 
 .picContainer {
   min-width: 100%;
-  height: 100%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -56,6 +56,13 @@
 .indexContainer {
   display: flex;
   justify-content: space-around;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
 
 @media screen and (max-width: 425px) {

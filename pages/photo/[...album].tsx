@@ -151,6 +151,22 @@ function Description(props: { index: number;  images:any}) {
   );
 }
 
+function Infos(props: { index: number;  length:number; description : string | undefined}) {
+  // console.log('images', props.images);
+    
+    return (
+      <div className={styles.infoContainer}>
+      <p>{props.index} / {props.length}</p>
+      {props.description? (
+        <p>{props.description}</p>
+      ) : (
+       <></>
+      )}  
+      </div>
+    );
+  }
+
+
 
 
 return (
@@ -191,7 +207,12 @@ return (
                      
                     />
                   </div>
-                  <Description index= {indexClicked } images={album[0].images}/>
+                  <Infos 
+                  index={indexClicked +1}
+                  length={album[0].images.length}
+                  description={album[0].images[indexClicked].description}
+                  />
+                 
                 </div>
 
                 <div className={styles.photoBlockContainer}>
@@ -214,7 +235,12 @@ return (
                       key={album[0].images2[indexUnclicked].image}
                     />
                   </div>
-                  <Description index= {indexUnclicked } images={album[0].images2}/>
+                  <Infos 
+                  index={indexUnclicked +1}
+                  length={album[0].images2.length}
+                  description={album[0].images[indexUnclicked].description}
+                  />
+
                 </div>
               </>
             ) : (
@@ -240,7 +266,11 @@ return (
                     
                     />
                   </div>
-                  <Description index= {indexClicked } images={album[0].images2}/>
+                  <Infos 
+                  index={indexClicked +1}
+                  length={album[0].images2.length}
+                  description={album[0].images2[indexClicked].description}
+                  />
                 </div>
                 <div className={styles.photoBlockContainer}>
                   <div className={styles.picContainer}>
@@ -262,7 +292,11 @@ return (
                       key={album[0].images[indexUnclicked].image}
                     />
                   </div>
-                  <Description index= {indexUnclicked } images={album[0].images}/>
+                  <Infos 
+                  index={indexUnclicked +1}
+                  length={album[0].images.length}
+                  description={album[0].images[indexUnclicked].description}
+                  />
                 </div>
               </>
             )}
