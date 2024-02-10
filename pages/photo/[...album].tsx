@@ -238,7 +238,7 @@ return (
                   <Infos 
                   index={indexUnclicked +1}
                   length={album[0].images2.length}
-                  description={album[0].images[indexUnclicked].description}
+                  description={album[0].images2[indexUnclicked].description}
                   />
 
                 </div>
