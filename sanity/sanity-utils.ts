@@ -74,7 +74,6 @@ export async function getAllArchi(): Promise<projectArchiType[] | undefined>  {
 
 export async function getOneAlbum(slug:string): Promise<albumType[] >  {
     return createClient(config).fetch(
-
         groq`*[_type == "album" && slug.current == "${slug}"] {
             _id,
             _createdAt,
