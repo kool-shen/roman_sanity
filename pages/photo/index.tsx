@@ -137,6 +137,7 @@ const clickIndex = ()=>   {
                onMouseLeave={()=>{hover(null)}}>
                 {content.name}
               </h3>
+             
               </Link>
               </div>
             
@@ -145,6 +146,7 @@ const clickIndex = ()=>   {
         
         {/*  */}
           <div className={styles.modalContainer}>
+             
           <div className={styles.mobileModal} style={indexStyle}>
         {props.albums.map((content: albumType) => (
               <div className={styles.textContainer} key={content._id}>
@@ -152,6 +154,8 @@ const clickIndex = ()=>   {
               <h3>
                 {content.name}
               </h3>
+             
+              
               </Link>
               </div>
             
