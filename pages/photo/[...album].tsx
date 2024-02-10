@@ -380,6 +380,6 @@ return (
   
     return {
       paths,
-      fallback: false,
+      fallback: "blocking",
     };
   }
