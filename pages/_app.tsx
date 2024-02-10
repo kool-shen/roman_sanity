@@ -17,13 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const isMenuNeeded = router.pathname !== '/admin' 
 
 
-  useEffect(() => {
-    const firstVisit = sessionStorage.getItem('firstVisit');
-    if (!firstVisit) {
-      sessionStorage.setItem('firstVisit', 'true');
-      console.log('First visit');
-    }
-  }, []);
+  
 
   return ( 
     <React.Fragment>

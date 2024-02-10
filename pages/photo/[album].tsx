@@ -132,8 +132,8 @@ export async function getStaticPaths() {
   const paths = albums?.map((album: albumType) => ({
     params: { album: album.slug }, 
   }));
-  // console.log("DATA DE BASE",albums)
-  // console.log("ALBUMPATHS", paths)
+  console.log("DATA DE BASE",albums)
+ console.log("ALBUMPATHS", paths)
   
 
 
