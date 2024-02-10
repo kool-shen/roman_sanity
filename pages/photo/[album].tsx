@@ -115,13 +115,13 @@ export async function getStaticProps({ params }: { params: { album: string } }) 
 
   const allData = await getAllAlbums(); 
 
-  if (!albumData)   {
-    console.log("nope")
-    return {
-      notFound: true,
+  // if (!albumData)   {
+  //   console.log("nope")
+  //   return {
+  //     notFound: true,
       
-    }
-  }
+  //   }
+  // }
  
   return {
     props: {
