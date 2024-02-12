@@ -107,6 +107,9 @@
   .mainContainer h2 {
     display: none;
   }
+  .infoContainer h2 {
+    display: block;
+  }
   .picContainer {
     min-width: auto;
   }

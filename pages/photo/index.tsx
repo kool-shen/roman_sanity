@@ -130,13 +130,14 @@ const clickIndex = ()=>   {
         <div className={styles.titleContainer} ref={albumsRef}>
           {props.albums.map((content: albumType, i) => (
               <div className={styles.textContainer} key={content._id}>
-              <Link href={`photo/${content.slug}`} >
-              <h3 
-               className={hoveredData !== content.name && hoveredData !== null ? styles.hiddenText : ""}
-               onMouseEnter={()=>{hover(content.name)}}
+              <Link href={`photo/${content.slug}`} style={{display:"flex"}}
+              onMouseEnter={()=>{hover(content.name)}}
                onMouseLeave={()=>{hover(null)}}>
-                  {`${i+1} . ${content.name}`}
+              <h3 className={hoveredData !== content.name && hoveredData !== null ? styles.hiddenText : ""}>
+                  {`${i+1} .`}
               </h3>
+              <h3 className={hoveredData !== content.name && hoveredData !== null ? styles.hiddenText : ""}
+               >{`${content.name}`}</h3>
              
               </Link>
               </div>

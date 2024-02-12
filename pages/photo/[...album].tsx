@@ -306,9 +306,8 @@ return (
           
             <div className={styles.photoBlockContainer}>
             <div className={styles.infoContainer}>
-                <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>
                 <Link href={`/photo/${album[0].slug}`}>
-                  <p>{album[0].name}</p>
+                  <h2>{album[0].name}</h2>
                 </Link> 
               </div>
               <div className={styles.picContainer}>
@@ -330,7 +329,11 @@ return (
                 />
                 
               </div>
-              <p> {mergedImages[indexMobile].description}</p>
+              <div className={styles.infoContainer}>
+                <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>
+                <p> {mergedImages[indexMobile].description}</p>
+              </div>
+              
             </div>
            
           </>

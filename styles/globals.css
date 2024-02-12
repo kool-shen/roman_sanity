@@ -42,6 +42,10 @@ h1 {
   margin-block-end: 0;
 }
 
+h2 {
+  font-size: 3vmin;
+}
+
 h3 {
   font-size: 1.7vmin;
   font-weight: normal;
