@@ -149,9 +149,12 @@ const clickIndex = ()=>   {
           <div className={styles.modalContainer}>
              
           <div className={styles.mobileModal} style={indexStyle}>
-        {props.albums.map((content: albumType) => (
+        {props.albums.map((content: albumType, i:number) => (
               <div className={styles.textContainer} key={content._id}>
               <Link href={`photo/${content.slug}`} >
+              <h3 >
+                  {`${i+1} .`}
+              </h3>
               <h3>
                 {content.name}
               </h3>
