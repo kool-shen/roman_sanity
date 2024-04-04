@@ -6,12 +6,17 @@
   gap: 5vmin;
 }
 
+.mainContainer p {
+  font-size: 2.4vmin;
+}
+
 .titleContainer {
   display: flex;
   flex-direction: column;
   /* min-height: 100vh; */
-  min-width: 20%;
-  overflow-y: scroll;
+  width: 23vw;
+  box-sizing: border-box;
+  padding-left: 6vmin;
   gap: 3vmin;
 }
 
@@ -25,19 +30,26 @@
 }
 
 .infoBloc > p {
-  font-size: 1.5vmin;
-  font-family: var(--readexLight);
+  font-family: var(--texBold);
+}
+
+.infoBloc :nth-last-child() {
+  color: red;
 }
 
 .textContainer {
+  max-width: calc(50vw - 6vmin);
   display: flex;
   flex-direction: column;
-  gap: 3vmin;
+  gap: 0.5vmin;
 }
 
 .textContainer > p:nth-child(2) {
-  color: grey;
-  font-family: var(--readexLight);
+  font-family: var(--texRegular);
+}
+
+.textContainer > p:last-child {
+  margin-top: auto;
 }
 
 @media screen and (max-width: 425px) {

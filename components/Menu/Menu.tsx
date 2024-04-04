@@ -53,6 +53,10 @@ export default function Menu() {
     
   }, []);
 
+  ///
+
+  
+
   
 
    /// Mobile ///
@@ -63,9 +67,13 @@ export default function Menu() {
      window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
    };
 
-   useEffect(() => {
-    calculateScreen();
-    
+
+////
+
+  useEffect(() => {
+    calculateScreen()
+   
+  
   }, []);
 
 
@@ -101,13 +109,13 @@ const clickedStyle = mobileScreen ? "-5vmin" : "5vmin"
 
 
 const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWith('/archi') ?
-  { transition: "transform 0.2s", transform: `translateX(${clickedStyle})`, position: "relative" } :
-  { transition: "transform 0.2s", color: "grey", position: "relative" };
+{fontFamily: "var(--texItalic)" } :
+  { transition: "transform 0.2s" };
 
 
     const photoStyle = photoClicked || router.pathname.startsWith('/photo') ?
-    {transition: "transform 0.2s", transform: `translateX(${clickedStyle})`} :
-      {transition: "transform 0.2s", color: "grey"}
+    {fontFamily: "var(--texItalic)"} :
+      {transition: "transform 0.2s"}
 
 
 
@@ -125,10 +133,10 @@ const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWi
       <div className={styles.photoArchiContainer}>
 
       <Link href={"/archi"}>
-        <div className={styles.textContainer} style={archiStyle}>
+        <div className={styles.textContainer} >
         <h1 
        onClick={()=>{clickArchi()}}
-      style={{color: archiClicked || router.pathname.startsWith('/archi')? "black":"grey"}}
+       style={archiStyle}
        
        >architecture</h1>
         <div className={styles.layer1} ref={archiRef} style={{display:  layersDisplay}}></div> 
@@ -139,10 +147,10 @@ const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWi
       
      
       <Link href={"/photo"}>
-      <div className={styles.textContainer} style={photoStyle}>
+      <div className={styles.textContainer} >
       <h1
       onClick={()=>{clickPhoto()}}
-      style={{color : photoClicked || router.pathname.startsWith('/photo')? "black" : "grey" }}
+      style={photoStyle}
       ref={photoRef}
       >photographie</h1>
         <div className={styles.layer2} ref={photoRef} style={{display:  layersDisplay}  }></div> 

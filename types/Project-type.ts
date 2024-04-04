@@ -48,7 +48,7 @@ export type projectArchiType = {
   cost: number; 
   images: {
   image: string;
-  alt: string;
+  caption?: string;
   key?: string;
   height: number;
   width: number;

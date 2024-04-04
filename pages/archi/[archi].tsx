@@ -5,15 +5,15 @@ import styles from "@/styles/Project.module.css"
 import  {PortableText} from "@portabletext/react"
 import { useState } from 'react';
 import Pic from '@/components/Pic/Pic';
+import PicProject from '@/components/Pic/PicProject';
 import Layers from '@/components/Pic/Layers';
 import { useRouter } from 'next/router';
 import Priorities from '@/components/TextContent/Priorities';
-import Index from '@/components/Pic/Index';
-import Image from 'next/image';
-import Head from 'next/head';
 import { NextSeo } from 'next-seo';
+import List from '@/components/List/List'
 
-export default function archiProject ({archi  } : { archi: projectArchiType [] }){
+
+export default function archiProject ({archi, allArchi  } : { archi: projectArchiType [], allArchi: projectArchiType [] }){
 
   const mergedImages = archi[0]?.images.concat(archi[0]?.images2)
 
@@ -116,18 +116,11 @@ useEffect(() => {
     description={`photos et détails du projet situé à ${archi[0].name}`}
     
   />
-    <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
-      <div className={styles.infoContainer} >
-        <h2>{archi[0].name}</h2>
-        <div className={styles.logoContainer}  style={crossStyle} > 
-         <Pic   
-            src={"/cross_black.png"} alt={"cross icon"} 
-            width={100} height={100} onClick={clickCross}/> 
-            
-       </div>
-       
-      </div>
-      <div className={styles.slidersContainer}>
+    <div className={`rightPartContainer  ${styles.mainContainer}`}>
+    <List data={allArchi}/>
+      
+
+      <div className={`${styles.slidersContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
         <div className={styles.modal}   style={descriptionStyle}>
           <div className={styles.modalUpperContainer} >
        <div className={styles.descriptionContainer}>
@@ -155,36 +148,60 @@ useEffect(() => {
        </div> 
         </div>
           {!mobileScreen ? (
-            <>
-            <div className={styles.photoBlockContainer}>
-        <div className={styles.picContainer}>
-          <Layers 
-            onClickRight={()=> {handleClickNext(firstSliderIndex, firstSliderLenght, setFirstSliderIndex)}}
-            onClickLeft={()=> {handleClickPrevious(firstSliderIndex, firstSliderLenght, setFirstSliderIndex)}}
-            index= {firstSliderIndex +1}
-            total=  {firstSliderLenght}
-          />
-          <Pic   
-          src={image1.image} alt={`photo ${firstSliderIndex +1} sur ${firstSliderLenght} du projet ${archi[0].name}`} 
-          width={image1.width} height={image1.height}/>  
+              <div className={styles.photoBlockContainer}>
+              <div className={styles.photoContainer}>
+              <div className={styles.picContainer}>
+                <Layers 
+                  onClickRight={()=> {handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)}}
+                  onClickLeft={()=> {handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)}}
+                
+                />
+               <PicProject   
+                src={mergedImages[mobileIndex].image} alt={mergedImages[mobileIndex].image} 
+                width={mergedImages[mobileIndex].width} height={mergedImages[mobileIndex].height}/>
+                
+             
+              </div>
+              <div className={styles.photoInfoContainer}>
+                 <p>{mergedImages[mobileIndex].caption}</p>
+                 <p>{mobileIndex +1} / {mobileSliderLenght}</p>
+              </div>
+              </div>
+             
+              <div className={styles.mobileBottom}>
+              
+            <p>{mobileIndex +1} / {mobileSliderLenght}</p> 
+          
+            
+           </div>
+            
+          <div className={styles.modalUpperContainer} >
+       <div className={styles.descriptionContainer}>
+         <PortableText value={archi[0].content}/>
         </div>
-     
-       </div>
-       <div className={styles.photoBlockContainer}>
-         
-        <div className={styles.picContainer}>
-          <Layers 
-            onClickRight={()=> {handleClickNext(secondSliderIndex, secondSliderLenght, setSecondSliderIndex)}}
-            onClickLeft={()=> {handleClickPrevious(secondSliderIndex, secondSliderLenght, setSecondSliderIndex)}}
-            index= {secondSliderIndex +1}
-            total=  {secondSliderLenght}
-          />
-         <Pic   
-          src={image2.image} alt={`photo ${secondSliderIndex +1} sur ${secondSliderLenght} du projet ${archi[0].name}`}
-          width={image2.width} height={image2.height}/>
         </div>
-         </div>
-        </> )
+        <div className={styles.prioritiesContainer} >
+       
+         <Priorities 
+         name={"programme"}
+         value={archi[0].program}/>
+         <Priorities 
+         name={"commanditaire"}
+         value={archi[0].sponsor}/>
+         <Priorities 
+         name={"localisation"}
+         value={archi[0].localisation}/>
+         <Priorities 
+         name={"calendrier"}
+         value={archi[0].calendar}/>
+         <Priorities 
+         name={"surface"}
+         value={archi[0].surface}/>
+       
+       </div> 
+        </div>
+              
+                )
         :
         (
           <div className={styles.photoBlockContainer}>
@@ -201,7 +218,7 @@ useEffect(() => {
           </div>
           <div className={styles.mobileBottom}>
           
-        <h2>{mobileIndex +1} / {mobileSliderLenght}</h2> 
+        <p>{mobileIndex +1} / {mobileSliderLenght}</p> 
       
         
        </div>
@@ -223,12 +240,14 @@ export async function getStaticProps({ params }: { params: { archi: string } }) 
     // console.log('SlugArchi', archi);
   
     const projectData = await getOneProject(archi); 
+    const allArchi =  await getAllArchi();
     // console.log('Data du projet', projectData );
   
     return {
       
       props: {
         archi : projectData,
+        allArchi : allArchi,
       },
       revalidate: 60,
     };

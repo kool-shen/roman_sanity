@@ -8,6 +8,7 @@ import { DefaultSeo } from 'next-seo';
 import React from 'react';
 import { SocialProfileJsonLd } from 'next-seo';
 import  {readexLight, readexRegular} from '@/font/font'
+import  {TeX_Regular, TeX_Italic, TeX_Bold} from '@/local-fonts/localFonts'
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -41,7 +42,13 @@ export default function App({ Component, pageProps }: AppProps) {
       ]}
     />
     
-    <div className={`${isMenuNeeded ? "mainContainer" : "adminContainer"} ${readexLight.variable} ${readexRegular.variable}`}>
+    <div className={`${isMenuNeeded ? "mainContainer" : "adminContainer"}
+     ${readexLight.variable}
+      ${readexRegular.variable}
+       ${TeX_Regular.variable}
+       ${TeX_Italic.variable}
+       ${TeX_Bold.variable}
+       `}>
   {isMenuNeeded && <Menu />}
   <Component {...pageProps} />
   </div>

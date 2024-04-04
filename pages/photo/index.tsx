@@ -4,9 +4,7 @@ import { albumType } from '@/types/Project-type';
 import styles from "@/styles/PhotoHome.module.css"
 import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
-import PicHeight from '@/components/Pic/PicHeight'
-import  {gsap} from "gsap"
-import { useRouter } from 'next/router';
+import List from '@/components/List/List'
 import { useState } from 'react';
 import { NextSeo } from 'next-seo';
 
@@ -30,6 +28,7 @@ function shuffleArray(array: any[]) {
 }
 
 export default function Photo(props: { albums?: albumType[] }) {
+console.log('props', props);
 
   if (!props.albums) {
     return <></>;
@@ -45,67 +44,10 @@ export default function Photo(props: { albums?: albumType[] }) {
   if (initialData.length === 0) {
     initialData = shuffleArray(data);
   }
-/// animation hover
-
-const [hoveredData, setHoveredData] = useState<string | null>(null)
-
-const hover = (e : string | null ) => {
- 
-    setHoveredData(e);
- 
-}
-
-//// animation liste projets
-
-const albumsRef = useRef<HTMLDivElement>(null);
-
-const menuTimeline = gsap.timeline({
-  defaults: { duration: 0.1, ease: "power2" },
-});
-
-const albumsAnimation = () => {
-  albumsRef
-    && Array.from(albumsRef.current?.children as HTMLCollection).forEach((child) =>
-    menuTimeline.to(child, { opacity: 1 })
-  );};
-
-useEffect(() => {
-  albumsAnimation()
-}, []);
-
-
-//// animation sortie
-
-const router = useRouter();
-
-
-    const [isRouteChanging, setIsRouteChanging] = useState(false);
-  
-    useEffect(() => {
-      const handleRouteChangeStart = () => {
-        setIsRouteChanging(true);
-      };
-  
-      const handleRouteChangeComplete = () => {
-        setIsRouteChanging(false);
-      };
-  
-      router.events.on('routeChangeStart', handleRouteChangeStart);
-      router.events.on('routeChangeComplete', handleRouteChangeComplete);
-  
-      return () => {
-        router.events.off('routeChangeStart', handleRouteChangeStart);
-        router.events.off('routeChangeComplete', handleRouteChangeComplete);
-      };
-    }, [router.events]);
 
 ////
 
 const [indexClicked, setIndexClicked]= useState(false)
-
-const indexStyle = !indexClicked
-? { transform: "translateY(100%)", transition: "transform 0.5s" }
-: { transition: "transform 0.5s",};  
 
 const indexButtonStyle = !indexClicked
 ? { color: "grey"}
@@ -126,58 +68,7 @@ const clickIndex = ()=>   {
   />
           <div className={`rightPartContainer ${styles.mainContainer}`}>
           <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>index</h1>
-           
-        <div className={styles.titleContainer} ref={albumsRef}>
-          {props.albums.map((content: albumType, i) => (
-              <div className={styles.textContainer} key={content._id}>
-              <Link href={`photo/${content.slug}`} style={{display:"flex"}}
-              onMouseEnter={()=>{hover(content.name)}}
-               onMouseLeave={()=>{hover(null)}}>
-              <h3 className={hoveredData !== content.name && hoveredData !== null ? styles.hiddenText : ""}>
-                  {`${i+1} .`}
-              </h3>
-              <h3 className={hoveredData !== content.name && hoveredData !== null ? styles.hiddenText : ""}
-               >{`${content.name}`}</h3>
-             
-              </Link>
-              </div>
-            
-          ))}
-        </div>
-        
-        {/*  */}
-          <div className={styles.modalContainer}>
-             
-          <div className={styles.mobileModal} style={indexStyle}>
-        {props.albums.map((content: albumType, i:number) => (
-              <div className={styles.textContainer} key={content._id}>
-              <Link href={`photo/${content.slug}`} >
-              <h3 >
-                  {`${i+1} .`}
-              </h3>
-              <h3>
-                {content.name}
-              </h3>
-             
-              
-              </Link>
-              </div>
-            
-          ))}
-          </div> 
-        <div className={`fadeOut ${styles.galleryContainer}  ${isRouteChanging ? "fadeOutActive" : ''}`}>
-        
-       
-          {data.map((content: any, index: number) => (
-            <div key={index} className={styles.picContainer} >
-              <Link href={`photo/${content.albumSlug}/${content.key}`} key={content.key}>
-                <PicHeight src={content.image} alt={`photo`} width={content.width} height={content.height} onMouseEnter={()=>{hover(content.albumName)}}
-            onMouseLeave={()=>{hover(null)}}/>
-              </Link>
-            </div>
-          ))}
-        </div>
-        </div>
+        <List data={props.albums}  />
         </div>
     </>
 
@@ -196,9 +87,6 @@ const clickIndex = ()=>   {
   
     const albumsArray = Object.values(albumsObject);
     // console.log('albumsArray', albumsArray);
-
-    
-    
   
     return {
       props: { albums: albumsArray },

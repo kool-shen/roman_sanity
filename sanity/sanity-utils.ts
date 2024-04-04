@@ -81,7 +81,7 @@ export async function getOneAlbum(slug:string): Promise<albumType[] >  {
             "slug": slug.current,
             "images": images[] {
               "image": image.asset->url,
-              "alt": image.alt,
+             
               "description": description,
               "key": _key,
               "height": image.asset->metadata.dimensions.height,
@@ -121,7 +121,7 @@ export async function getOneProject(slug:string): Promise<albumType[] >  {
         "slug": slug.current,
         "images": images[] {
           "image": image.asset->url,
-          "alt": image.alt,
+          "caption": image.photoCaption,
           "description": description,
           "key": _key,
           "height": image.asset->metadata.dimensions.height,

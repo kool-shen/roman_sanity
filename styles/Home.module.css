@@ -1,11 +1,8 @@
 .mainContainer {
   display: flex;
-  justify-content: flex-end;
-  /* width: 100vw; */
+  width: 50vw;
 
-  width: 100%;
-  /* border: 2px solid red;
-  box-sizing: border-box; */
+  transform: translateX(23vw);
 }
 
 .picContainer {

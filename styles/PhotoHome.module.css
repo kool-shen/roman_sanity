@@ -16,6 +16,12 @@
   padding-bottom: 6vmin;
 }
 
+@media screen and (min-width: 425px) {
+  .titleContainer {
+    width: 20vw;
+  }
+}
+
 .textContainer {
   width: auto;
   display: inline-block;

@@ -8,6 +8,13 @@
   /* border: 1px solid green; */
 }
 
+@media screen and (min-width: 425px) {
+  .mainContainer {
+    width: 27vw;
+    /* border: 1px solid red; */
+  }
+}
+
 .titleContainer {
   display: flex;
   flex-direction: column;
@@ -19,13 +26,14 @@
   display: flex;
   flex-direction: column;
   gap: 2vmin;
-  cursor: url("../../public/dot_white.png"), auto;
+  /* cursor: url("../../public/dot_white.png"), auto; */
 }
 
 .textContainer {
   position: relative;
-  height: 110%;
-  overflow: hidden;
+
+  /* overflow: hidden; */
+  /* border: 1px solid red; */
 }
 
 .layer1 {
@@ -40,12 +48,18 @@
 
 .layer2 {
   position: absolute;
-  height: 110%;
+  height: 120%;
   width: 100%;
   background-color: white;
-  bottom: -10%;
+  bottom: -20%;
   pointer-events: none;
   /* background-color: red; */
+}
+
+@media screen and (max-width: 1390px) {
+  .titleContainer h1 {
+    font-size: 4.5vw;
+  }
 }
 
 @media screen and (max-width: 425px) {

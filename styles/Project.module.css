@@ -1,6 +1,6 @@
 .mainContainer {
   display: flex;
-  flex-direction: column;
+  width: 100%;
   justify-content: space-between;
 
   /* border: 1px solid brown; */
@@ -23,7 +23,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 91%;
+  height: 100%;
   position: relative;
   gap: 5vmin;
 }
@@ -60,16 +60,34 @@
   align-items: center;
   gap: 2vmin;
   position: relative;
-
-  /* border: 1px solid red; */
+  width: 100%;
 }
 
+.photoContainer {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8vmin;
+}
 .picContainer {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 2vmin);
   position: relative;
+
   /* border: 1px solid red; */
   overflow: hidden;
+}
+
+.photoInfoContainer {
+  height: 2vmin;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.photoInfoContainer p:nth-child(1) {
+  font-family: var(--texItalic);
 }
 
 .prioritiesContainer {
@@ -79,8 +97,8 @@
   align-items: flex-end;
 }
 
-.prioritiesContainer p {
-  font-size: 1.5vmin;
+.priorities p:nth-child(2) {
+  font-family: var(--texBold);
 }
 
 .textContainer {

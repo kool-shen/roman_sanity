@@ -8,15 +8,18 @@ import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import Head from "next/head";
+import List from '@/components/List/List'
 import { NextSeo } from "next-seo";
 
-export default function Album({ album }: { album: albumType [] }) {
+export default function Album({ album, allAlbums }: { album: albumType [], allAlbums: albumType [] }) {
 
 const photoData = album.flatMap((album) => [
+
   ...album.images.map((image) => ({ ...image, albumName: album.name })),
   ...album.images2.map((image) => ({ ...image, albumName: album.name })),
 ]);
+
+console.log('albums', allAlbums);
 
 //// ANIMATION DESCRIPTION ////
 
@@ -75,18 +78,9 @@ const router = useRouter();
     description={`Mosaique de l'album "${album[0].name}"`}
 
   />
-    <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
-      <div className={styles.infoContainer}>
-     <h2>{album[0].name}</h2> 
-      {album[0].content && (
-          <div className={styles.logoContainer}  style={crossStyle} > 
-          <Pic   
-             src={"/cross_black.png"} alt={"cross icon"} 
-             width={100} height={100} onClick={clickCross}/> 
-         </div>
-      )}
-     </div>
-      <div className={styles.modalContainer }>  
+    <div className={`rightPartContainer   ${styles.mainContainer}  `}>
+      <List data={allAlbums} />   
+      <div className={`${styles.modalContainer} fadeOut  ${isRouteChanging ? "fadeOutActive" : ''}`}>  
       {contentExists && (<div className={styles.modal}   style={descriptionStyle}>
      <PortableText value={album[0].content}/>
         </div>)}

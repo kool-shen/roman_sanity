@@ -66,17 +66,29 @@ const instaurl = data.insta.replace("@", "");
    
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.titleContainer}>
-       <Infos priority="architecture" value={data.archi}/>
-       <Infos priority="tirages, expositions" value={data.photo} />
+      <div className={styles.infoBloc}>
+            <h3>Contact</h3>
+            <p>roman.cadre@gmail.com</p>
+            <p>+33 6 71 59 32 41</p>
+        </div>
+       <Infos priority="Tirages" value={"prints@romancadre.com"} />
+       <div className={styles.infoBloc}>
+            <h3>Atelier</h3>
+            <p>26, avenue Pierre Donzelot</p>
+            <p>35700 Rennes</p>
+        </div>
        <Link target="_blank" rel="noopener noreferrer" href={`https://www.instagram.com/${instaurl}`}>
-       <Infos priority="instagram" value={data.insta} />
+       <Infos priority="Instagram" value={data.insta} />
        </Link>
-       <Infos priority="code" value="Léo Ferté (liquid/prom)" />
-       <Infos priority="copyright" value="@ Roman Cadre" />
+       <div className={styles.infoBloc}>
+            <h3>Crédits</h3>
+            <p>Code : Léo Ferté (liquid/prom)</p>
+            <p>Design : Adèle Trevilly</p>
+        </div>
+       <Infos priority="Copyright" value="Roman Cadre ©" />
       </div>
       <div className={styles.textContainer}>
       <PortableText value={data.bio}/>
-      <PortableText value={data.mentions}/>
       </div>
     
     </div>

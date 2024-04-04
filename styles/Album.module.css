@@ -2,7 +2,7 @@
   /* border: 1px solid red; */
   width: 100%;
   display: flex;
-  flex-direction: column;
+
   justify-content: space-between;
   padding-bottom: 0;
 }
@@ -16,17 +16,18 @@
 }
 
 .galleryContainer {
-  height: 80vh;
+  height: calc(100vh - 6vmin);
   align-content: flex-start;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-content: flex-start;
   overflow-y: scroll;
   grid-gap: 2vmin;
   gap: 2vmin;
   position: relative;
-
   padding-bottom: 6vmin;
+  box-sizing: border-box;
+  max-width: calc(50vw - 6vmin);
 }
 
 .galleryContainer::-webkit-scrollbar {
@@ -47,7 +48,8 @@
 }
 
 .picContainer {
-  height: 25vmin;
+  height: 32vmin;
+  max-width: 20vmin;
   position: relative;
   overflow: hidden;
   flex-grow: 1;

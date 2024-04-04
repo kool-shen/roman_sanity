@@ -74,8 +74,8 @@ const albumArchi = {
                 options: { hotspot: true },
                 fields: [
                   {
-                    name: "alt",
-                    title: "Alt",
+                    name: "photoCaption",
+                    title: "Légende",
                     type: "string",
                   },
                 ],
