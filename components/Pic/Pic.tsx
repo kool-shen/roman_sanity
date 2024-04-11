@@ -12,12 +12,8 @@ export default function Pic(props: projectPicProps) {
     props.onLoadedChange && props.onLoadedChange(true)  };
 
   useEffect(() => {
+   }, [props.src ]);
 
-    console.log("yes")
-    
-   }, [props.src]);
-
-  
 
   return (
     <Image
@@ -27,7 +23,7 @@ export default function Pic(props: projectPicProps) {
       alt={props?.alt}
       className={`${styles.picLoaded} ${isLoaded ? '' : styles.hidden}`}        
       onClick={props.onClick}
-      style={props.style}
+      style={ {opacity : isLoaded ? 1 : 0}}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       key={props.key}

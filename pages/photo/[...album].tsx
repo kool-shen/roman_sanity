@@ -112,7 +112,7 @@ const transitionNext = () => {
         { opacity: 0 }, 
         {
           opacity: 1, 
-          duration: time,
+          duration: 0.5,
           ease: "power2.inOut",
         } 
       );
@@ -128,6 +128,7 @@ const nextMobile = () => {
       handleClickNextMobile();
       
 isPicLoaded &&
+console.log("next")
       gsap.to(picRef.current, {
         opacity: 1,
         duration: time, 
