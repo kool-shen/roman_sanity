@@ -109,7 +109,7 @@ const transitionNext = () => {
   gsap.to(picRef.current, {
     opacity: 0,
     duration: time,
-    onComplete: () => {
+    onStart: () => {
      
       handleClickNextMobile();
 
@@ -133,7 +133,7 @@ const transitionPrevious = () => {
   gsap.to(picRef.current, {
     opacity: 0,
     duration: time,
-    onComplete: () => {
+    onStart: () => {
 
       handleClickPreviousMobile();
       gsap.fromTo(
