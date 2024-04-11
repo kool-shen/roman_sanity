@@ -43,11 +43,12 @@
 
 @media screen and (max-width: 425px) {
   .titleContainer {
-    /* display: none; */
+    display: none;
     /* border: 1px solid green; */
     max-height: 100%;
     min-height: auto;
     width: 100%;
+    z-index: 1;
   }
   .textContainer {
     opacity: 1;

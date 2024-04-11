@@ -185,7 +185,10 @@ return (
     
   />
     <div className={`rightPartContainer ${styles.mainContainer}`}>
-    <List data={albums} />   
+ 
+    <List data={albums} />  
+  
+     
       <div className={styles.slidersContainer}>
             <div className={styles.photoBlockContainer} >
             <div className={styles.iconContainer}> 

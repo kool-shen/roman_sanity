@@ -94,8 +94,12 @@ const lisStyle = mobileScreen
     description={`Mosaique de l'album "${album[0].name}"`}
 
   />
+
     <div className={`rightPartContainer   ${styles.mainContainer}  `}>
-      <List data={allAlbums} style={lisStyle}/>   
+
+     
+    <List data={allAlbums} />  
+ 
       <div className={`${styles.modalContainer} fadeOut  ${isRouteChanging ? "fadeOutActive" : ''}`}>  
       {contentExists && (<div className={styles.modal}   style={descriptionStyle}>
      <PortableText value={album[0].content}/>
