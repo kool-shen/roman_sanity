@@ -33,7 +33,7 @@ useEffect(() => {
    
    <div className={`rightPartContainer ${styles.mainContainer}`}>
    
-    <List data={props.projectsArchi}  />
+    <List data={props.projectsArchi}  style={ {display: "flex"} }/>
     
 </div>
 </>
