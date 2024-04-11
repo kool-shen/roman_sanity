@@ -128,24 +128,39 @@ const transitionNext = () => {
 };
 
 const nextMobile = () => {
-  // Réduire l'opacité de l'image actuelle
   gsap.to(picRef.current, {
     opacity: 0,
-    duration: 0.5, // Durée du fondu
+    duration: time, 
     onComplete: () => {
-      // Mettre à jour l'index pour passer à la photo suivante
       handleClickNextMobile();
-      // Afficher la nouvelle image avec une opacité de 0
       gsap.set(picRef.current, { opacity: 0 });
-      // Animer l'opacité de la nouvelle image
+      
       gsap.to(picRef.current, {
         opacity: 1,
-        duration: 0.5, // Durée du fondu
+        duration: time, 
         ease: 'power2.inOut',
       });
     },
   });
 };
+
+const previoustMobile = () => {
+   gsap.to(picRef.current, {
+    opacity: 0,
+    duration: time, 
+    onComplete: () => {
+      handleClickPreviousMobile()
+      gsap.set(picRef.current, { opacity: 0 });
+      gsap.to(picRef.current, {
+        opacity: 1,
+        duration: time, 
+        ease: 'power2.inOut',
+      });
+    },
+  });
+};
+
+
 
 const transitionPrevious = () => {
   handleClickPreviousMobile();
@@ -168,7 +183,7 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
 
   if (fingerTouch !== undefined) {
     if (touchEndX > fingerTouch) {
-      transitionPrevious();
+      previoustMobile();
     } else if (touchEndX < fingerTouch) {
       nextMobile();
     }
@@ -208,11 +223,11 @@ return (
      <Layers
      onClickRight={() => {
        // handleClickNextMobile();
-       transitionNext()
+       nextMobile()
      }}
      onClickLeft={() => {
        // handleClickPreviousMobile();
-       transitionPrevious()
+       previoustMobile()
      }}
      
    /> 
