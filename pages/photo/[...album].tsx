@@ -56,7 +56,7 @@ function findMobileIndexByKeyValue(keyToFind:string) {
 
 const mobileIndexPhotoClicked =  findMobileIndexByKeyValue(clickedPhotoKey)
 
-console.log(mergedImages[mobileIndexPhotoClicked])
+// console.log(mergedImages[mobileIndexPhotoClicked])
 
 // console.log("KEY", findMobileIndexByKeyValue(clickedPhotoKey))
 
@@ -109,11 +109,11 @@ const transitionNext = () => {
   gsap.to(picRef.current, {
     opacity: 0,
     duration: time,
-    onStart: () => {
+    onComplete: () => {
      
       handleClickNextMobile();
 
-      
+      picLoaded &&
       gsap.fromTo(
         picRef.current,
         { opacity: 0 }, 
@@ -133,9 +133,11 @@ const transitionPrevious = () => {
   gsap.to(picRef.current, {
     opacity: 0,
     duration: time,
-    onStart: () => {
+    onComplete: () => {
 
       handleClickPreviousMobile();
+
+      picLoaded &&
       gsap.fromTo(
         picRef.current,
         { opacity: 0 }, 
@@ -174,6 +176,13 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
 };
 
 ////
+
+const [picLoaded, setPicLoaded] = useState(false);
+
+const handlePicLoad = () => {
+  setPicLoaded(true);
+  console.log("photo chargée")
+};
 
 
 
@@ -221,6 +230,7 @@ return (
                   alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
                   width={mergedImages[indexMobile].width}
                   height={mergedImages[indexMobile].height}
+                  onLoad={handlePicLoad}
                 />
                 
               </div>

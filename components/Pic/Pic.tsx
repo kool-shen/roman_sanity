@@ -6,12 +6,16 @@ import { projectPicProps } from '@/types/Project-type'
 
 export default function Pic(props : projectPicProps ) {
 
-const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
 
-const handleLoad = () =>  
-{
- setIsLoaded(true); 
-}
+  const handleLoad = () => {
+    setIsLoaded(true);
+    if (props.onLoad) {
+      props.onLoad(); 
+    }
+  };
+
+
  
   return (
         <Image
@@ -28,7 +32,6 @@ const handleLoad = () =>
           sizes={`(min-width: 768px) 40vw, 70vw `}
           loading='lazy'
           onLoad={()=>{handleLoad()}}
-         
         />
      
   )
