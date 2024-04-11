@@ -8,9 +8,10 @@ import  {gsap} from "gsap"
 
 interface ListProps {
   data: projectArchiType[] | undefined | albumType[];
+  style?: React.CSSProperties;
  }
 
- const List: React.FC<ListProps> = ({ data }) => {
+ const List: React.FC<ListProps> = ({ data, style }) => {
 
   const router = useRouter();
 
@@ -42,7 +43,7 @@ useEffect(() => {
 
 
   return (
-    <div className={styles.titleContainer} ref={albumsRef}>
+    <div className={styles.titleContainer} ref={albumsRef} style={style}>
       {(data as albumType[]).map((content: albumType) => (
         <div className={styles.textContainer} key={content._id} style={categoryPage ? {opacity : 0} :{opacity : 1} }>
           <Link legacyBehavior href={`/${pathName}/${content.slug}`} passHref>
@@ -51,6 +52,7 @@ useEffect(() => {
                style={new RegExp(`^/${pathName}/${content.slug}(\/.*)?$`).test(router.asPath)  ? 
                { fontFamily: "var(--texItalic)" } : {}} 
               >{content.name}</h3>
+              
             </a>
           </Link>
         </div>

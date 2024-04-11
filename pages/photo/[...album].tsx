@@ -2,11 +2,12 @@ import { getOneAlbum, getAllAlbums, getOnePhoto, getPhoto, getPhoto2 } from "@/s
 import { albumType, ImageDataType } from "@/types/Project-type";
 import styles from "@/styles/Photo.module.css"
 import Pic from "@/components/Pic/Pic";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Layers from "@/components/Pic/Layers";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import List from '@/components/List/List';
+import  {gsap} from "gsap";
 
 
 
@@ -75,49 +76,10 @@ const [indexUnclicked, setIndexUnclicked] = useState(0)
 
 
 
-
-const handleClickNext1 = (total:number) => {
-  if (indexClicked + 1 >=total) {
-    setIndexClicked(0);
-  } else {
-    setIndexClicked(indexClicked + 1);
-  }
-};
-
-const handleClickPrevious1 = (total:number) => {
-  if (indexClicked - 1 < 0) {
-    setIndexClicked(total);
-  } else {
-    setIndexClicked(indexClicked - 1);
-  }
-};
-
-
-
-const handleClickNext2 = (total:number) => {
-  if (indexUnclicked + 1 >= total) {
-    setIndexUnclicked(0);
-  } else {
-    setIndexUnclicked(indexUnclicked + 1);
-    
-  }
-};
-
-
-const handleClickPrevious2 = (total:number) => {
-  if (indexUnclicked - 1 < 0) {
-    setIndexUnclicked(total);
-  } else {
-    setIndexUnclicked(indexUnclicked - 1);
-  }
-};
-
-
-
-/// MOBILE
-
+/// NEXT ET PREVIOUS PHOTO
 
 const [indexMobile, setIndexMobile] = useState(mobileIndexPhotoClicked)
+
 
 const handleClickNextMobile = () => {
   if (indexMobile + 1 >= mergedImages.length) {
@@ -137,9 +99,81 @@ const handleClickPreviousMobile = () => {
   }
 };
 
+const picRef = useRef<HTMLDivElement>(null);
+
+const time = mobileScreen ? 0.4 : 0.2
+
+const transitionNext = () => {
+
+
+  gsap.to(picRef.current, {
+    opacity: 0,
+    duration: time,
+    onComplete: () => {
+     
+      handleClickNextMobile();
+
+      
+      gsap.fromTo(
+        picRef.current,
+        { opacity: 0 }, 
+        {
+          opacity: 1, 
+          duration: time,
+          ease: "power2.inOut",
+        }
+      );
+    },
+  });
+};
+
+const transitionPrevious = () => {
+
+  
+  gsap.to(picRef.current, {
+    opacity: 0,
+    duration: time,
+    onComplete: () => {
+
+      handleClickPreviousMobile();
+      gsap.fromTo(
+        picRef.current,
+        { opacity: 0 }, 
+        {
+          opacity: 1, 
+          duration: time,
+          ease: "power2.inOut",
+        }
+      );
+    },
+  });
+};
+
+
+
+/// SWIPE MOBILE ///
+
+const [fingerTouch, setFingerTouch] = useState<number | undefined>()
+
+
+const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
+  const touchStartX = e.touches[0].clientX;
+  setFingerTouch(touchStartX);
+};
+
+const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
+  const touchEndX = e.changedTouches[0].clientX;
+
+  if (fingerTouch !== undefined) {
+    if (touchEndX > fingerTouch) {
+      transitionPrevious();
+    } else if (touchEndX < fingerTouch) {
+      transitionNext();
+    }
+  }
+};
 
 ////
-
 
 
 
@@ -153,7 +187,7 @@ return (
     <div className={`rightPartContainer ${styles.mainContainer}`}>
     <List data={albums} />   
       <div className={styles.slidersContainer}>
-            <div className={styles.photoBlockContainer}>
+            <div className={styles.photoBlockContainer} >
             <div className={styles.iconContainer}> 
             <Link href= {`/photo/${album[0].slug}`}>
             <Pic   
@@ -161,17 +195,24 @@ return (
             width={100} height={100} /> 
             </Link>
        </div>
-              <div className={styles.picContainer}>
-
-                <Layers
-                  onClickRight={() => {
-                    handleClickNextMobile();
-                  }}
-                  onClickLeft={() => {
-                    handleClickPreviousMobile();
-                  }}
-                  
-                />
+              <div className={styles.picContainer} ref={picRef} 
+              onTouchStart={handleTouchStart}       
+              onTouchEnd={handleTouchEnd}
+>
+  {!mobileScreen && (
+     <Layers
+     onClickRight={() => {
+       // handleClickNextMobile();
+       transitionNext()
+     }}
+     onClickLeft={() => {
+       // handleClickPreviousMobile();
+       transitionPrevious()
+     }}
+     
+   /> 
+  )}
+                
                 <Pic
                   src={mergedImages[indexMobile].image}
                   alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}

@@ -76,16 +76,27 @@
 @media screen and (max-width: 425px) {
   .mainContainer {
     padding-bottom: 0 !important;
+    max-height: 80%;
+    box-sizing: border-box;
+  }
+
+  .modalContainer {
+    width: 100%;
+    /* border: 3px solid red; */
+    max-height: 100%;
   }
 
   .galleryContainer {
     grid-template-columns: repeat(3, 1fr);
-    height: 68vh;
+    height: 100%;
     box-sizing: border-box;
+    max-width: 100%;
+    /* border: 2px solid green; */
   }
 
   .picContainer {
     height: 40vmin;
+    max-width: 100%;
   }
   .logoContainer {
     height: 10vmin;
@@ -103,7 +114,7 @@
 
 /* FIX IPHONE 8 & 8 Plus */
 
-@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+/* @media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
   .galleryContainer {
     height: 60vh;
   }
@@ -113,4 +124,4 @@
   .galleryContainer {
     height: 60vh;
   }
-}
+} */

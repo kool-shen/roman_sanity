@@ -11,6 +11,8 @@ import  {readexLight, readexRegular} from '@/font/font'
 import  {TeX_Regular, TeX_Italic, TeX_Bold} from '@/local-fonts/localFonts'
 
 
+
+
 export default function App({ Component, pageProps }: AppProps) {
 
   /// ne pas afficher le menu dans la partie admin

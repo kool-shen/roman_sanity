@@ -1,13 +1,16 @@
 import { DefaultSeoProps } from 'next-seo';
-
+import { createClient, groq } from "next-sanity";
+import configClient from "@/sanity/config/client-config";
+import { infosType } from './types/Project-type';
 
 
 const config: DefaultSeoProps = {
+
     
     title: undefined,
     defaultTitle : 'roman cadre',
     titleTemplate : '%s | roman cadre',
-    description: 'Photographe et architecte Roman Cadre basé à Rennes. Il est connu pour ses projets architecturaux dans toute la région Bretagne, notamment pour la conception de maisons à Saint-Briac et à Lancieux. Il collabore parfois avec son compagnon d’atelier, Paul Cariou.',
+    // description: 'Photographe et architecte Roman Cadre basé à Rennes. Il est connu pour ses projets architecturaux dans toute la région Bretagne, notamment pour la conception de maisons à Saint-Briac et à Lancieux. Il collabore parfois avec son compagnon d’atelier, Paul Cariou.',
     
   openGraph: {
     images : [

@@ -15,6 +15,7 @@
   .mainContainer {
     justify-content: center;
     width: 100vw;
+    transform: translateX(0);
   }
   .rightPartContainer {
     /* min-height: 100%; */

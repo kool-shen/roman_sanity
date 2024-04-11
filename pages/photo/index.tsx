@@ -67,8 +67,7 @@ const clickIndex = ()=>   {
     
   />
           <div className={`rightPartContainer ${styles.mainContainer}`}>
-          <h1 onClick={()=>{clickIndex()}} style={indexButtonStyle}>index</h1>
-        <List data={props.albums}  />
+        <List data={props.albums}  style={{display: "flex"}}/>
         </div>
     </>
 

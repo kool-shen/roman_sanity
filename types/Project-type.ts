@@ -101,5 +101,6 @@ export type infosType = {
   photo: string;
   insta: string;
   bio: PortableTextBlock[];
+  shortBio: string;
   mentions: PortableTextBlock[];
 }

@@ -70,6 +70,22 @@ const router = useRouter();
 
 ////
 
+/// Mobile ou web ///
+
+
+const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
+
+const calculateScreen = () => {
+  window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
+};
+
+useEffect(() => {
+ calculateScreen();
+}, []);
+
+const lisStyle = mobileScreen
+    ? { display: "none"}
+    : { display: "flex",  }; 
 
   return (
     <>
@@ -79,7 +95,7 @@ const router = useRouter();
 
   />
     <div className={`rightPartContainer   ${styles.mainContainer}  `}>
-      <List data={allAlbums} />   
+      <List data={allAlbums} style={lisStyle}/>   
       <div className={`${styles.modalContainer} fadeOut  ${isRouteChanging ? "fadeOutActive" : ''}`}>  
       {contentExists && (<div className={styles.modal}   style={descriptionStyle}>
      <PortableText value={album[0].content}/>

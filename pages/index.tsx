@@ -1,13 +1,16 @@
 import Head from 'next/head'
-import  {getHomepagePhotos} from "@/sanity/sanity-utils"
+import  {getHomepagePhotos, getAllInfo} from "@/sanity/sanity-utils"
 import { homepagePhotosType } from '@/types/Project-type'
 import Pic from '@/components/Pic/Pic'
 import styles from "@/styles/Home.module.css"
 import {  useState } from 'react'
 import Layers from '@/components/Pic/Layers'
+import { NextSeo } from 'next-seo';
 
 
-export default function Home(props: {homePhotos:homepagePhotosType[]}) {
+
+export default function Home(props: {homePhotos:homepagePhotosType[], bio: any}) {
+
 
 const data = props.homePhotos
 const randomIndex = Math.floor(Math.random() * data[0].images.length)
@@ -37,8 +40,11 @@ const altText = `photo homepage`;
 
 
   return (
+    
       <>
-
+   <NextSeo
+    description={props.bio[0].shortBio}
+  />
    
     <div className={`rightPartContainer ${styles.mainContainer}`}>
      <div className={styles.picContainer}>
@@ -62,6 +68,7 @@ const altText = `photo homepage`;
 
 export async function getStaticProps() {
   const photos = await getHomepagePhotos();
+  const bio = await getAllInfo();
 
   if (!photos || Object.keys(photos).length === 0) {
     return { notFound: true };
@@ -72,7 +79,11 @@ export async function getStaticProps() {
   
 
   return {
-    props: { homePhotos: photosArray },
+    props: { 
+      homePhotos: photosArray,
+      bio : bio,
+
+     },
     revalidate: 30
   };
 }

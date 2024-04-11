@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { projectArchiType } from '@/types/Project-type';
 import  {getAllArchi, getOneProject} from "@/sanity/sanity-utils"
 import styles from "@/styles/Project.module.css"
@@ -11,6 +11,8 @@ import { useRouter } from 'next/router';
 import Priorities from '@/components/TextContent/Priorities';
 import { NextSeo } from 'next-seo';
 import List from '@/components/List/List'
+import  {gsap} from "gsap";
+
 
 
 export default function archiProject ({archi, allArchi  } : { archi: projectArchiType [], allArchi: projectArchiType [] }){
@@ -106,7 +108,77 @@ useEffect(() => {
   };
 }, [router.events]);
 
-////
+//// SWIPE MOBILE
+
+const picRef = useRef<HTMLDivElement>(null);
+
+const time = mobileScreen ? 0.4 : 0.2
+
+const transitionNext = () => {
+
+
+  gsap.to(picRef.current, {
+    opacity: 0,
+    duration: time,
+    onComplete: () => {
+     
+      handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)
+
+      
+      gsap.fromTo(
+        picRef.current,
+        { opacity: 0 }, 
+        {
+          opacity: 1, 
+          duration: time,
+          ease: "power2.inOut",
+        }
+      );
+    },
+  });
+};
+
+const transitionPrevious = () => {
+
+  
+  gsap.to(picRef.current, {
+    opacity: 0,
+    duration: time,
+    onComplete: () => {
+
+      handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)
+      gsap.fromTo(
+        picRef.current,
+        { opacity: 0 }, 
+        {
+          opacity: 1, 
+          duration: time,
+          ease: "power2.inOut",
+        }
+      );
+    },
+  });
+};
+
+const [fingerTouch, setFingerTouch] = useState<number | undefined>()
+
+
+const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
+  const touchStartX = e.touches[0].clientX;
+  setFingerTouch(touchStartX);
+};
+
+const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
+  const touchEndX = e.changedTouches[0].clientX;
+
+  if (fingerTouch !== undefined) {
+    if (touchEndX > fingerTouch) {
+      transitionPrevious();
+    } else if (touchEndX < fingerTouch) {
+      transitionNext();
+    }
+  }
+};
 
   return (
     
@@ -117,7 +189,11 @@ useEffect(() => {
     
   />
     <div className={`rightPartContainer  ${styles.mainContainer}`}>
-    <List data={allArchi}/>
+        {!mobileScreen && (
+ <List data={allArchi}/>
+
+        )}
+   
       
 
       <div className={`${styles.slidersContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
@@ -150,7 +226,7 @@ useEffect(() => {
           {!mobileScreen ? (
               <div className={styles.photoBlockContainer}>
               <div className={styles.photoContainer}>
-              <div className={styles.picContainer}>
+              <div className={styles.picContainer} >
                 <Layers 
                   onClickRight={()=> {handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)}}
                   onClickLeft={()=> {handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)}}
@@ -206,7 +282,8 @@ useEffect(() => {
         (
           <div className={styles.photoBlockContainer}>
          
-          <div className={styles.picContainer}>
+          <div className={styles.picContainer} ref={picRef} onTouchStart={handleTouchStart}       
+              onTouchEnd={handleTouchEnd}>
             <Layers 
               onClickRight={()=> {handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)}}
               onClickLeft={()=> {handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)}}

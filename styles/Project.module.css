@@ -123,6 +123,9 @@
   .slidersContainer {
     justify-content: center;
   }
+  .picContainer {
+    height: auto;
+  }
   .infoContainer {
     /* border: 1px solid red; */
     align-items: center;

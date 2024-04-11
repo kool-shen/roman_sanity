@@ -56,7 +56,7 @@
   /* background-color: red; */
 }
 
-@media screen and (max-width: 1390px) {
+@media screen and (min-width: 426px) and (max-width: 1390px) {
   .titleContainer h1 {
     font-size: 4.5vw;
   }
@@ -64,14 +64,11 @@
 
 @media screen and (max-width: 425px) {
   .mainContainer {
-    /* height: 20%; */
-    /* border: 1px solid green; */
-    /* padding: 6vmin; */
     box-sizing: content-box;
-    /* padding: 6vmin; */
     padding: 0;
     padding-right: 6vmin;
     padding-left: 6vmin;
+    max-height: 20%;
   }
   .titleContainer {
     width: 100%;

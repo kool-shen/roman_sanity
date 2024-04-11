@@ -27,6 +27,12 @@ const contactInfos = {
         validation: (Rule: { required: () => any; }) => Rule.required(),
       },
       {
+        name: "shortBio",
+        title: "Bio courte",
+        type: "string",
+      },
+      
+      {
         name: "bio",
         title: "Bio",
         type: "array",

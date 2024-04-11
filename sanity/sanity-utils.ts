@@ -4,6 +4,7 @@ import config from "./config/client-config";
 
 
 
+
 export async function getAllAlbums(): Promise<albumType[] | undefined>  {
     return createClient(config).fetch(
 
@@ -255,6 +256,7 @@ export async function getAllInfo() : Promise<infosType[] | undefined>{
 "photo" : mailPhoto,
 "insta" : insta,
 "bio" : bio,  
+"shortBio": shortBio,
 "mentions" : mentions,  
      }`
   )

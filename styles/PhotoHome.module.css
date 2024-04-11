@@ -90,6 +90,7 @@
     box-sizing: border-box;
     padding-bottom: 0 !important;
     padding-top: 0;
+    max-height: 80%;
   }
 
   .mainContainer h1 {
@@ -97,9 +98,6 @@
     align-self: flex-end;
   }
 
-  .titleContainer {
-    display: none;
-  }
   .galleryContainer {
     grid-template-columns: repeat(3, 1fr);
     position: relative;
