@@ -9,8 +9,7 @@ export default function Pic(props: projectPicProps) {
 
   const handleLoad = () => {
     setIsLoaded(true);
-    
-  };
+    props.onLoadedChange && props.onLoadedChange(true)  };
 
   useEffect(() => {
 
@@ -34,9 +33,7 @@ export default function Pic(props: projectPicProps) {
       key={props.key}
       sizes={`(min-width: 768px) 40vw, 70vw `}
       loading="lazy"
-      onLoad={() => {
-        handleLoad();
-      }}
+      onLoad={handleLoad}
     />
   );
 }

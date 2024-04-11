@@ -57,37 +57,18 @@ function findMobileIndexByKeyValue(keyToFind:string) {
 
 const mobileIndexPhotoClicked =  findMobileIndexByKeyValue(clickedPhotoKey)
 
-// console.log(mergedImages[mobileIndexPhotoClicked])
-
-// console.log("KEY", findMobileIndexByKeyValue(clickedPhotoKey))
-
-/// index de la photo (web ou mobile)
-
-const indexPhotoClicked =findIndexByKeyValue(clickedPhotoKey)
-
-const [indexClicked, setIndexClicked] = useState(indexPhotoClicked)
-const [indexUnclicked, setIndexUnclicked] = useState(0)
-
 
 /// Fonction click next + previous 
 
 const [indexMobile, setIndexMobile] = useState(mobileIndexPhotoClicked)
 
+const [isPicLoaded, setIsPicLoaded] = useState(false);
+
+
 /// PIC
 
 
-const [isLoaded, setIsLoaded] = useState(false);
 
-const handleLoad = () => {
-  setIsLoaded(true);
-  
-};
-
-useEffect(() => {
-
-  console.log("yes")
-  
- }, [indexMobile]);
 
 /// NEXT ET PREVIOUS PHOTO
 
@@ -146,8 +127,7 @@ const nextMobile = () => {
     onComplete: () => {
       handleClickNextMobile();
       
-isLoaded &&
-console.log("yo")
+isPicLoaded &&
       gsap.to(picRef.current, {
         opacity: 1,
         duration: time, 
@@ -205,7 +185,11 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
 
 ///
 
+const handleLoadedChange = (isLoaded: boolean) => {
+  console.log( isLoaded);
+  setIsPicLoaded(isLoaded);
 
+};
 
 
 
@@ -249,27 +233,15 @@ return (
    /> 
   )}
                 
-                {/* <Pic
+                 <Pic
                   src={mergedImages[indexMobile].image}
                   alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
                   width={mergedImages[indexMobile].width}
                   height={mergedImages[indexMobile].height}
+                  onLoadedChange={handleLoadedChange}
+                /> 
 
-                  
-                /> */}
 
-<Image
-      src={mergedImages[indexMobile].image}
-      width={mergedImages[indexMobile].width}
-      height={mergedImages[indexMobile].height}
-      alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
-      className={styles.picLoaded}        
-      sizes={`(min-width: 768px) 40vw, 70vw `}
-      loading="lazy"
-      onLoad={() => {
-        handleLoad();
-      }}
-    />
                 
               </div>
               
