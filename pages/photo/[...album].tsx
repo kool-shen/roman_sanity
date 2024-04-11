@@ -147,6 +147,7 @@ const nextMobile = () => {
       handleClickNextMobile();
       
 isLoaded &&
+console.log("yo")
       gsap.to(picRef.current, {
         opacity: 1,
         duration: time, 
@@ -262,7 +263,7 @@ return (
       width={mergedImages[indexMobile].width}
       height={mergedImages[indexMobile].height}
       alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
-      className={`${styles.picLoaded} ${isLoaded ? '' : styles.hidden}`}        
+      className={styles.picLoaded}        
       sizes={`(min-width: 768px) 40vw, 70vw `}
       loading="lazy"
       onLoad={() => {
