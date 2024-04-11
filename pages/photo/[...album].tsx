@@ -113,7 +113,7 @@ const transitionNext = () => {
      
       handleClickNextMobile();
 
-      picLoaded &&
+     
       gsap.fromTo(
         picRef.current,
         { opacity: 0 }, 
@@ -121,7 +121,7 @@ const transitionNext = () => {
           opacity: 1, 
           duration: time,
           ease: "power2.inOut",
-        }
+        } 
       );
     },
   });
@@ -137,7 +137,7 @@ const transitionPrevious = () => {
 
       handleClickPreviousMobile();
 
-      picLoaded &&
+      childIsLoaded &&
       gsap.fromTo(
         picRef.current,
         { opacity: 0 }, 
@@ -175,15 +175,12 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
   }
 };
 
-////
+///
+const [childIsLoaded, setChildIsLoaded] = useState(false);
 
-const [picLoaded, setPicLoaded] = useState(false);
-
-const handlePicLoad = () => {
-  setPicLoaded(true);
-  console.log("photo chargée")
+const handleChildLoadChange = (isLoaded:any) => {
+  setChildIsLoaded(isLoaded);
 };
-
 
 
 return (
@@ -230,7 +227,9 @@ return (
                   alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
                   width={mergedImages[indexMobile].width}
                   height={mergedImages[indexMobile].height}
-                  onLoad={handlePicLoad}
+                  onChildLoadChange={handleChildLoadChange}
+
+                  
                 />
                 
               </div>
