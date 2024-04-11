@@ -162,3 +162,23 @@
     min-height: auto;
   }
 }
+
+.hidden {
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s;
+}
+
+.picLoaded {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease, opacity 1s;
+  box-sizing: border-box;
+  object-position: left bottom;
+}
+
+@media screen and (max-width: 425px) {
+  .picLoaded {
+    object-position: center;
+  }
+}

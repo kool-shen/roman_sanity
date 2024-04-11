@@ -8,6 +8,7 @@ import Link from "next/link";
 import { NextSeo } from "next-seo";
 import List from '@/components/List/List';
 import  {gsap} from "gsap";
+import Image from "next/image";
 
 
 
@@ -70,15 +71,26 @@ const [indexUnclicked, setIndexUnclicked] = useState(0)
 
 /// Fonction click next + previous 
 
+const [indexMobile, setIndexMobile] = useState(mobileIndexPhotoClicked)
 
-/// WEB
+/// PIC
 
 
+const [isLoaded, setIsLoaded] = useState(false);
 
+const handleLoad = () => {
+  setIsLoaded(true);
+  
+};
+
+useEffect(() => {
+
+  console.log("yes")
+  
+ }, [indexMobile]);
 
 /// NEXT ET PREVIOUS PHOTO
 
-const [indexMobile, setIndexMobile] = useState(mobileIndexPhotoClicked)
 
 
 const handleClickNextMobile = () => {
@@ -133,8 +145,8 @@ const nextMobile = () => {
     duration: time, 
     onComplete: () => {
       handleClickNextMobile();
-      gsap.set(picRef.current, { opacity: 0 });
       
+isLoaded &&
       gsap.to(picRef.current, {
         opacity: 1,
         duration: time, 
@@ -194,6 +206,9 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
 
 
 
+
+
+
 return (
   <>
       <NextSeo
@@ -233,14 +248,27 @@ return (
    /> 
   )}
                 
-                <Pic
+                {/* <Pic
                   src={mergedImages[indexMobile].image}
                   alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
                   width={mergedImages[indexMobile].width}
                   height={mergedImages[indexMobile].height}
 
                   
-                />
+                /> */}
+
+<Image
+      src={mergedImages[indexMobile].image}
+      width={mergedImages[indexMobile].width}
+      height={mergedImages[indexMobile].height}
+      alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
+      className={`${styles.picLoaded} ${isLoaded ? '' : styles.hidden}`}        
+      sizes={`(min-width: 768px) 40vw, 70vw `}
+      loading="lazy"
+      onLoad={() => {
+        handleLoad();
+      }}
+    />
                 
               </div>
               
