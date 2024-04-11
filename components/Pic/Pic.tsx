@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import styles from "./Pic.module.css"
 import { projectPicProps } from '@/types/Project-type'
@@ -9,9 +9,13 @@ export default function Pic(props: projectPicProps) {
 
   const handleLoad = () => {
     setIsLoaded(true);
-    // Appeler la fonction de rappel du parent avec la valeur de isLoaded
-    props.onChildLoadChange && props.onChildLoadChange(true);
+    
   };
+
+  useEffect(() => {
+    console.log("chargement")
+
+   }, [props.src]);
 
   return (
     <Image
@@ -19,7 +23,7 @@ export default function Pic(props: projectPicProps) {
       width={props.width}
       height={props.height}
       alt={props?.alt}
-      className={styles.picLoaded}
+      className={`${styles.picLoaded} ${isLoaded ? '' : styles.hidden}`} 
       onClick={props.onClick}
       style={props.style}
       onMouseEnter={props.onMouseEnter}

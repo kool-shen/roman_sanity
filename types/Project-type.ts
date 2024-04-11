@@ -85,7 +85,7 @@ export type projectPicProps = {
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
-  onChildLoadChange?: any;
+  onImageLoad?: () => void;
   src: string;
   width: number;
   height: number;

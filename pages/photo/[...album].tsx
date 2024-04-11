@@ -104,51 +104,11 @@ const picRef = useRef<HTMLDivElement>(null);
 const time = mobileScreen ? 0.4 : 0.2
 
 const transitionNext = () => {
-
-
-  gsap.to(picRef.current, {
-    opacity: 0,
-    duration: time,
-    onComplete: () => {
-     
-      handleClickNextMobile();
-
-     
-      gsap.fromTo(
-        picRef.current,
-        { opacity: 0 }, 
-        {
-          opacity: 1, 
-          duration: time,
-          ease: "power2.inOut",
-        } 
-      );
-    },
-  });
+  handleClickNextMobile();
 };
 
 const transitionPrevious = () => {
-
-  
-  gsap.to(picRef.current, {
-    opacity: 0,
-    duration: time,
-    onComplete: () => {
-
-      handleClickPreviousMobile();
-
-      childIsLoaded &&
-      gsap.fromTo(
-        picRef.current,
-        { opacity: 0 }, 
-        {
-          opacity: 1, 
-          duration: time,
-          ease: "power2.inOut",
-        }
-      );
-    },
-  });
+  handleClickPreviousMobile();
 };
 
 
@@ -168,19 +128,15 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
 
   if (fingerTouch !== undefined) {
     if (touchEndX > fingerTouch) {
-      transitionPrevious();
+      handleClickPreviousMobile();
     } else if (touchEndX < fingerTouch) {
-      transitionNext();
+      handleClickNextMobile();
     }
   }
 };
 
 ///
-const [childIsLoaded, setChildIsLoaded] = useState(false);
 
-const handleChildLoadChange = (isLoaded:any) => {
-  setChildIsLoaded(isLoaded);
-};
 
 
 return (
@@ -227,7 +183,6 @@ return (
                   alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
                   width={mergedImages[indexMobile].width}
                   height={mergedImages[indexMobile].height}
-                  onChildLoadChange={handleChildLoadChange}
 
                   
                 />
