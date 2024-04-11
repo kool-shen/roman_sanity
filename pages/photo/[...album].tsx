@@ -104,7 +104,47 @@ const picRef = useRef<HTMLDivElement>(null);
 const time = mobileScreen ? 0.4 : 0.2
 
 const transitionNext = () => {
-  handleClickNextMobile();
+
+
+  gsap.to(picRef.current, {
+    opacity: 0,
+    duration: time,
+    onComplete: () => {
+     
+      handleClickNextMobile();
+
+     
+      gsap.fromTo(
+        picRef.current,
+        { opacity: 0 }, 
+        {
+          opacity: 1, 
+          duration: time,
+          ease: "power2.inOut",
+        } 
+      );
+    },
+  });
+};
+
+const nextMobile = () => {
+  // Réduire l'opacité de l'image actuelle
+  gsap.to(picRef.current, {
+    opacity: 0,
+    duration: 0.5, // Durée du fondu
+    onComplete: () => {
+      // Mettre à jour l'index pour passer à la photo suivante
+      handleClickNextMobile();
+      // Afficher la nouvelle image avec une opacité de 0
+      gsap.set(picRef.current, { opacity: 0 });
+      // Animer l'opacité de la nouvelle image
+      gsap.to(picRef.current, {
+        opacity: 1,
+        duration: 0.5, // Durée du fondu
+        ease: 'power2.inOut',
+      });
+    },
+  });
 };
 
 const transitionPrevious = () => {
@@ -128,9 +168,9 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
 
   if (fingerTouch !== undefined) {
     if (touchEndX > fingerTouch) {
-      handleClickPreviousMobile();
+      transitionPrevious();
     } else if (touchEndX < fingerTouch) {
-      handleClickNextMobile();
+      nextMobile();
     }
   }
 };
