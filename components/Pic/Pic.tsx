@@ -12,7 +12,8 @@ export default function Pic(props: projectPicProps) {
     props.onLoadedChange && props.onLoadedChange(true)  };
 
   useEffect(() => {
-   }, [props.src ]);
+    console.log(isLoaded)
+   }, [isLoaded, props.src ]);
 
 
   return (

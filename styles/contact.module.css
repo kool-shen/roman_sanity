@@ -55,5 +55,12 @@
 @media screen and (max-width: 425px) {
   .textContainer {
     width: 70%;
+    max-width: 100%;
+  }
+  .titleContainer {
+    padding-left: 0;
+  }
+  .infoBloc p {
+    text-align: start;
   }
 }

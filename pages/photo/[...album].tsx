@@ -128,7 +128,7 @@ const nextMobile = () => {
       handleClickNextMobile();
       
 isPicLoaded &&
-console.log("next")
+// console.log("next")
       gsap.to(picRef.current, {
         opacity: 1,
         duration: time, 
@@ -187,7 +187,7 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
 ///
 
 const handleLoadedChange = (isLoaded: boolean) => {
-  console.log( isLoaded);
+  // console.log( isLoaded);
   setIsPicLoaded(isLoaded);
 
 };
@@ -223,8 +223,8 @@ return (
   {!mobileScreen && (
      <Layers
      onClickRight={() => {
-       // handleClickNextMobile();
-       nextMobile()
+       handleClickNextMobile();
+      //  nextMobile()
      }}
      onClickLeft={() => {
        // handleClickPreviousMobile();
