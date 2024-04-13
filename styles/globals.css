@@ -123,6 +123,9 @@ a {
 }
 
 @media screen and (max-width: 425px) {
+  h1 {
+    font-size: 6.8vmin;
+  }
   h2 {
     font-size: 3.5vmin;
   }

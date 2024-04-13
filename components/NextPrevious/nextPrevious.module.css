@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  /* border: 1px solid green; */
+}
+
+.iconContainer {
+  height: 45%;
+}

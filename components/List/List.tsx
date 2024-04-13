@@ -17,6 +17,8 @@ interface ListProps {
 
   const categoryPage = router.pathname === '/photo' || router.pathname === '/archi'
 
+  console.log(router.pathname)
+
  const isArchi = router.pathname.startsWith('/archi')
 
  const pathName = isArchi ? 'archi' : 'photo'
@@ -44,6 +46,14 @@ useEffect(() => {
 
   return (
     <div className={styles.titleContainer} ref={albumsRef} style={style}>
+     
+      <div className={styles.textContainer}>
+      <Link href={"/photo/all"}>
+        <h3 style={router.pathname === '/photo/all' ? 
+               { fontFamily: "var(--texItalic)" } : {}}>TOUS</h3>
+               </Link>
+      </div>
+      
       {(data as albumType[]).map((content: albumType) => (
         <div className={styles.textContainer} key={content._id} style={categoryPage ? {opacity : 0} :{opacity : 1} }>
           <Link legacyBehavior href={`/${pathName}/${content.slug}`} passHref>

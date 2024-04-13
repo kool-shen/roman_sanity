@@ -12,6 +12,7 @@ import Priorities from '@/components/TextContent/Priorities';
 import { NextSeo } from 'next-seo';
 import List from '@/components/List/List'
 import  {gsap} from "gsap";
+import NextPrevious from '@/components/NextPrevious/NextPrevious';
 
 
 
@@ -19,7 +20,24 @@ export default function archiProject ({archi, allArchi  } : { archi: projectArch
 
   const mergedImages = archi[0]?.images.concat(archi[0]?.images2)
 
+  console.log(allArchi)
+
   // console.log(mergedImages)
+
+  /// 
+
+function findAlbumIndex(archi : projectArchiType[], name: string) {
+  return allArchi.findIndex(album => album.name === name);
+}
+
+const albumName = archi[0].name
+const index = findAlbumIndex(allArchi, albumName);
+console.log('index', index);
+
+
+const nextIndex = (index + 1 >= allArchi.length) ? 0 : index + 1
+
+const previousIndex = (index - 1 < 0) ? allArchi.length - 1 : index - 1 
 
 
    /// Mobile ///
@@ -193,8 +211,6 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
  <List data={allArchi}/>
 
         )}
-   
-      
 
       <div className={`${styles.slidersContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
         <div className={styles.modal}   style={descriptionStyle}>
@@ -279,29 +295,54 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
               
                 )
         :
-        (
+        (<>
+          <NextPrevious name={archi[0].name}  
+   
+   slugPrevious={`/archi/${allArchi[previousIndex].slug}`}
+   slugNext={`/archi/${allArchi[nextIndex].slug}`} /> 
           <div className={styles.photoBlockContainer}>
          
-          <div className={styles.picContainer} ref={picRef} onTouchStart={handleTouchStart}       
-              onTouchEnd={handleTouchEnd}>
-            <Layers 
+
+
+          {/* <div className={styles.picContainer} ref={picRef} onTouchStart={handleTouchStart}        
+              onTouchEnd={handleTouchEnd}>*/}
+            {/* <Layers 
               onClickRight={()=> {handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)}}
               onClickLeft={()=> {handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)}}
             
-            />
-           <Pic   
+            /> */}
+           <PicProject
             src={mergedImages[mobileIndex].image} alt={mergedImages[mobileIndex].image} 
-            width={mergedImages[mobileIndex].width} height={mergedImages[mobileIndex].height}/>
-          </div>
-          <div className={styles.mobileBottom}>
-          
-        <p>{mobileIndex +1} / {mobileSliderLenght}</p> 
-      
-        
-       </div>
+            width={mergedImages[mobileIndex].width} height={mergedImages[mobileIndex].height}
+            style={{height : "95%"}}/>
+          {/* </div> */}
+          <p>{mobileIndex +1} / {mobileSliderLenght}</p>
          
           
-           </div>  
+           </div> 
+           <div className={styles.descriptionContainer}>
+         <PortableText value={archi[0].content}/>
+        </div>
+           <div className={styles.prioritiesContainer} >
+       
+         <Priorities 
+         name={"programme"}
+         value={archi[0].program}/>
+         <Priorities 
+         name={"commanditaire"}
+         value={archi[0].sponsor}/>
+         <Priorities 
+         name={"localisation"}
+         value={archi[0].localisation}/>
+         <Priorities 
+         name={"calendrier"}
+         value={archi[0].calendar}/>
+         <Priorities 
+         name={"surface"}
+         value={archi[0].surface}/>
+       
+       </div> 
+           </> 
         )}
        
       </div>

@@ -1,15 +1,14 @@
 
-import { getOneAlbum, getAllAlbums, getOnePhoto, getPhoto } from "@/sanity/sanity-utils"
-import { albumType,  ImageType} from "@/types/Project-type";
+import { getOneAlbum, getAllAlbums } from "@/sanity/sanity-utils"
+import { albumType} from "@/types/Project-type";
 import styles from "@/styles/Album.module.css"
-import  {PortableText} from "@portabletext/react"
-import Pic from "@/components/Pic/Pic";
 import PicHeight from "@/components/Pic/PicHeight"
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import List from '@/components/List/List'
 import { NextSeo } from "next-seo";
+import NextPrevious from '@/components/NextPrevious/NextPrevious';
 
 export default function Album({ album, allAlbums }: { album: albumType [], allAlbums: albumType [] }) {
 
@@ -19,30 +18,20 @@ const photoData = album.flatMap((album) => [
   ...album.images2.map((image) => ({ ...image, albumName: album.name })),
 ]);
 
-console.log('albums', allAlbums);
 
-//// ANIMATION DESCRIPTION ////
+/// 
 
-const [crossClicked, setCrossClicked]= useState(false)
+function findAlbumIndex(albums : albumType[], name: string) {
+  return albums.findIndex(album => album.name === name);
+}
 
-const crossStyle = crossClicked
-   ? { transform: "rotate(45deg)", transition: "transform 0.5s" }
-   : { transition: "transform 0.5s",  };
+const albumName = album[0].name
+const index = findAlbumIndex(allAlbums, albumName);
 
- const descriptionStyle = !crossClicked
-   ? { transform: "translateY(100vh)", transition: "transform 0.5s" }
-   : { transition: "transform 0.5s",  };   
 
-  
+const nextIndex = (index + 1 >= allAlbums.length) ? 0 : index + 1
 
-const clickCross = () => {
-setCrossClicked(!crossClicked)
-// console.log(crossClicked, crossStyle)
-
-}   
-
-const contentExists = album[0].content?.length > 0 ? true : false
-// console.log(contentExists);
+const previousIndex = (index - 1 < 0) ? allAlbums.length - 1 : index - 1 
 
 
 //// animation sortie
@@ -68,24 +57,7 @@ const router = useRouter();
       };
     }, [router.events]);
 
-////
 
-/// Mobile ou web ///
-
-
-const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
-
-const calculateScreen = () => {
-  window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
-};
-
-useEffect(() => {
- calculateScreen();
-}, []);
-
-const lisStyle = mobileScreen
-    ? { display: "none"}
-    : { display: "flex",  }; 
 
   return (
     <>
@@ -97,14 +69,23 @@ const lisStyle = mobileScreen
 
     <div className={`rightPartContainer   ${styles.mainContainer}  `}>
 
-     
+    
+      <NextPrevious name={album[0].name}  
+   
+   slugPrevious={`/photo/${allAlbums[previousIndex].slug}`}
+   slugNext={`/photo/${allAlbums[nextIndex].slug}`} />
+   
+
+   
     <List data={allAlbums} />  
- 
+   
+     
       <div className={`${styles.modalContainer} fadeOut  ${isRouteChanging ? "fadeOutActive" : ''}`}>  
-      {contentExists && (<div className={styles.modal}   style={descriptionStyle}>
-     <PortableText value={album[0].content}/>
-        </div>)}
+    
+
      <div className={styles.galleryContainer } >
+
+      
     
      {photoData.map((content, i) => (
       <div className={styles.picContainer} key={content.key}
@@ -146,11 +127,9 @@ export async function getStaticPaths() {
   const paths = albums?.map((album: albumType) => ({
     params: { album: album.slug }, 
   }));
-  console.log("DATA DE BASE",albums)
- console.log("ALBUMPATHS", paths)
+//   console.log("DATA DE BASE",albums)
+//  console.log("ALBUMPATHS", paths)
   
-
-
   return {
     paths,
     fallback: 'blocking', 

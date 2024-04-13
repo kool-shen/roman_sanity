@@ -78,12 +78,15 @@
     padding-bottom: 0 !important;
     max-height: 80%;
     box-sizing: border-box;
+    flex-direction: column;
   }
 
   .modalContainer {
     width: 100%;
-    /* border: 3px solid red; */
-    max-height: 100%;
+    /* border: 1px solid red; */
+    max-height: 90%;
+    height: 90%;
+    box-sizing: border-box;
   }
 
   .galleryContainer {

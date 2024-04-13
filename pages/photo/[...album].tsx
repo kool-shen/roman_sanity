@@ -37,13 +37,6 @@ const mergedImages = album[0].images.concat(album[0].images2)
   const clickedPhotoKey  = photoClicked[0].images[0].key
   
 
-  function findIndexByKeyValue(keyValue:string) {
-    const index = !slider1IsClicked ? album[0].images2.findIndex(image => image.key === keyValue) : 
-    album[0].images.findIndex(image => image.key === keyValue)
-    return index;
-}
-
-
 /// Trouver l'index de la photo cliquée sur mobile ///
 
 function findMobileIndexByKeyValue(keyToFind:string) {
@@ -63,10 +56,6 @@ const mobileIndexPhotoClicked =  findMobileIndexByKeyValue(clickedPhotoKey)
 const [indexMobile, setIndexMobile] = useState(mobileIndexPhotoClicked)
 
 const [isPicLoaded, setIsPicLoaded] = useState(false);
-
-
-/// PIC
-
 
 
 
@@ -96,29 +85,7 @@ const picRef = useRef<HTMLDivElement>(null);
 
 const time = mobileScreen ? 0.4 : 0.2
 
-const transitionNext = () => {
 
-
-  gsap.to(picRef.current, {
-    opacity: 0,
-    duration: time,
-    onComplete: () => {
-     
-      handleClickNextMobile();
-
-     
-      gsap.fromTo(
-        picRef.current,
-        { opacity: 0 }, 
-        {
-          opacity: 1, 
-          duration: 0.5,
-          ease: "power2.inOut",
-        } 
-      );
-    },
-  });
-};
 
 const nextMobile = () => {
   gsap.to(picRef.current, {
@@ -153,14 +120,6 @@ const previoustMobile = () => {
     },
   });
 };
-
-
-
-const transitionPrevious = () => {
-  handleClickPreviousMobile();
-};
-
-
 
 /// SWIPE MOBILE ///
 
@@ -227,8 +186,8 @@ return (
       //  nextMobile()
      }}
      onClickLeft={() => {
-       // handleClickPreviousMobile();
-       previoustMobile()
+       handleClickPreviousMobile();
+      //  previoustMobile()
      }}
      
    /> 
