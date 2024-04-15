@@ -3,9 +3,11 @@ import  {getHomepagePhotos, getAllInfo} from "@/sanity/sanity-utils"
 import { homepagePhotosType } from '@/types/Project-type'
 import Pic from '@/components/Pic/Pic'
 import styles from "@/styles/Home.module.css"
-import {  useState } from 'react'
+import {  useRef, useState } from 'react'
 import Layers from '@/components/Pic/Layers'
 import { NextSeo } from 'next-seo';
+import  {gsap} from "gsap";
+
 
 
 
@@ -13,6 +15,7 @@ export default function Home(props: {homePhotos:homepagePhotosType[], bio: any})
 
 
 const data = props.homePhotos
+console.log('data', data);
 const randomIndex = Math.floor(Math.random() * data[0].images.length)
 
 const albumLength = data[0].images.length
@@ -38,6 +41,66 @@ const handleClickPrevious = () => {
 
 const altText = `photo homepage`;
 
+////
+
+//// SWIPE MOBILE
+
+const picRef = useRef<HTMLDivElement>(null);
+console.log('picRef', picRef.current);
+
+const nextMobile = () => {
+  gsap.to(picRef.current, {
+    opacity: 0,
+    duration: 0.4, 
+    onComplete: () => {
+      handleClickNext();
+// console.log("next")
+      gsap.to(picRef.current, {
+        opacity: 1,
+        duration: 0.4,  
+        ease: 'power2.inOut',
+      });
+    },
+  });
+};
+
+const previoustMobile = () => {
+   gsap.to(picRef.current, {
+    opacity: 0,
+    duration: 0.4, 
+    onComplete: () => {
+      handleClickPrevious()
+      gsap.set(picRef.current, { opacity: 0 });
+      gsap.to(picRef.current, {
+        opacity: 1,
+        duration: 0.4, 
+                ease: 'power2.inOut',
+      });
+    },
+  });
+};
+
+/// SWIPE MOBILE ///
+
+const [fingerTouch, setFingerTouch] = useState<number | undefined>()
+
+
+const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
+  const touchStartX = e.touches[0].clientX;
+  setFingerTouch(touchStartX);
+};
+
+const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
+  const touchEndX = e.changedTouches[0].clientX;
+
+  if (fingerTouch !== undefined) {
+    if (touchEndX > fingerTouch) {
+      previoustMobile();
+    } else if (touchEndX < fingerTouch) {
+      nextMobile();
+    }
+  }
+};
 
   return (
     
@@ -47,7 +110,10 @@ const altText = `photo homepage`;
   />
    
     <div className={`rightPartContainer ${styles.mainContainer}`}>
-     <div className={styles.picContainer}>
+    <div className={styles.picContainer}
+    ref={picRef}
+    onTouchStart={handleTouchStart}        
+    onTouchEnd={handleTouchEnd}>
      <Layers 
           onClickRight={()=> {handleClickNext()}}
           onClickLeft={()=> {handleClickPrevious()}}

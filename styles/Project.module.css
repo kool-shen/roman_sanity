@@ -124,6 +124,7 @@
   .slidersContainer {
     justify-content: space-between;
     flex-direction: column;
+    gap: 0;
   }
   .picContainer {
     height: auto;

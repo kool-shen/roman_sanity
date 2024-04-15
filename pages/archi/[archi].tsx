@@ -61,8 +61,7 @@ const [firstSliderIndex, setFirstSliderIndex] = useState(0)
 const [secondSliderIndex, setSecondSliderIndex] = useState(0)
 const [mobileIndex, setMobileIndex] = useState(0)
 
-const firstSliderLenght = archi[0]?.images?.length || 0;
-const secondSliderLenght = archi[0]?.images2?.length || 0;
+
 const mobileSliderLenght = mergedImages.length || 0;
 
 const image1 = archi[0]?.images?.[firstSliderIndex] || { image: '', width: 0, height: 0 };
@@ -90,18 +89,12 @@ const image2 = archi[0]?.images2?.[secondSliderIndex] || { image: '', width: 0, 
 
  const [crossClicked, setCrossClicked]= useState(false)
 
- const crossStyle = crossClicked
-    ? { transform: "rotate(45deg)", transition: "transform 0.5s" }
-    : { transition: "transform 0.5s",  };
 
   const descriptionStyle = !crossClicked
     ? { transform: "translateY(100vh)", transition: "transform 0.5s" }
     : { transition: "transform 0.5s",  };   
 
- const clickCross = () => {
-setCrossClicked(!crossClicked)
 
- }   
 
  //// animation sortie
 
@@ -129,6 +122,7 @@ useEffect(() => {
 //// SWIPE MOBILE
 
 const picRef = useRef<HTMLDivElement>(null);
+console.log('picRef', picRef.current);
 
 const time = mobileScreen ? 0.4 : 0.2
 
@@ -184,6 +178,7 @@ const [fingerTouch, setFingerTouch] = useState<number | undefined>()
 const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
   const touchStartX = e.touches[0].clientX;
   setFingerTouch(touchStartX);
+  console.log("start")
 };
 
 const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
@@ -192,8 +187,10 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
   if (fingerTouch !== undefined) {
     if (touchEndX > fingerTouch) {
       transitionPrevious();
+      console.log("previous")
     } else if (touchEndX < fingerTouch) {
       transitionNext();
+      console.log("next")
     }
   }
 };
@@ -209,7 +206,6 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
     <div className={`rightPartContainer  ${styles.mainContainer}`}>
         {!mobileScreen && (
  <List data={allArchi}/>
-
         )}
 
       <div className={`${styles.slidersContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
@@ -300,22 +296,21 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
    
    slugPrevious={`/archi/${allArchi[previousIndex].slug}`}
    slugNext={`/archi/${allArchi[nextIndex].slug}`} /> 
-          <div className={styles.photoBlockContainer}>
+          <div className={styles.photoBlockContainer} 
+          ref={picRef}
+          onTouchStart={handleTouchStart}        
+          onTouchEnd={handleTouchEnd} >
          
 
 
-          {/* <div className={styles.picContainer} ref={picRef} onTouchStart={handleTouchStart}        
-              onTouchEnd={handleTouchEnd}>*/}
-            {/* <Layers 
-              onClickRight={()=> {handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)}}
-              onClickLeft={()=> {handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)}}
-            
-            /> */}
            <PicProject
-            src={mergedImages[mobileIndex].image} alt={mergedImages[mobileIndex].image} 
-            width={mergedImages[mobileIndex].width} height={mergedImages[mobileIndex].height}
-            style={{height : "95%"}}/>
-          {/* </div> */}
+            src={mergedImages[mobileIndex].image} 
+            alt={mergedImages[mobileIndex].image} 
+            width={mergedImages[mobileIndex].width} 
+            height={mergedImages[mobileIndex].height}
+            style={{height : "95%"}}
+          />
+          
           <p>{mobileIndex +1} / {mobileSliderLenght}</p>
          
           

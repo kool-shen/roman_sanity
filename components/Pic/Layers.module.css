@@ -16,3 +16,13 @@
   width: 50%;
   cursor: url(../../public/arrow_left_white.png), auto;
 }
+
+@media screen and (max-width: 425px) {
+  .rightLayer {
+    display: none;
+  }
+
+  .leftLayer {
+    display: none;
+  }
+}
