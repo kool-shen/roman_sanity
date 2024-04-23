@@ -168,9 +168,11 @@ return (
       <div className={styles.slidersContainer}>
             <div className={styles.photoBlockContainer} >
             <Link href= {`/photo/${album[0].slug}`}>
-            <div className={styles.thumbnail}>
- 
- </div>
+            <div className={styles.icon}>
+            <Pic src="/thumbnail_4_squares.png" width={100} height={100}/>
+ </div> 
+
+
             </Link>
               <div className={styles.picContainer} ref={picRef} 
               onTouchStart={handleTouchStart}       
