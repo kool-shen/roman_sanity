@@ -125,6 +125,9 @@
 }
 
 @media screen and (max-width: 425px) {
+  .mainContainer {
+    max-height: 80%;
+  }
   .photoBlockContainer {
     height: 66%;
   }
