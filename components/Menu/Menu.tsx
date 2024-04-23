@@ -126,6 +126,7 @@ const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWi
        <h1 
        onClick={()=>{clickHome()}}
        ref={romanRef}
+       style={{lineHeight : 0.7}}
        >roman cadre</h1>
        </Link>
       
@@ -165,6 +166,7 @@ const archiStyle: React.CSSProperties = archiClicked || router.pathname.startsWi
       <h1  
       onClick={() => { clickHome() }}
       ref={infoRef}
+      style={{lineHeight : 0.8}}
       >infos</h1>
     
   </Link>

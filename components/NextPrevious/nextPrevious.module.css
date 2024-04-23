@@ -9,3 +9,9 @@
 .iconContainer {
   height: 45%;
 }
+
+@media screen and (min-width: 425px) {
+  .container {
+    display: none;
+  }
+}

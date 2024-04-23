@@ -61,7 +61,6 @@
   gap: 2vmin;
   position: relative;
   width: 100%;
-  height: 66%;
 }
 
 .photoContainer {
@@ -119,8 +118,16 @@
   display: none;
   justify-content: space-between;
 }
+@media screen and (min-width: 425px) {
+  .photoContainer {
+    width: auto;
+  }
+}
 
 @media screen and (max-width: 425px) {
+  .photoBlockContainer {
+    height: 66%;
+  }
   .slidersContainer {
     justify-content: space-between;
     flex-direction: column;

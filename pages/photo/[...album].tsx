@@ -8,7 +8,6 @@ import Link from "next/link";
 import { NextSeo } from "next-seo";
 import List from '@/components/List/List';
 import  {gsap} from "gsap";
-import Image from "next/image";
 
 
 
@@ -168,13 +167,11 @@ return (
      
       <div className={styles.slidersContainer}>
             <div className={styles.photoBlockContainer} >
-            <div className={styles.iconContainer}> 
             <Link href= {`/photo/${album[0].slug}`}>
-            <Pic   
-            src={"/thumbnail_black.png"} alt={"thumbnail icon"} 
-            width={100} height={100} /> 
+            <div className={styles.thumbnail}>
+ 
+ </div>
             </Link>
-       </div>
               <div className={styles.picContainer} ref={picRef} 
               onTouchStart={handleTouchStart}       
               onTouchEnd={handleTouchEnd}
