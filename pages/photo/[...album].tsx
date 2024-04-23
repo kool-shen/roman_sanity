@@ -169,7 +169,7 @@ return (
             <div className={styles.photoBlockContainer} >
             <Link href= {`/photo/${album[0].slug}`}>
             <div className={styles.icon}>
-            <Pic src="/thumbnail_4_squares.png" width={100} height={100}/>
+            <Pic src="/thumbnail_4_squares.png" alt="vue gallerie" width={100} height={100}/>
  </div> 
 
 
