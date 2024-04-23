@@ -34,15 +34,6 @@
   /* overflow: hidden; */
 }
 
-.iconContainer {
-  position: absolute;
-  height: 5%;
-  width: 5%;
-  top: 0;
-  right: 0;
-  z-index: 4;
-}
-
 .thumbnail {
   background-color: black;
   position: absolute;
@@ -121,6 +112,7 @@
     max-height: 80%;
     display: block;
   }
+
   .slidersContainer {
     flex-direction: column;
     justify-content: space-between;
@@ -157,6 +149,10 @@
   .picContainer {
     min-width: auto;
     height: 80%;
+  }
+  .thumbnail {
+    height: 7vmin;
+    width: 7vmin;
   }
 }
 

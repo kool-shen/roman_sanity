@@ -166,6 +166,15 @@ _:future,
   font-size: 5vmin;
 }
 
+_::-webkit-full-page-media,
+_:future,
+:root h3 {
+  font-family: var(--texRegular);
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 5vmin;
+}
+
 /* FONTS */
 
 @-moz-document url-prefix() {
