@@ -12,12 +12,7 @@ import NextPrevious from '@/components/NextPrevious/NextPrevious';
 
 export default function Album({ album, allAlbums }: { album: albumType [], allAlbums: albumType [] }) {
 
-const photoData = album.flatMap((album) => [
-
-  ...album.images.map((image) => ({ ...image, albumName: album.name })),
-  ...album.images2.map((image) => ({ ...image, albumName: album.name })),
-]);
-
+const photoData = album[0].images
 
 /// 
 
@@ -83,7 +78,7 @@ const router = useRouter();
       <div className={`${styles.modalContainer} fadeOut  ${isRouteChanging ? "fadeOutActive" : ''}`}>  
     
 
-     <div className={styles.galleryContainer } >
+     <div className={styles.galleryContainer } style= { { scrollbarWidth : "none"}}>
 
       
     

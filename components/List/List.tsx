@@ -46,14 +46,16 @@ useEffect(() => {
 
   return (
     <div className={styles.titleContainer} ref={albumsRef} style={style}>
-      {!isArchi && (
+       {!isArchi && (
   <div className={styles.textContainer}>
   <Link href={"/photo/all"}>
     <h3 style={router.pathname === '/photo/all' ? 
            { fontFamily: "var(--texItalic)" } : {}}>TOUS</h3>
            </Link>
   </div>
-      )}
+      )} 
+
+
     
       
       {(data as albumType[]).map((content: albumType) => (

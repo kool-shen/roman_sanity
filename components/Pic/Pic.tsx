@@ -24,7 +24,7 @@ export default function Pic(props: projectPicProps) {
       alt={props?.alt}
       className={`${styles.picLoaded} ${isLoaded ? '' : styles.hidden}`}        
       onClick={props.onClick}
-      style={ {opacity : isLoaded ? 1 : 0}}
+      style={ props.style}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       key={props.key}

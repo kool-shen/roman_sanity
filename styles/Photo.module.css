@@ -38,7 +38,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  height: 5%;
+  height: 4%;
+  width: 4%;
 }
 
 .thumbnail {
@@ -155,10 +156,15 @@
   .picContainer {
     min-width: auto;
     height: 80%;
+    width: 100%;
   }
   .thumbnail {
     height: 7vmin;
     width: 7vmin;
+  }
+  .icon {
+    height: 5%;
+    width: 5%;
   }
 }
 

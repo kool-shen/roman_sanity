@@ -64,7 +64,6 @@
 @media screen and (min-width: 425px) {
   .titleContainer {
     width: 23vw;
-    /* border: 1px solid red; */
     box-sizing: border-box;
     padding-left: 6vmin;
   }

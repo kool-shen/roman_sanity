@@ -120,7 +120,9 @@
 }
 @media screen and (min-width: 425px) {
   .photoContainer {
-    width: auto;
+    /* width: auto; */
+
+    width: 100%;
   }
 }
 

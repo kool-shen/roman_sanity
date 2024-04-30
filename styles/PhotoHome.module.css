@@ -61,10 +61,12 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-content: flex-start;
-  overflow-y: scroll;
+  overflow-y: auto;
   gap: 2vmin;
   padding-bottom: 6vmin;
   box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .picContainer {
@@ -191,10 +193,4 @@
   display: none;
 }
 
-.galleryContainer,
-.titleContainer {
-  scrollbar-color: transparent transparent;
-  scrollbar-width: none;
-}
-
-/* ///////////// */
+/* Hide scrollbar for IE, Edge and Firefox */

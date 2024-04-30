@@ -27,7 +27,7 @@ export default function singlePhoto({ photo, photo2, album, albums   }: { album:
    calculateScreen();
   }, []);
 
-const mergedImages = album[0].images.concat(album[0].images2)
+const mergedImages = album[0].images
 
  const slider1IsClicked = photo[0].images.length == 0 ? false : true
 
@@ -198,6 +198,7 @@ return (
                   width={mergedImages[indexMobile].width}
                   height={mergedImages[indexMobile].height}
                   onLoadedChange={handleLoadedChange}
+                  style = { {objectPosition : "bottom"}}
                 /> 
 
 
@@ -275,17 +276,7 @@ return (
         }
       });
   
-      album.images2.forEach((image2) => {
-        const existingKey2 = uniqueKeys.find(
-          (key) => key.params.album.includes (`${album.slug}/${image2.key}`)
-        );
   
-        if (!existingKey2) {
-          uniqueKeys.push({
-            params: { album: [`${album.slug}`, `${image2.key}`] },
-          });
-        }
-      });
     });
   
     const paths = uniqueKeys;

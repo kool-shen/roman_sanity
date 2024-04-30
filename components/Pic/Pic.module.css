@@ -32,6 +32,12 @@
   box-sizing: border-box;
 }
 
+@media screen and (min-width: 425px) {
+  .picProjectLoaded {
+    object-fit: contain;
+  }
+}
+
 .hidden {
   opacity: 0;
   transition: transform 1s ease, opacity 1s;

@@ -34,29 +34,16 @@ console.log('props', props);
     return <></>;
   }
 
-  /// Mélange des images de slider 1 et 2 ///
+  /// Mélange des images  ///
 
   let data = initialData.length > 0 ? initialData : props.albums.flatMap((album) => [
     ...album.images.map((image) => ({ ...image, albumSlug: album.slug, albumName: album.name })),
-    ...album.images2.map((image) => ({ ...image, albumSlug: album.slug, albumName: album.name })),
   ]);
 
   if (initialData.length === 0) {
     initialData = shuffleArray(data);
   }
 
-////
-
-const [indexClicked, setIndexClicked]= useState(false)
-
-const indexButtonStyle = !indexClicked
-? { color: "grey"}
-: { color: "black"}; 
-
-const clickIndex = ()=>   {
-  setIndexClicked(!indexClicked)
-  
-}
 
   
     return (
