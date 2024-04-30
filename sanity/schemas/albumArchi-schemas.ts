@@ -92,60 +92,8 @@ const albumArchi = {
         }),
 
       },
-      {
-        name: "images2",
-        title: "Slider 2",
-        type: "array",
-        of: [
-          {
-            type: "object",
-            fields: [
-                {
-                    name: "name",
-                    title: "Nom",
-                    type: "string",
-                  },
-              {
-                name: "image",
-                title: "Image",
-                type: "image",
-                options: { hotspot: true },
-                fields: [
-                  {
-                    name: "alt",
-                    title: "Alt",
-                    type: "string",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: "videos",
-        title: "Vidéos",
-        type: "array",
-        of: [
-          {
-            type: "object",
-            fields: [
-              {
-                name: "video",
-                title: "Vidéo",
-                type: "file",
-                // type: "mux.video",
-                options: { accept: "video/*" },
-              },
-              {
-                name: "description",
-                title: "Description",
-                type: "string",
-              },
-            ],
-          },
-        ],
-      },
+      
+    
     
     
     ],

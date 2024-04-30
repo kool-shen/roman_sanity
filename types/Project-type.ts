@@ -11,14 +11,7 @@ export type albumType =   { _id : string; _createdAt : Date; name: string; slug?
     width : number;
     height : number
   }[];
-  images2: {
-    image: string;
-    alt?: string;
-    description?: string;
-    key: string;
-    width : number;
-    height : number
-  }[];
+
   url: string; content: PortableTextBlock[] } 
 
   export type ImageType = {
@@ -54,13 +47,7 @@ export type projectArchiType = {
   height: number;
   width: number;
 }[];
-images2: {
-  image: string ;
-  alt: string;
-  key?: string;
-  height: number;
-  width: number;
-}[];
+
 videos: {
   video: string ;
   alt: string;

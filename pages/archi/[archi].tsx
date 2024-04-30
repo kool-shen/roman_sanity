@@ -4,7 +4,6 @@ import  {getAllArchi, getOneProject} from "@/sanity/sanity-utils"
 import styles from "@/styles/Project.module.css"
 import  {PortableText} from "@portabletext/react"
 import { useState } from 'react';
-import Pic from '@/components/Pic/Pic';
 import PicProject from '@/components/Pic/PicProject';
 import Layers from '@/components/Pic/Layers';
 import { useRouter } from 'next/router';
@@ -18,7 +17,7 @@ import NextPrevious from '@/components/NextPrevious/NextPrevious';
 
 export default function archiProject ({archi, allArchi  } : { archi: projectArchiType [], allArchi: projectArchiType [] }){
 
-  const mergedImages = archi[0]?.images.concat(archi[0]?.images2)
+  const mergedImages = archi[0]?.images
 
   console.log(allArchi)
 
@@ -57,15 +56,10 @@ const previousIndex = (index - 1 < 0) ? allArchi.length - 1 : index - 1
 
 //// SLIDER & PHOTO DATA SETTING ////
 
-const [firstSliderIndex, setFirstSliderIndex] = useState(0)
-const [secondSliderIndex, setSecondSliderIndex] = useState(0)
 const [mobileIndex, setMobileIndex] = useState(0)
 
 
 const mobileSliderLenght = mergedImages.length || 0;
-
-const image1 = archi[0]?.images?.[firstSliderIndex] || { image: '', width: 0, height: 0 };
-const image2 = archi[0]?.images2?.[secondSliderIndex] || { image: '', width: 0, height: 0 };
 
  const handleClickNext = (photoIndex:number, albumindex:number, setIndex:React.Dispatch<React.SetStateAction<number>>) => {
    if (photoIndex + 1 >= albumindex) {
@@ -339,9 +333,7 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
        </div> 
            </> 
         )}
-       
       </div>
-    
     </div>
     </>
   )
@@ -350,11 +342,9 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
 
 export async function getStaticProps({ params }: { params: { archi: string } }) {
     const { archi } = params;
-    // console.log('SlugArchi', archi);
   
     const projectData = await getOneProject(archi); 
     const allArchi =  await getAllArchi();
-    // console.log('Data du projet', projectData );
   
     return {
       

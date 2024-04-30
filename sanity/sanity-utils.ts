@@ -8,31 +8,23 @@ import config from "./config/client-config";
 export async function getAllAlbums(): Promise<albumType[] | undefined>  {
     return createClient(config).fetch(
 
-        groq`*[_type == "album"] {
-            _id,
-            _createdAt,
-            name,
-            "slug": slug.current,
-            "images": images[] {
-              "image": image.asset->url,
-              "alt": image.alt,
-              "description": description,
-              "key": _key,
-              "height": image.asset->metadata.dimensions.height,
-              "width": image.asset->metadata.dimensions.width,
-            },
-            "images2": images2[] {
-              "image": image.asset->url,
-              "alt": image.alt,
-              "description": description,
-              "key": _key,
-              "height": image.asset->metadata.dimensions.height,
-              "width": image.asset->metadata.dimensions.width,
-                
-            },
+        groq`*[_type == "album" ] | order(_createdAt desc) {
+          _id,
+          _createdAt,
+          name,
+          "slug": slug.current,
+          "images": images[] {
+            "image": image.asset->url,
+            "alt": image.alt,
+            "description": description,
+            "key": _key,
+            "height": image.asset->metadata.dimensions.height,
+            "width": image.asset->metadata.dimensions.width,
+          },
+          
 
-            "content": content,
-          }`
+          "content": content,
+        }`
 
     )
 
@@ -41,7 +33,7 @@ export async function getAllAlbums(): Promise<albumType[] | undefined>  {
 export async function getAllArchi(): Promise<projectArchiType[] | undefined>  {
   return createClient(config).fetch(
 
-      groq`*[_type == "archi"] {
+      groq`*[_type == "archi"] | order(_createdAt desc)  {
           _id,
           _createdAt,
           name,
@@ -119,15 +111,7 @@ export async function getOneProject(slug:string): Promise<albumType[] >  {
           "height": image.asset->metadata.dimensions.height,
           "width": image.asset->metadata.dimensions.width,
         },
-        "images2": images2[] {
-          "image": image.asset->url,
-          "alt": image.alt,
-          "description": description,
-          "key": _key,
-          "height": image.asset->metadata.dimensions.height,
-          "width": image.asset->metadata.dimensions.width,
-            
-        },
+      
         
       }`
 
