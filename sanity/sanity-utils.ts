@@ -88,15 +88,6 @@ export async function getOneAlbum(slug:string): Promise<albumType[] >  {
               "height": image.asset->metadata.dimensions.height,
               "width": image.asset->metadata.dimensions.width,
             },
-            "images2": images2[] {
-              "image": image.asset->url,
-              "alt": image.alt,
-              "description": description,
-              "key": _key,
-              "height": image.asset->metadata.dimensions.height,
-              "width": image.asset->metadata.dimensions.width,
-                
-            },
             
             "content": content,
           }`
@@ -199,25 +190,6 @@ export async function getPhoto(albumSlug : string| undefined, key :string| undef
 
 }
 
-export async function getPhoto2(albumSlug : string| undefined, key :string| undefined )  {
-  return createClient(config).fetch(
-
-      groq` *[_type == "album" && slug.current == "${albumSlug}" ] 
-      { "images":images2[_key == "${key}"] {
-      _id,
-      _createdAt,
-      name,
-      "slug": slug.current,
-        "image": image.asset->url,
-        "alt": image.alt,
-        "description": description,
-        "key": _key,
-      
-      },}`
-
-  )
-
-}
 
 
 export async function getHomepagePhotos( )  {

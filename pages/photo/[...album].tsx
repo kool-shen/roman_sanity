@@ -1,4 +1,4 @@
-import { getOneAlbum, getAllAlbums, getOnePhoto, getPhoto, getPhoto2 } from "@/sanity/sanity-utils"
+import { getOneAlbum, getAllAlbums, getPhoto,  } from "@/sanity/sanity-utils"
 import { albumType, ImageDataType } from "@/types/Project-type";
 import styles from "@/styles/Photo.module.css"
 import Pic from "@/components/Pic/Pic";
@@ -12,7 +12,7 @@ import  {gsap} from "gsap";
 
 
 
-export default function singlePhoto({ photo, photo2, album, albums   }: { album: albumType [], albums: albumType [], photo : albumType [], photo2 : albumType [] }) {
+export default function singlePhoto({ photo, album, albums   }: { album: albumType [], albums: albumType [], photo : albumType [], photo2 : albumType [] }) {
 
 /// Mobile ou web ///
 
@@ -29,9 +29,7 @@ export default function singlePhoto({ photo, photo2, album, albums   }: { album:
 
 const mergedImages = album[0].images
 
- const slider1IsClicked = photo[0].images.length == 0 ? false : true
-
-  const photoClicked = slider1IsClicked ? photo : photo2
+  const photoClicked = photo
 
   const clickedPhotoKey  = photoClicked[0].images[0].key
   
@@ -182,11 +180,9 @@ return (
      <Layers
      onClickRight={() => {
        handleClickNextMobile();
-      //  nextMobile()
      }}
      onClickLeft={() => {
        handleClickPreviousMobile();
-      //  previoustMobile()
      }}
      
    /> 
@@ -200,9 +196,6 @@ return (
                   onLoadedChange={handleLoadedChange}
                   style = { {objectPosition : "bottom"}}
                 /> 
-
-
-                
               </div>
               
               
@@ -227,7 +220,6 @@ return (
   
     const photoData = await getPhoto(albumName, imageKey);
     
-    const photoData2 = await getPhoto2(albumName, imageKey);
 
     const albumData = await getOneAlbum(albumName);
 
@@ -237,7 +229,6 @@ return (
     return {
       props: {
         photo: photoData,
-        photo2: photoData2,
         album: albumData,
         albums: allAlbums,
       },
@@ -275,7 +266,6 @@ return (
           }
         }
       });
-  
   
     });
   

@@ -2,11 +2,9 @@ import List from '@/components/List/List';
 import { getAllAlbums } from '@/sanity/sanity-utils';
 import { albumType } from '@/types/Project-type';
 import styles from "@/styles/Album.module.css"
-import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import PicHeight from '@/components/Pic/PicHeight';
-import nextPrevious from '@/components/NextPrevious/NextPrevious';
 
 
 
