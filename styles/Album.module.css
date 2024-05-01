@@ -19,7 +19,7 @@
   height: calc(100vh - 6vmin);
   align-content: flex-start;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(20vmin, 1fr));
   align-content: flex-start;
   overflow-y: scroll;
   grid-gap: 2vmin;
@@ -104,6 +104,19 @@
   .logoContainer {
     height: 10vmin;
     width: 10vmin;
+  }
+}
+
+/*TABLETTES*/
+
+@media screen and (min-width: 601px) and (max-width: 1024px) and (min-height: 481px) {
+  .galleryContainer {
+    grid-template-columns: repeat(auto-fit, minmax(12vmin, 1fr));
+  }
+
+  .picContainer {
+    height: 22vmin;
+    max-width: 12vmin;
   }
 }
 
