@@ -15,13 +15,12 @@ import NextPrevious from '@/components/NextPrevious/NextPrevious';
 
 
 
-export default function archiProject ({archi, allArchi  } : { archi: projectArchiType [], allArchi: projectArchiType [] }){
+export default function archiProject ({archi, allArchi  } : { archi: projectArchiType [], allArchi: projectArchiType [], 
+   }){
 
   const mergedImages = archi[0]?.images
 
-  console.log(allArchi)
-
-  // console.log(mergedImages)
+  console.log(archi)
 
   /// 
 
@@ -31,7 +30,7 @@ function findAlbumIndex(archi : projectArchiType[], name: string) {
 
 const albumName = archi[0].name
 const index = findAlbumIndex(allArchi, albumName);
-console.log('index', index);
+// console.log('index', index);
 
 
 const nextIndex = (index + 1 >= allArchi.length) ? 0 : index + 1
@@ -47,10 +46,7 @@ const previousIndex = (index - 1 < 0) ? allArchi.length - 1 : index - 1
      window.innerWidth <= 425 ? setMobileScreen(true) : setMobileScreen(false);
    };
 
-   useEffect(() => {
-    calculateScreen();
-    
-  }, []);
+   
 
  
 
@@ -58,6 +54,8 @@ const previousIndex = (index - 1 < 0) ? allArchi.length - 1 : index - 1
 
 const [mobileIndex, setMobileIndex] = useState(0)
 
+
+// let mobileIndex = 0
 
 const mobileSliderLenght = mergedImages.length || 0;
 
@@ -110,13 +108,15 @@ useEffect(() => {
   return () => {
     router.events.off('routeChangeStart', handleRouteChangeStart);
     router.events.off('routeChangeComplete', handleRouteChangeComplete);
+    
+
   };
 }, [router.events]);
 
 //// SWIPE MOBILE
 
 const picRef = useRef<HTMLDivElement>(null);
-console.log('picRef', picRef.current);
+// console.log('picRef', picRef.current);
 
 const time = mobileScreen ? 0.4 : 0.2
 
@@ -172,7 +172,7 @@ const [fingerTouch, setFingerTouch] = useState<number | undefined>()
 const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
   const touchStartX = e.touches[0].clientX;
   setFingerTouch(touchStartX);
-  console.log("start")
+  // console.log("start")
 };
 
 const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
@@ -181,13 +181,18 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
   if (fingerTouch !== undefined) {
     if (touchEndX > fingerTouch) {
       transitionPrevious();
-      console.log("previous")
+      // console.log("previous")
     } else if (touchEndX < fingerTouch) {
       transitionNext();
-      console.log("next")
+      // console.log("next")
     }
   }
 };
+
+useEffect(() => {
+  calculateScreen()
+  setMobileIndex(0)
+}, [router.asPath]); 
 
   return (
     
@@ -238,23 +243,30 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
                   onClickLeft={()=> {handleClickPrevious(mobileIndex, mobileSliderLenght, setMobileIndex)}}
                 
                 />
-               <PicProject   
-                src={mergedImages[mobileIndex].image} alt={mergedImages[mobileIndex].image} 
-                width={mergedImages[mobileIndex].width} height={mergedImages[mobileIndex].height}/>
+               {mergedImages[mobileIndex] ? (
+  <PicProject
+    src={mergedImages[mobileIndex].image}
+    alt={mergedImages[mobileIndex].image}
+    width={mergedImages[mobileIndex].width}
+    height={mergedImages[mobileIndex].height}
+  />
+) : ""}
+               
                 
              
               </div>
               <div className={styles.photoInfoContainer}>
-                 <p>{mergedImages[mobileIndex].caption}</p>
+              {mergedImages[mobileIndex] && ( 
+                <p>{mergedImages[mobileIndex].caption}</p>
+              )}
+                 
                  <p>{mobileIndex +1} / {mobileSliderLenght}</p>
-              </div>
+              </div> 
               </div>
              
               <div className={styles.mobileBottom}>
               
             <p>{mobileIndex +1} / {mobileSliderLenght}</p> 
-          
-            
            </div>
             
           <div className={styles.modalUpperContainer} >
@@ -282,33 +294,36 @@ const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
        
        </div> 
         </div>
-              
-                )
+   )
         :
         (<>
           <NextPrevious name={archi[0].name}  
    
    slugPrevious={`/archi/${allArchi[previousIndex].slug}`}
    slugNext={`/archi/${allArchi[nextIndex].slug}`} /> 
-          <div className={styles.photoBlockContainer} 
+    {mergedImages[mobileIndex] ? (
+      <div className={styles.photoBlockContainer} 
           ref={picRef}
           onTouchStart={handleTouchStart}        
           onTouchEnd={handleTouchEnd} >
-         
-
-
-           <PicProject
+          
+  <PicProject
             src={mergedImages[mobileIndex].image} 
             alt={mergedImages[mobileIndex].image} 
             width={mergedImages[mobileIndex].width} 
             height={mergedImages[mobileIndex].height}
             style={{height : "95%"}}
           />
-          
+          <div className={styles.photoInfoContainer}>
+          <p>{mergedImages[mobileIndex].caption}</p>
           <p>{mobileIndex +1} / {mobileSliderLenght}</p>
+          </div>
          
           
            </div> 
+    )
+     :""}
+          
            <div className={styles.descriptionContainer}>
          <PortableText value={archi[0].content}/>
         </div>
