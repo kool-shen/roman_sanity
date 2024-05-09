@@ -74,6 +74,9 @@
 }
 
 @media screen and (min-width: 425px) {
+  .mainContainer {
+    width: 100%;
+  }
   .photoBlockContainer {
     gap: 0;
   }
