@@ -13,6 +13,7 @@ export async function getAllAlbums(): Promise<albumType[] | undefined>  {
           _createdAt,
           name,
           "slug": slug.current,
+          "family": family,
           "images": images[] {
             "image": image.asset->url,
             "alt": image.alt,

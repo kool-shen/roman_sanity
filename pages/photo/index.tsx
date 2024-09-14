@@ -72,7 +72,7 @@ console.log('props', props);
     }
   
     const albumsArray = Object.values(albumsObject);
-    // console.log('albumsArray', albumsArray);
+// console.log('albumsArray', albumsArray[0]);
   
     return {
       props: { albums: albumsArray },

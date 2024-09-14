@@ -17,6 +17,17 @@ const photoAlbum = {
       validation: (Rule: { required: () => any; }) => Rule.required(),
     },
     {
+      name: "family",
+      title: "Family",
+      type: "string",
+      options: {
+        list: [
+          { title: "Commande", value: "commissioned" },
+          { title: "Personnel", value: "personal" },
+        ],
+      },
+    },
+    {
       name: "images",
       title: "Slider 1",
       type: "array",

@@ -17,7 +17,7 @@ interface nPProps {
         <Link href={slugPrevious}>
         <h1>&lt;</h1>
         </Link>
-      <h1>{name}</h1>
+      <h3>{name}</h3>
        <Link href={slugNext}>
       <h1>&gt;</h1>
       </Link>

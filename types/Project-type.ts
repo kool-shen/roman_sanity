@@ -1,7 +1,8 @@
 import { PortableTextBlock } from "sanity";
 
 
-export type albumType =   { _id : string; _createdAt : Date; name: string; slug?: string; 
+export type albumType =   { _id : string; _createdAt : Date; name: string; slug?: string;     family?: string;
+
   images: {
     image: string;
     alt?: string;

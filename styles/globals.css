@@ -133,6 +133,11 @@ a {
   h2 {
     font-size: 3.5vmin;
   }
+  h3 {
+    font-size: 4.8vmin;
+    display: flex;
+    align-items: center;
+  }
   .mainContainer {
     flex-direction: column;
     justify-content: space-between;
