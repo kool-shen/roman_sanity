@@ -22,7 +22,7 @@
 .slidersContainer {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 66%;
   height: 100%;
   position: relative;
   gap: 5vmin;
@@ -139,6 +139,8 @@
     justify-content: space-between;
     flex-direction: column;
     gap: 0;
+
+    width: 100%;
   }
   .picContainer {
     height: auto;
