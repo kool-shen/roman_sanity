@@ -144,9 +144,10 @@ const transitionNext = () => {
   });
 };
 
-const transitionPrevious = () => {
 
   
+
+  const transitionPrevious = () => {
   gsap.to(picRef.current, {
     opacity: 0,
     duration: time,
@@ -164,7 +165,8 @@ const transitionPrevious = () => {
       );
     },
   });
-};
+}; 
+
 
 const [fingerTouch, setFingerTouch] = useState<number | undefined>()
 
@@ -303,9 +305,11 @@ useEffect(() => {
    slugNext={`/archi/${allArchi[nextIndex].slug}`} /> 
     {mergedImages[mobileIndex] ? (
       <div className={styles.photoBlockContainer} 
-          ref={picRef}
-          onTouchStart={handleTouchStart}        
-          onTouchEnd={handleTouchEnd} >
+                  
+                  onTouchStart={handleTouchStart}        
+                  onTouchEnd={handleTouchEnd}
+                  ref={picRef}
+           >
           
   <PicProject
             src={mergedImages[mobileIndex].image} 
@@ -313,6 +317,8 @@ useEffect(() => {
             width={mergedImages[mobileIndex].width} 
             height={mergedImages[mobileIndex].height}
             style={{height : "95%"}}
+           
+      
           />
           <div className={styles.photoInfoContainer}>
           <p>{mergedImages[mobileIndex].caption}</p>

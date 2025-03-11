@@ -31,6 +31,10 @@
   transition: transform 0.2s;
 }
 
+.leftLayer {
+  background-color: blue;
+}
+
 .icon {
   position: absolute;
   top: 0;

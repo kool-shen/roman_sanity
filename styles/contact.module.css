@@ -1,5 +1,4 @@
 .mainContainer {
-  /* border: 1px solid red; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -33,6 +32,10 @@
   font-family: var(--texBold);
 }
 
+.infoBloc > .priority {
+  font-family: var(--texRegular);
+}
+
 .infoBloc :nth-last-child() {
   color: red;
 }
@@ -53,6 +56,9 @@
 }
 
 @media screen and (max-width: 425px) {
+  .mainContainer {
+    flex-direction: row-reverse;
+  }
   .textContainer {
     width: 70%;
     max-width: 100%;
@@ -62,5 +68,8 @@
   }
   .infoBloc p {
     text-align: start;
+  }
+  .infoBloc h3 {
+    font-size: 2.4vmin;
   }
 }

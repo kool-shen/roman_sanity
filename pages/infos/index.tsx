@@ -40,7 +40,7 @@ export default function InfoPage(props: { infos: infosType[] })
       return (
         props.value && 
         <div className={styles.infoBloc}>
-            <h3>{props.priority}</h3>
+            <p className={styles.priority}>{props.priority}</p>
             <p>{props.value}</p>
         </div>
       )
@@ -67,13 +67,13 @@ const instaurl = data.insta.replace("@", "");
     <div className={`rightPartContainer fadeOut  ${styles.mainContainer}   ${isRouteChanging ? "fadeOutActive" : ''}`}>
       <div className={styles.titleContainer}>
       <div className={styles.infoBloc}>
-            <h3>Contact</h3>
+            <p className={styles.priority}>Contact</p>
             <p>roman.cadre@gmail.com</p>
             <p>+33 6 71 59 32 41</p>
         </div>
        <Infos priority="Tirages" value={"prints@romancadre.com"} />
        <div className={styles.infoBloc}>
-            <h3>Atelier</h3>
+            <p className={styles.priority}>Atelier</p>
             <p>26, avenue Pierre Donzelot</p>
             <p>35700 Rennes</p>
         </div>
@@ -81,7 +81,7 @@ const instaurl = data.insta.replace("@", "");
        <Infos priority="Instagram" value={data.insta} />
        </Link>
        <div className={styles.infoBloc}>
-            <h3>Crédits</h3>
+            <p className={styles.priority}>Crédits</p>
             <p>Code : Léo Ferté (liquid/prom)</p>
             <p>Design : Adèle Trevilly</p>
         </div>

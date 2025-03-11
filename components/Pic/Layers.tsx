@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import styles from "@/components/Pic/Layers.module.css"
+import Link from 'next/link';
 
 export default function Layers(props: 
   { onClickRight: React.MouseEventHandler<HTMLDivElement> | undefined; 
     onClickLeft: React.MouseEventHandler<HTMLDivElement> | undefined;
     index? : number;
-    total? : number
+    total? : number;
+  
     
    } ) {
   
@@ -14,12 +16,15 @@ export default function Layers(props:
 }
   
   return (
-  <div  >
-  
-    <div className={styles.rightLayer} onClick={props.onClickRight}
-   
-     ></div>
+    
+  <div>
+  {/* <Link href={props.linkNext}> */}
+    <div className={styles.rightLayer} onClick={props.onClickRight}></div>
+  {/* </Link> */}
+  {/* <Link href={props.linkPrevious}> */}
     <div className={styles.leftLayer} onClick={props.onClickLeft}></div>
-    </div>
+   
+  {/* </Link> */}
+  </div>
   )
 }

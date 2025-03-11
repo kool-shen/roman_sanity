@@ -86,6 +86,26 @@ key?: string;
 
 };
 
+export type photoProps = {
+  project?: projectArchiType[]; // Propriété project correspondant à un projet architectural individuel
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  onLoadedChange?: (isLoaded: boolean) => void;
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+style?: React.CSSProperties | undefined
+;
+key?: string;
+linkNext : string;
+linkPrevious : string;
+onClickRight: React.MouseEventHandler<HTMLDivElement> | undefined; 
+    onClickLeft: React.MouseEventHandler<HTMLDivElement> | undefined;
+
+};
+
 export type infosType = {
   archi: string;
   photo: string;

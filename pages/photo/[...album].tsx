@@ -4,6 +4,7 @@ import styles from "@/styles/Photo.module.css"
 import Pic from "@/components/Pic/Pic";
 import { useEffect, useState, useRef } from "react";
 import Layers from "@/components/Pic/Layers";
+import Photo from "@/components/Pic/Photo";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import List from '@/components/List/List';
@@ -16,6 +17,7 @@ export default function singlePhoto({ photo, album, albums   }: { album: albumTy
 
 /// Mobile ou web ///
 
+console.log(album)
 
   const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
 
@@ -120,35 +122,8 @@ const previoustMobile = () => {
 
 /// SWIPE MOBILE ///
 
-const [fingerTouch, setFingerTouch] = useState<number | undefined>()
-
-
-const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
-  const touchStartX = e.touches[0].clientX;
-  setFingerTouch(touchStartX);
-};
-
-const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
-  const touchEndX = e.changedTouches[0].clientX;
-
-  if (fingerTouch !== undefined) {
-    if (touchEndX > fingerTouch) {
-      previoustMobile();
-    } else if (touchEndX < fingerTouch) {
-      nextMobile();
-    }
-  }
-};
-
-///
-
-const handleLoadedChange = (isLoaded: boolean) => {
-  // console.log( isLoaded);
-  setIsPicLoaded(isLoaded);
-
-};
-
-
+const handleTouchStart = () =>  {console.log("start")}
+const handleTouchEnd = () =>  {console.log("end")}
 
 
 return (
@@ -173,37 +148,41 @@ return (
 
             </Link>
               <div className={styles.picContainer} ref={picRef} 
-              onTouchStart={handleTouchStart}       
-              onTouchEnd={handleTouchEnd}
+              //   onTouchStart={handleTouchStart}       
+              // onTouchEnd={handleTouchEnd}
 >
-  {!mobileScreen && (
-     <Layers
-     onClickRight={() => {
-       handleClickNextMobile();
-     }}
-     onClickLeft={() => {
-       handleClickPreviousMobile();
-     }}
-     
-   /> 
-  )}
-                
-                 <Pic
-                  src={mergedImages[indexMobile].image}
-                  alt={`photo ${indexMobile} sur ${mergedImages[0].image.length} de l'album ${album[0].name}`}
-                  width={mergedImages[indexMobile].width}
-                  height={mergedImages[indexMobile].height}
-                  onLoadedChange={handleLoadedChange}
-                  style = { {objectPosition : "bottom"}}
-                /> 
+            <Photo
+               src={album[0].images[mobileIndexPhotoClicked].image}
+               alt={`photo`}
+               width={album[0].images[mobileIndexPhotoClicked].width}
+               height={album[0].images[mobileIndexPhotoClicked].height}
+              //  onLoadedChange={handleLoadedChange}
+               style = { {objectPosition : "bottom"}}
+               linkNext={
+                    // Si on est à la dernière photo, revenir à la première
+                    mobileIndexPhotoClicked === album[0].images.length - 1
+                  
+                      ? `${album[0].slug}/${album[0].images[0].key}`
+                      : `${album[0].slug}/${album[0].images[mobileIndexPhotoClicked + 1].key}`
+                  }   
+                linkPrevious={
+                    mobileIndexPhotoClicked === 0
+                      ? `${album[0].slug}/${album[0].images[album[0].images.length - 1].key}`
+                      : `${album[0].slug}/${album[0].images[mobileIndexPhotoClicked - 1].key}`
+                  }
+                onClickRight={() => {
+                 }}
+                onClickLeft={() => {
+                   }}
+              /> 
               </div>
               
               
             </div>
-            <div className={styles.infoContainer}>
-                <p> {mergedImages[indexMobile].description}</p>
-                <p>{`${indexMobile + 1}/${mergedImages.length}`}</p>
-              </div>
+             <div className={styles.infoContainer}>
+                <p> {mergedImages[mobileIndexPhotoClicked].description}</p>
+                <p>{`${mobileIndexPhotoClicked + 1}/${mergedImages.length}`}</p>
+              </div> 
          
       </div>
     </div>

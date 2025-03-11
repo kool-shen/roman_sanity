@@ -1,0 +1,87 @@
+.picLoaded {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+  box-sizing: border-box;
+  object-position: left bottom;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 425px) {
+  .picProjectLoaded {
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .picLoaded {
+    object-position: center;
+  }
+}
+
+.rightLayer {
+  position: absolute;
+  background-color: transparent;
+  z-index: 3;
+  height: 100%;
+  width: 50%;
+  transform: translateX(100%);
+  cursor: url(../../public/arrow_right_white.png), auto;
+}
+
+.leftLayer {
+  position: absolute;
+  background-color: transparent;
+  z-index: 3;
+  height: 100%;
+  width: 50%;
+  cursor: url(../../public/arrow_left_white.png), auto;
+}
+
+@media screen and (max-width: 425px) {
+  .rightLayer {
+    display: none;
+  }
+
+  .leftLayer {
+    display: none;
+  }
+}

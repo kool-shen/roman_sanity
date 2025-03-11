@@ -41,7 +41,6 @@
 .hidden {
   opacity: 0;
   transition: transform 1s ease, opacity 1s;
-  border: 4px solid red;
 }
 
 .picLoaded2 {
@@ -65,4 +64,14 @@
   .picLoaded {
     object-position: center;
   }
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.3s;
 }

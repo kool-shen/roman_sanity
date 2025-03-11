@@ -15,6 +15,18 @@
   }
 }
 
+/*FIX SAFARI DESKTOP*/
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    @media screen and (min-width: 425px) {
+      .mainContainer {
+        width: auto;
+      }
+    }
+  }
+}
+
 .titleContainer {
   display: flex;
   flex-direction: column;

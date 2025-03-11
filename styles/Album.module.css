@@ -27,7 +27,7 @@
   position: relative;
   padding-bottom: 6vmin;
   box-sizing: border-box;
-  max-width: calc(50vw - 6vmin);
+  width: calc(50vw - 6vmin);
 }
 
 .galleryContainer::-webkit-scrollbar {
@@ -94,6 +94,7 @@
     height: 100%;
     box-sizing: border-box;
     max-width: 100%;
+    width: auto;
     /* border: 2px solid green; */
   }
 
