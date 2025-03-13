@@ -6,6 +6,8 @@
   min-width: 17%;
   overflow-y: scroll;
   padding-bottom: 6vmin;
+
+  /* border: 1px solid green; */
 }
 
 .titleContainer::-webkit-scrollbar {

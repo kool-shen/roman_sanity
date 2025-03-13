@@ -47,15 +47,6 @@ export async function getAllArchi(): Promise<projectArchiType[] | undefined>  {
             "height": image.asset->metadata.dimensions.height,
             "width": image.asset->metadata.dimensions.width,
           },
-          "videos": videos[] {
-            "videos": videos.asset->url,
-            "alt": videos.alt,
-            "description": description,
-            "key": _key,
-            "height": videos.asset->metadata.dimensions.height,
-            "width": videos.asset->metadata.dimensions.width,
-              
-          },
         
           "content": content,
         }`
@@ -120,6 +111,8 @@ export async function getOneProject(slug:string): Promise<albumType[] >  {
 
 }
 
+
+
 export async function getOnePhoto(slug : string| undefined)  {
   return createClient(config).fetch(
 
@@ -140,7 +133,7 @@ export async function getOtherPhotos(key : string| undefined)  {
       groq` *[_type == "album" && "${key}" in images[]._key] {
           
         name,
-        
+        "slug": slug.current,
         "images": images[] {
           "image": image.asset->url,
           "alt": image.alt,
@@ -167,6 +160,25 @@ export async function getPhoto(albumSlug : string| undefined, key :string| undef
         "image": image.asset->url,
         "alt": image.alt,
         "description": description,
+        "key": _key,
+      
+      },}`
+
+  )
+
+}
+
+export async function getPhotoProject(albumSlug : string| undefined, key :string| undefined )  {
+  return createClient(config).fetch(
+
+      groq`*[_type == "archi" && slug.current == "${albumSlug}" ] 
+      { "slug": slug.current,
+        "images":images[_key == "${key}"] {
+        "image": image.asset->url,
+        "height": image.asset->metadata.dimensions.height,
+        "width": image.asset->metadata.dimensions.width,
+        "alt": name,
+        "description": name,
         "key": _key,
       
       },}`

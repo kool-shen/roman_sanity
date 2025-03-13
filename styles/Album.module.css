@@ -108,6 +108,13 @@
   }
 }
 
+@media screen and (min-width: 425px) {
+  .mainContainer {
+    width: 100%;
+    /* border: 3px solid red; */
+  }
+}
+
 /*TABLETTES*/
 
 @media screen and (min-width: 601px) and (max-width: 1024px) and (min-height: 481px) {

@@ -18,7 +18,11 @@
 
 @media screen and (min-width: 425px) {
   .titleContainer {
-    width: 20vw;
+    min-width: 20vw;
+  }
+  .mainContainer {
+    /* border: 3px solid rebeccapurple; */
+    width: 100%;
   }
 }
 

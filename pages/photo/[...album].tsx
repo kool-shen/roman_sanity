@@ -3,7 +3,6 @@ import { albumType, ImageDataType } from "@/types/Project-type";
 import styles from "@/styles/Photo.module.css"
 import Pic from "@/components/Pic/Pic";
 import { useEffect, useState, useRef } from "react";
-import Layers from "@/components/Pic/Layers";
 import Photo from "@/components/Pic/Photo";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
@@ -17,8 +16,7 @@ export default function singlePhoto({ photo, album, albums   }: { album: albumTy
 
 /// Mobile ou web ///
 
-console.log(album)
-
+// 
   const [mobileScreen, setMobileScreen] = useState<boolean | undefined>();
 
   const calculateScreen = () => {
@@ -170,10 +168,7 @@ return (
                       ? `${album[0].slug}/${album[0].images[album[0].images.length - 1].key}`
                       : `${album[0].slug}/${album[0].images[mobileIndexPhotoClicked - 1].key}`
                   }
-                onClickRight={() => {
-                 }}
-                onClickLeft={() => {
-                   }}
+             
               /> 
               </div>
               
@@ -218,6 +213,8 @@ return (
   export async function getStaticPaths() {
     const albums = await getAllAlbums();
 
+
+
     interface AlbumKey {
       params: {
         album: string[];
@@ -227,13 +224,14 @@ return (
   
     albums?.forEach((album) => {
       album.images.forEach((image) => {
+
         const matchingAlbum = albums.find((a) =>
           a.images.some((i) => i.key === image.key)
         );
   
         if (matchingAlbum) {
           const albumName = matchingAlbum.slug;
-  
+
           const existingKey = uniqueKeys.find(
             (key) => key.params.album.includes(`${albumName}/${image.key}`)
           );
@@ -249,7 +247,9 @@ return (
     });
   
     const paths = uniqueKeys;
-  
+
+
+  // console.log("Generated paths:", paths);
   
     return {
       paths,

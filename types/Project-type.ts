@@ -101,8 +101,8 @@ style?: React.CSSProperties | undefined
 key?: string;
 linkNext : string;
 linkPrevious : string;
-onClickRight: React.MouseEventHandler<HTMLDivElement> | undefined; 
-    onClickLeft: React.MouseEventHandler<HTMLDivElement> | undefined;
+// onClickRight: React.MouseEventHandler<HTMLDivElement> | undefined; 
+//     onClickLeft: React.MouseEventHandler<HTMLDivElement> | undefined;
 
 };
 

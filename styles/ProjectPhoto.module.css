@@ -1,0 +1,224 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slidersContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(50vw - 6vmin);
+  height: 100%;
+  position: relative;
+  gap: 5vmin;
+}
+
+.photoBlockContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  gap: 2vmin;
+  overflow: hidden;
+}
+
+.picContainer {
+  width: fit-content;
+  height: 81vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.leftLayer {
+  background-color: blue;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 4%;
+  width: 4%;
+}
+
+.thumbnail {
+  background-color: black;
+  position: absolute;
+  height: 5%;
+  width: 5%;
+  top: 0;
+  right: 0;
+
+  z-index: 4;
+}
+
+.thumbnail::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6%;
+  background-color: white;
+}
+
+.thumbnail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6%;
+  height: 100%;
+  background-color: white;
+}
+
+@media screen and (min-width: 425px) {
+  .mainContainer {
+    width: 100%;
+  }
+  .photoBlockContainer {
+    gap: 0;
+  }
+  .photoBlockContainer p {
+    font-size: 1.5vmin;
+  }
+}
+
+.pic2Container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* border: 1px solid red; */
+  overflow: hidden;
+}
+
+.indexContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+@media screen and (max-width: 425px) {
+  .mainContainer {
+    padding-bottom: 6vmin;
+    box-sizing: border-box;
+    /* border: 2px solid green; */
+    max-height: 80%;
+    display: block;
+  }
+}
+@media screen and (max-width: 425px) {
+  .mainContainer {
+    padding-bottom: 6vmin;
+    box-sizing: border-box;
+    justify-content: center;
+    max-height: 80%;
+    display: block;
+  }
+
+  .slidersContainer {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    gap: 2vmin;
+
+    /* border: 2px solid red; */
+  }
+  .photoBlockContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    height: 100%;
+
+    /* border: 2px solid red; */
+    /* min-height: 70vh; */
+  }
+
+  .infoContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  .mainContainer h2 {
+    display: none;
+  }
+  .infoContainer h2 {
+    display: block;
+  }
+  .picContainer {
+    min-width: auto;
+    height: 80%;
+    width: 100%;
+  }
+  .thumbnail {
+    height: 7vmin;
+    width: 7vmin;
+  }
+  .icon {
+    height: 5%;
+    width: 5%;
+  }
+}
+
+/* FIX IPHONE 8 & 8 Plus */
+
+@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  .mainContainer {
+    /* height: 80%; */
+    padding-block: 3vmin;
+  }
+  .slidersContainer {
+    /* height: auto; */
+
+    height: 100%;
+  }
+  .photoBlockContainer {
+    height: 100%;
+    min-height: auto;
+  }
+}
+
+@media only screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
+  .mainContainer {
+    height: 80%;
+  }
+  .slidersContainer {
+    height: 100%;
+  }
+  .photoBlockContainer {
+    height: 100%;
+    min-height: auto;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s;
+}
+
+.picLoaded {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease, opacity 1s;
+  box-sizing: border-box;
+  object-position: left bottom;
+}
+
+@media screen and (max-width: 425px) {
+  .picLoaded {
+    object-position: center;
+  }
+}

@@ -12,6 +12,8 @@ import { NextSeo } from 'next-seo';
 import List from '@/components/List/List'
 import  {gsap} from "gsap";
 import NextPrevious from '@/components/NextPrevious/NextPrevious';
+import PicHeight from '@/components/Pic/PicHeight';
+import Link from 'next/link';
 
 
 
@@ -20,7 +22,7 @@ export default function archiProject ({archi, allArchi  } : { archi: projectArch
 
   const mergedImages = archi[0]?.images
 
-  console.log(archi)
+  // console.log("merged", mergedImages)
 
   /// 
 
@@ -29,6 +31,9 @@ function findAlbumIndex(archi : projectArchiType[], name: string) {
 }
 
 const albumName = archi[0].name
+
+console.log(archi[0])
+
 const index = findAlbumIndex(allArchi, albumName);
 // console.log('index', index);
 
@@ -238,7 +243,7 @@ useEffect(() => {
         </div>
           {!mobileScreen ? (
               <div className={styles.photoBlockContainer}>
-              <div className={styles.photoContainer}>
+              {/* <div className={styles.photoContainer}>
               <div className={styles.picContainer} >
                 <Layers 
                   onClickRight={()=> {handleClickNext(mobileIndex, mobileSliderLenght, setMobileIndex)}}
@@ -264,7 +269,19 @@ useEffect(() => {
                  
                  <p>{mobileIndex +1} / {mobileSliderLenght}</p>
               </div> 
-              </div>
+              </div> */ }
+<div className={styles.galleryContainer}>
+{mergedImages.map((content, i) => (
+      <div className={styles.picContainer} key={content.key}
+      >   
+      <Link href={`/archi/${archi[0].slug}/${content.key}`}>         
+         <PicHeight src={content.image} alt={`exemple`} width={content.width} height={content.height}/>
+         </Link> 
+       </div>
+       
+          ))}
+</div>
+                {/**/}
              
               <div className={styles.mobileBottom}>
               

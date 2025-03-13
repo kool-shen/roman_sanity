@@ -22,10 +22,34 @@
 .slidersContainer {
   display: flex;
   justify-content: space-between;
-  width: 66%;
+  /* width: 66%; */
+  width: calc(50vw - 6vmin);
+
   height: 100%;
   position: relative;
   gap: 5vmin;
+}
+
+/* */
+
+.galleryContainer {
+  height: 70%;
+  align-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20vmin, 1fr));
+  align-content: flex-start;
+  overflow-y: scroll;
+  grid-gap: 2vmin;
+  grid-gap: 2vmin;
+  gap: 2vmin;
+  box-sizing: border-box;
+  width: calc(50vw - 6vmin);
+
+  /* border: 2px solid red; */
+}
+
+.galleryContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .modal {
@@ -51,6 +75,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 2vmin;
+  max-height: 24vh;
 }
 
 .photoBlockContainer {
@@ -72,12 +97,17 @@
 
   gap: 1.8vmin;
 }
-.picContainer {
+/* .picContainer {
   width: fit-content;
   height: calc(100% - 2vmin);
   position: relative;
+  overflow: hidden;
+} */
 
-  /* border: 1px solid red; */
+.picContainer {
+  height: 32vmin;
+  max-width: 20vmin;
+  position: relative;
   overflow: hidden;
 }
 

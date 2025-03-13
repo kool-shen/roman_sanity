@@ -26,7 +26,7 @@ const handleLoad = () =>
           onMouseEnter={props.onMouseEnter}
           onMouseLeave={props.onMouseLeave}
           key={props.key}
-          sizes={`(min-width: 768px) 20vw, 50vw `}
+          sizes={`(min-width: 768px) 20vmin, 50vmin `}
           loading='lazy'
           onLoad={()=>{handleLoad()}}
           />

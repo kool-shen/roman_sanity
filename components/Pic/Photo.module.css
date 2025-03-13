@@ -2,10 +2,10 @@
   height: 100%;
   width: 100%;
   object-fit: contain;
-  opacity: 1;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.5s ease-out;
   box-sizing: border-box;
   object-position: left bottom;
+  opacity: 1;
 }
 
 .fadeOut {

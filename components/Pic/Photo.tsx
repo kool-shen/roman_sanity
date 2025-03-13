@@ -5,53 +5,53 @@ import { photoProps } from '@/types/Project-type';
 import { useRouter } from 'next/router';
 
 export default function Photo(props: photoProps) {
-  const [isAnimating, setIsAnimating] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    setIsAnimating(false);
-    // setIsLoaded(false);
+   setIsLoaded(false);
+    console.log("new page loaded")
   }, [router.asPath]);
 
-  const handleTransition = async (path: string) => {
-    setIsAnimating(true);
-    await new Promise((resolve) => setTimeout(resolve));
-    router.push(path);
-  };
 
-  const minSwipeDistance = 50; // Distance minimum en pixels pour qu'un swipe soit détecté
+const handleTransition = async (path: string) => {
+  setIsLoaded(false);
+  await new Promise((resolve) => setTimeout(resolve));
+  router.push(path);
+};
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
+ const minSwipeDistance = 50; // Distance minimum en pixels pour qu'un swipe soit détecté
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
+const handleTouchStart = (e: React.TouchEvent) => {
+   setTouchStart(e.targetTouches[0].clientX);
+ };
 
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+   const handleTouchMove = (e: React.TouchEvent) => {
+     setTouchEnd(e.targetTouches[0].clientX);
+   };
 
-    const distance = touchStart - touchEnd;
+   const handleTouchEnd = () => {
+     if (!touchStart || !touchEnd) return;
 
-    if (distance > minSwipeDistance) { 
-      // Swipe gauche, aller à l'image suivante
-      handleTransition(props.linkNext);
-    }
+     const distance = touchStart - touchEnd;
 
-    if (distance < -minSwipeDistance) {
-      // Swipe droite, aller à l'image précédente
-      handleTransition(props.linkPrevious);
-      console.log("droite")
-    }
+     if (distance > minSwipeDistance) { 
+       // Swipe gauche, aller à l'image suivante
+       handleTransition(props.linkNext);
+     }
 
-    // Réinitialiser les valeurs
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
+     if (distance < -minSwipeDistance) {
+       // Swipe droite, aller à l'image précédente
+       handleTransition(props.linkPrevious);
+       console.log("droite")
+     }
+
+     // Réinitialiser les valeurs
+     setTouchStart(null);
+     setTouchEnd(null);
+   };
 
   return (
     <>
@@ -65,7 +65,7 @@ export default function Photo(props: photoProps) {
      
     
           <div className={styles.leftLayer}         
-          onClick={(e) => handleTransition(props.linkPrevious)}
+       onClick={(e) => handleTransition(props.linkPrevious)}
           ></div>
         
       </div>
@@ -74,20 +74,18 @@ export default function Photo(props: photoProps) {
         width={props.width}
         height={props.height}
         alt={props?.alt}
-        className={`${styles.picLoaded} ${isAnimating ? styles.fadeOut : styles.fadeIn} ${
-          !isLoaded ? styles.hidden : ''
+        className={`${styles.picLoaded} ${!isLoaded ? styles.fadeOut : styles.fadeIn}
+          
         }`} 
         onClick={props.onClick}
         style={props.style}
-        key={props.key}
-        sizes={`(min-width: 768px) 40vw, 70vw`}
-        loading="lazy"
-        onLoad={() => setIsLoaded(true)} 
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-         placeholder="empty"
-        onTouchEnd={handleTouchEnd}
-      />
+        sizes={`(min-width: 768px) 30vw, 70vw`}
+      onLoad={() => setIsLoaded(true)} 
+      key={props.src}
+         onTouchStart={handleTouchStart}
+         onTouchMove={handleTouchMove}
+         onTouchEnd={handleTouchEnd}
+      /> 
     </>
   );
 }
