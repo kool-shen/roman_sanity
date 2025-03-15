@@ -163,7 +163,7 @@
     max-height: 80%;
   }
   .photoBlockContainer {
-    height: 66%;
+    height: 50%;
   }
   .slidersContainer {
     justify-content: space-between;
@@ -172,8 +172,19 @@
 
     width: 100%;
   }
+
+  .galleryContainer {
+    grid-template-columns: repeat(3, 1fr);
+    height: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: auto;
+    /* border: 2px solid green; */
+  }
+
   .picContainer {
-    height: auto;
+    height: 40vmin;
+    max-width: 100%;
   }
   .infoContainer {
     /* border: 1px solid red; */

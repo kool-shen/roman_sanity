@@ -10,12 +10,18 @@
   height: 45%;
 }
 
+.container h1 {
+  z-index: 3;
+}
+
 @media screen and (min-width: 425px) {
   .container {
     display: none;
   }
 }
 
-.container h1 {
-  z-index: 3;
+@media screen and (max-width: 425px) {
+  .container {
+    z-index: 1;
+  }
 }

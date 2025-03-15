@@ -328,7 +328,7 @@ useEffect(() => {
                   ref={picRef}
            >
           
-  <PicProject
+  {/* <PicProject
             src={mergedImages[mobileIndex].image} 
             alt={mergedImages[mobileIndex].image} 
             width={mergedImages[mobileIndex].width} 
@@ -336,10 +336,21 @@ useEffect(() => {
             style={{height : "95%"}}
            
       
-          />
+          /> */}
+          <div className={styles.galleryContainer}>
+{mergedImages.map((content, i) => (
+      <div className={styles.picContainer} key={content.key}
+      >   
+      <Link href={`/archi/${archi[0].slug}/${content.key}`}>         
+         <PicHeight src={content.image} alt={`exemple`} width={content.width} height={content.height}/>
+         </Link> 
+       </div>
+       
+          ))}
+</div>
           <div className={styles.photoInfoContainer}>
-          <p>{mergedImages[mobileIndex].caption}</p>
-          <p>{mobileIndex +1} / {mobileSliderLenght}</p>
+          {/* <p>{mergedImages[mobileIndex].caption}</p>
+          <p>{mobileIndex +1} / {mobileSliderLenght}</p> */}
           </div>
          
           
