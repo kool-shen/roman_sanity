@@ -44,7 +44,7 @@
   max-width: calc(50vw - 6vmin);
   display: flex;
   flex-direction: column;
-  gap: 0.5vmin;
+  /* gap: 0.5vmin; */
 }
 
 .textContainer > p:nth-child(2) {

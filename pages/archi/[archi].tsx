@@ -275,7 +275,7 @@ useEffect(() => {
       <div className={styles.picContainer} key={content.key}
       >   
       <Link href={`/archi/${archi[0].slug}/${content.key}`}>         
-         <PicHeight src={content.image} alt={`exemple`} width={content.width} height={content.height}/>
+         <PicHeight src={content.image} alt={content.image} width={content.width} height={content.height}/>
          </Link> 
        </div>
        
@@ -323,8 +323,8 @@ useEffect(() => {
     {mergedImages[mobileIndex] ? (
       <div className={styles.photoBlockContainer} 
                   
-                  onTouchStart={handleTouchStart}        
-                  onTouchEnd={handleTouchEnd}
+                  // onTouchStart={handleTouchStart}        
+                  // onTouchEnd={handleTouchEnd}
                   ref={picRef}
            >
           
