@@ -360,8 +360,9 @@ useEffect(() => {
           
            <div className={styles.descriptionContainer}>
          <PortableText value={archi[0].content}/>
+         <div className={styles.prioritiesContainer} >
+
         </div>
-           <div className={styles.prioritiesContainer} >
        
          <Priorities 
          name={"programme"}

@@ -14,7 +14,6 @@ html,
   overflow: auto;
   cursor: url("../public/square_black.png"), auto;
   text-decoration: none;
-  /* cursor: url("../public/cursor.png"), auto; */
 
   box-sizing: border-box;
   /* border: 2px solid blue; */
@@ -113,7 +112,7 @@ p {
 }
 
 [href] {
-  cursor: url("../public/square_white.png"), auto;
+  cursor: url("../public/square_black.png"), auto;
   color: inherit;
   text-decoration: none;
 }

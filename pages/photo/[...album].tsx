@@ -138,13 +138,13 @@ return (
      
       <div className={styles.slidersContainer}>
             <div className={styles.photoBlockContainer} >
-            <Link href= {`/photo/${album[0].slug}`}>
+            {/* <Link href= {`/photo/${album[0].slug}`}>
             <div className={styles.icon}>
             <Pic src= {"/thumbnail_4_squares.png"} alt="vue gallerie" width={100} height={100}/>
  </div> 
 
 
-            </Link>
+            </Link> */}
               <div className={styles.picContainer} ref={picRef} 
               //   onTouchStart={handleTouchStart}       
               // onTouchEnd={handleTouchEnd}
@@ -155,7 +155,7 @@ return (
                width={album[0].images[mobileIndexPhotoClicked].width}
                height={album[0].images[mobileIndexPhotoClicked].height}
               //  onLoadedChange={handleLoadedChange}
-               style = { {objectPosition : "bottom"}}
+               style = { {objectPosition : "top"}}
                linkNext={
                     // Si on est à la dernière photo, revenir à la première
                     mobileIndexPhotoClicked === album[0].images.length - 1
